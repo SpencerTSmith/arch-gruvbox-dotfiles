@@ -22,4 +22,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(starship init zsh)"
-alias config='/usr/bin/git --git-dir=/home/spence/dotfiles --work-tree=/home/spence'
+alias config='/usr/bin/git --git-dir=/home/spence/.dotfiles --work-tree=/home/spence'
