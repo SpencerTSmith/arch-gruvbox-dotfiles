@@ -54,7 +54,8 @@
 			"nvim(.*)": "",
 			"Steam": "",
 			"(.*)Spotify(.*)": "",
-			"(.*) thunar": ""
+			"(.*) thunar": "",
+			"(.*).pdf": ""
 		},
 		"separate-outputs": true
 	},
