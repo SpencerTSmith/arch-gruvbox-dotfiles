@@ -1,6 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "BufEnter",
 		opts = {
 			signs = {
 				add = { text = "+" },
@@ -11,5 +12,5 @@ return {
 			},
 		},
 	},
-	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-fugitive", event = "CmdlineEnter" },
 }

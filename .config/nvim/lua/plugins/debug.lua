@@ -1,7 +1,28 @@
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
-		"rcarriga/nvim-dap-ui",
+		{
+			"rcarriga/nvim-dap-ui",
+			keys = {
+				{ "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
+				{ "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
+			},
+			opts = {},
+			config = function(_, opts)
+				local dap = require("dap")
+				local dapui = require("dapui")
+				dapui.setup(opts)
+				dap.listeners.after.event_initialized["dapui_config"] = function()
+					dapui.open({})
+				end
+				dap.listeners.before.event_terminated["dapui_config"] = function()
+					dapui.close({})
+				end
+				dap.listeners.before.event_exited["dapui_config"] = function()
+					dapui.close({})
+				end
+			end,
+		},
 		{
 			"theHamsta/nvim-dap-virtual-text",
 			opts = {},
@@ -11,12 +32,28 @@ return {
 		"jay-babu/mason-nvim-dap.nvim",
 	},
 
+	keys = {
+		{ "<leader>d",  "",                                                                                   desc = "Debug",                         mode = { "n", "v" } },
+		{ "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Debug: Breakpoint Condition" },
+		{ "<leader>db", function() require("dap").toggle_breakpoint() end,                                    desc = "Debug: Toggle Breakpoint" },
+		{ "<leader>dc", function() require("dap").continue() end,                                             desc = "Debug: Continue" },
+		{ "<leader>da", function() require("dap").continue({ before = get_args }) end,                        desc = "Debug: Run with Args" },
+		{ "<leader>dC", function() require("dap").run_to_cursor() end,                                        desc = "Debug: Run to Cursor" },
+		{ "<leader>dg", function() require("dap").goto_() end,                                                desc = "Debug: Go to Line (No Execute)" },
+		{ "<leader>dI", function() require("dap").step_into() end,                                            desc = "Debug: Step Into" },
+		{ "<leader>dj", function() require("dap").down() end,                                                 desc = "Debug: Down" },
+		{ "<leader>dk", function() require("dap").up() end,                                                   desc = "Debug: Up" },
+		{ "<leader>dl", function() require("dap").run_last() end,                                             desc = "Debug: Run Last" },
+		{ "<leader>do", function() require("dap").step_out() end,                                             desc = "Debug: Step Out" },
+		{ "<leader>dn", function() require("dap").step_over() end,                                            desc = "Debug: Step Over" },
+		{ "<leader>dp", function() require("dap").pause() end,                                                desc = "Debug: Pause" },
+		{ "<leader>dr", function() require("dap").repl.toggle() end,                                          desc = "Debug: Toggle REPL" },
+		{ "<leader>ds", function() require("dap").session() end,                                              desc = "Debug: Session" },
+		{ "<leader>dt", function() require("dap").terminate() end,                                            desc = "Debug: Terminate" },
+		{ "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Debug: Widgets" },
+	},
+
 	config = function()
-		local dap = require("dap")
-		local dapui = require("dapui")
-
-		dapui.setup()
-
 		require("mason-nvim-dap").setup({
 			automatic_installation = true,
 
@@ -36,46 +73,20 @@ return {
 							name = "Launch file",
 							type = "cppdbg",
 							request = "launch",
-							args = function()
-								local args_string = vim.fn.input("Input arguments: ")
-								return vim.split(args_string, " ")
-							end,
+							-- args = function()
+							-- 	local args_string = vim.fn.input("Input arguments: ")
+							-- 	return vim.split(args_string, " ")
+							-- end,
 							program = function()
 								return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 							end,
 							cwd = "${workspaceFolder}",
 							stopAtEntry = false,
 						},
-						{
-							name = "Attach to gdbserver :1234",
-							type = "cppdbg",
-							request = "launch",
-							MIMode = "gdb",
-							miDebuggerServerAddress = "localhost:1234",
-							miDebuggerPath = vim.fn.exepath("gdb"),
-							cwd = "${workspaceFolder}",
-							program = function()
-								return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-							end,
-						},
 					}
 					require("mason-nvim-dap").default_setup(config)
 				end,
 			},
 		})
-
-		vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
-		vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
-		vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
-		vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
-		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-		vim.keymap.set("n", "<leader>B", function()
-			dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-		end, { desc = "Debug: Set Breakpoint" })
-		vim.keymap.set("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result." })
-
-		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 	end,
 }

@@ -1,9 +1,11 @@
 return {
 	"stevearc/oil.nvim",
+	event = "VimEnter",
 	opts = {
-		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Oil: Open parent directory"})
+		delete_to_trash = true,
+		default_file_explorer = true,
 	},
-	-- Optional dependencies
-	-- dependencies = { "echasnovski/mini.icons" },
-	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	keys = {
+		{"-", function() require("oil").open() end, desc = "Oil: Open parent directory"}, },
 }
