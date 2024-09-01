@@ -17,7 +17,7 @@ return {
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 		keys = {
-			{ "<leader>f", "", desc = "Find: " },
+			{ "<leader>f",  "",                                       desc = "Find: " },
 			{ "<leader>fh", require("telescope.builtin").help_tags,   desc = "Find: help" },
 			{ "<leader>fk", require("telescope.builtin").keymaps,     desc = "Find: keymaps" },
 			{ "<leader>ff", require("telescope.builtin").find_files,  desc = "Find: files" },
@@ -32,29 +32,33 @@ return {
 			{ "<leader>fr", require("telescope.builtin").oldfiles, desc = 'Find: recent' },
 			{ "<leader>fb", require("telescope.builtin").buffers,  desc = "Find: existing buffers" },
 		},
-		config = function()
-			require("telescope").setup({
-				defaults = {
-					layout_strategy = 'bottom_pane',
-					layout_config = {
-						height = 0.25,
-					},
-					mappings = {
-						i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-					},
+		opts = {
+			defaults = {
+				layout_strategy = 'bottom_pane',
+				layout_config = {
+					height = 0.25,
 				},
-				pickers = {
-					find_files = {
-						hidden = true,
-					},
+				mappings = {
+					i = { ['<c-enter>'] = 'to_fuzzy_refine' },
 				},
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown(),
-					},
+				sorting_strategy = 'ascending',
+				prompt_prefix = "❯ ",
+				selection_caret = "  ",
+				border = true,
+			},
+			pickers = {
+				find_files = {
+					hidden = true,
 				},
-			})
-
+			},
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown(),
+				},
+			},
+		},
+		config = function(_, opts)
+			require("telescope").setup(opts)
 			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")

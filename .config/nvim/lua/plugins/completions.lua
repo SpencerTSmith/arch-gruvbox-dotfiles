@@ -7,6 +7,9 @@ return {
 			{ "hrsh7th/cmp-path" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-cmdline" },
+			{ "hrsh7th/cmp-calc" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-emoji" },
 			{
 				"L3MON4D3/LuaSnip",
 				lazy = true,
@@ -18,16 +21,17 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			luasnip.config.setup({})
 
 			cmp.setup({
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						vim.snippet.expand(args.body)
 					end,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
+				window = {
+				},
+				completion = { completeopt = "menu,menuone,noinsert,noselect" },
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -52,6 +56,9 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "calc" },
+					{ name = "nvim_lua" },
+					{ name = "emoji" },
 				}, {
 					{ name = "buffer" },
 				}),

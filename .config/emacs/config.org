@@ -15,9 +15,10 @@
 - [[#completions][Completions]]
 - [[#gui-modifications][GUI Modifications]]
   - [[#dashboard][Dashboard]]
-  - [[#modeline][Modeline]]
+  - [[#goggles][Goggles]]
   - [[#highlight-todo][Highlight Todo]]
   - [[#icons][Icons]]
+  - [[#modeline][Modeline]]
   - [[#rainbow-mode][Rainbow Mode]]
   - [[#solaire-mode][Solaire Mode]]
   - [[#theme][Theme]]
@@ -81,7 +82,8 @@
 
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
-(elpaca-wait)
+(eval-when-compile
+  (require 'use-package))
 #+end_src
 
 ** Idle Garbage Collection
@@ -90,26 +92,20 @@
   :ensure t
   :config
   (setq gcmh-idle-delay 'auto
-        gcmh-auto-idle-delay-factor 10
-        gcmh-high-cons-threshold (* 16 1024 1024))
-  :init
-  (gcmh-mode 1))
+		gcmh-verbose nil
+		gcmh-auto-idle-delay-factor 10
+		gcmh-high-cons-threshold (* 16 1024 1024 2))
+  :hook (elpaca-after-init . gcmh-mode))
 #+end_src
 
 ** Native Tweaks
 #+begin_src emacs-lisp
 (use-package emacs
-  :config
-  ;; some perf hacks straight from doom emacs
-  (push '(menu-bar-lines . 0)   default-frame-alist)
-  (push '(tool-bar-lines . 0)   default-frame-alist)
-  (push '(vertical-scroll-bars) default-frame-alist)
-  (setq menu-bar-mode nil
-        tool-bar-mode nil
-        scroll-bar-mode nil)
-  (set-fringe-mode 10)
+  :init
   (setq-default cursor-in-non-selected-windows nil)
   (setq highlight-nonselected-windows nil)
+  (setq echo-keystrokes 0.01)
+  (set-fringe-mode 10)
   (setq fast-but-imprecise-scrolling t)
   (global-display-line-numbers-mode 1)
   (global-hl-line-mode 1)
@@ -117,19 +113,21 @@
   (save-place-mode 1)
   (global-auto-revert-mode 1)
   (column-number-mode 1)
-  (setq display-line-numbers-type 'relative)
+  (setq display-line-numbers-type 'relative
+        display-line-numbers-grow-only t)
   (setq use-dialog-box nil)
-  ;; Org tempo fix
-  (add-hook 'org-mode-hook (lambda ()
-							 (setq-local electric-pair-inhibit-predicate
-                                         `(lambda (c)
-                                            (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
-  (setq org-edit-src-content-indentation 0)
   (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
   (setq scroll-margin 10)
   (setq scroll-conservatively 101)
   (setq-default tab-width 4)
-  (setq-default indicate-empty-lines t))
+  (setq-default indicate-empty-lines t)
+  (setq load-prefer-newer t)
+  (setq use-short-answers t)
+  (setq help-window-select t)
+  (setq fill-column 80)
+  (setq delete-selection-mode t)
+  (setq require-final-newline t)
+  (setq sentence-end-double-space nil))
 #+end_src
 
 ** Evil Mode
@@ -151,25 +149,16 @@
 (use-package evil-surround
   :ensure t
   :after evil
+  :defer 5
   :config (global-evil-surround-mode 1))
 (use-package evil-commentary
   :ensure t
   :after evil
+  :defer 5
   :config (evil-commentary-mode 1))
-(use-package evil-goggles
-  :ensure t
-  :after evil
-  :config
-  (custom-set-faces
-   '(evil-goggles-default-face ((t (:inherit 'completions-highlight))))) ;; default is to inherit 'region
-  ;; run `M-x list-faces-display` in a fresh emacs to get a list of faces on your emacs
-  (evil-goggles-mode 1))
 #+end_src
 
 ** Custom Bindings
-*** Native Emacs
-#+begin_src emacs-lisp
-#+end_src
 *** General
 #+begin_src emacs-lisp
 (use-package general
@@ -272,8 +261,7 @@
     "mi" '(org-toggle-item :wk "Org toggle item")
     "mt" '(org-todo :wk "Org todo")
     "mB" '(org-babel-tangle :wk "Org babel tangle")
-    "mT" '(org-todo-list :wk "Org todo list")) 
-  )
+    "mT" '(org-todo-list :wk "Org todo list")))
 
 #+end_src
 
@@ -351,22 +339,24 @@ one, an error is signaled."
 
 ** Fonts
 #+begin_src emacs-lisp 
-(set-face-attribute 'default nil
-                    :font "JetBrainsMono Nerd Font"
-                    :height 140)
-(set-face-attribute 'variable-pitch nil
-                    :font "JetBrainsMono Nerd Font Propo"
-                    :height 140)
-(set-face-attribute 'fixed-pitch nil
-                    :font "JetBrainsMono Nerd Font"
-                    :height 140)
-;; Makes commented text and keywords italics.
-;; This is working in emacsclient but not emacs.
-;; Your font must have an italic face available.
-(set-face-attribute 'font-lock-comment-face nil
-                    :slant 'italic)
-(set-face-attribute 'font-lock-keyword-face nil
-                    :slant 'italic)
+(use-package emacs
+  :init
+  (set-face-attribute 'default nil
+                      :font "JetBrainsMono Nerd Font"
+                      :height 140)
+  (set-face-attribute 'variable-pitch nil
+                      :font "JetBrainsMono Nerd Font"
+                      :height 140)
+  (set-face-attribute 'fixed-pitch nil
+                      :font "JetBrainsMono Nerd Font"
+                      :height 140)
+  ;; Makes commented text and keywords italics.
+  ;; This is working in emacsclient but not emacs.
+  ;; Your font must have an italic face available.
+  (set-face-attribute 'font-lock-comment-face nil
+                      :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil
+                      :slant 'italic))
 
 ;; This sets the default font on all graphical frames created after restarting Emacs.
 ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
@@ -396,6 +386,7 @@ one, an error is signaled."
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 (use-package savehist
+  :hook after-init
   :init
   (setq history-length 25)
   (savehist-mode))
@@ -481,6 +472,8 @@ one, an error is signaled."
   (corfu-separator ?\s)         
   (corfu-preselect 'prompt)      
   (corfu-scroll-margin 5)        
+  :config
+  (corfu-popupinfo-mode 1)
   :init
   (global-corfu-mode))
 (use-package emacs
@@ -497,7 +490,6 @@ one, an error is signaled."
   (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'completion-at-point-functions #'cape-elisp-block))
 #+end_src
-
 
 * GUI Modifications
 ** Dashboard
@@ -526,23 +518,13 @@ one, an error is signaled."
   (dashboard-setup-startup-hook))
 #+end_src
 
-** Modeline
-*** Doom
+** Goggles
 #+begin_src emacs-lisp
-(use-package doom-modeline
+(use-package goggles
   :ensure t
+  :hook ((prog-mode text-mode) . goggles-mode)
   :config
-  (setq doom-modeline-height 20
-        doom-modeline-modal-icon t)
-  :init
-  (doom-modeline-mode 1))
-#+end_src
-*** Hide
-#+begin_src emacs-lisp
-(use-package hide-mode-line
-  :ensure t
-  :hook
-  (dashboard-mode . hide-mode-line-mode))
+  (setq-default goggles-pulse t))
 #+end_src
 
 ** Highlight Todo
@@ -591,6 +573,33 @@ one, an error is signaled."
 
 #+end_src
 
+** Modeline
+*** Aesthetic
+#+begin_src emacs-lisp
+;; (use-package doom-modeline
+;;   :ensure t
+;;   :config
+;;   (setq doom-modeline-height 20
+;;         doom-modeline-minor-modes t
+;;         doom-modeline-modal-icon t)
+
+;;   :init
+;;   (doom-modeline-mode 1))
+(use-package mood-line
+  :ensure t
+  ;; Enable mood-line
+  :config
+  (setq moode-line-format mood-line-format-default-extended)
+  (mood-line-mode))
+#+end_src
+*** Hide
+#+begin_src emacs-lisp
+(use-package hide-mode-line
+  :ensure t
+  :hook
+  dashboard-mode)
+#+end_src
+
 ** Rainbow Mode
 #+begin_src emacs-lisp
 (use-package rainbow-mode
@@ -623,6 +632,7 @@ one, an error is signaled."
   (doom-themes-org-config))
 #+end_src
 
+
 * Language Support
 ** Flycheck
 #+begin_src emacs-lisp
@@ -649,7 +659,7 @@ one, an error is signaled."
   (treesit-auto-install 'prompt)
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
-  (setq treesit-font-lock-level 4)
+  (setq treesit-font-lock-level 3)
   (setq c-ts-mode-indent-offset 4)
   (global-treesit-auto-mode 1))
 #+end_src
@@ -658,6 +668,12 @@ one, an error is signaled."
 ** Org Tweaks
 #+begin_src emacs-lisp
 (defun spence/org-mode-setup ()
+  ;; Org tempo fix
+  (add-hook 'org-mode-hook (lambda ()
+							 (setq-local electric-pair-inhibit-predicate
+                                         `(lambda (c)
+                                            (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
+  (setq org-edit-src-content-indentation 0)
   (org-indent-mode 1)
   (auto-fill-mode 0)
   (visual-line-mode 1)
@@ -736,6 +752,7 @@ one, an error is signaled."
 #+begin_src emacs-lisp
 (use-package which-key
   :ensure t
+  :defer 1
   :init
   (which-key-mode 1)
   :config

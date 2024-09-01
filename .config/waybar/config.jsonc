@@ -116,7 +116,7 @@
 	},
 	"memory": {
 		"format": " {}%  ",
-		"on-click": "$kitty -e btop"
+		"on-click": "kitty -e btop"
 	},
 	"temperature": {
 		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",

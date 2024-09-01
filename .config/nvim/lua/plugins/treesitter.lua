@@ -8,7 +8,8 @@ return {
 			highlight = { enable = true },
 			indent = { enable = true },
 	},
-	config = function()
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
 		vim.filetype.add({
 			pattern = { [".*/hypr/.*%.conf"] = "hyprlang", [".vert"] = "glsl", [".frag"] = "glsl" },
 		})

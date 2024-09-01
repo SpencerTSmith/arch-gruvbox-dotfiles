@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- My nvim config
 
+vim.g.c_syntax_for_h = 1
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.showbreak = "↪"
@@ -28,9 +29,6 @@ vim.opt.tabstop = 4
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -66,10 +64,6 @@ vim.opt.cursorline = true
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Insert lines in normal mode, above and below respectively
-vim.keymap.set("n", "<CR>", "o<Esc>")
-vim.keymap.set("n", "<S-CR>", "<S-o><Esc>")
-
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
@@ -79,11 +73,6 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
