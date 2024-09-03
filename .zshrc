@@ -7,6 +7,7 @@ ZLE_RPROMPT_INDENT=0
 
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zmodload zsh/complist
 compinit
 

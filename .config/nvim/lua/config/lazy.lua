@@ -42,7 +42,7 @@ vim.opt.updatetime = 250
 vim.opt.fillchars:append(",eob: ")
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "▏ ", trail = "·", nbsp = "␣", leadmultispace = "▏ " }
+vim.opt.listchars = { tab = "▏ ", trail = "·", nbsp = "␣", }
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner

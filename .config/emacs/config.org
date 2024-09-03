@@ -15,7 +15,6 @@
 - [[#completions][Completions]]
 - [[#gui-modifications][GUI Modifications]]
   - [[#dashboard][Dashboard]]
-  - [[#goggles][Goggles]]
   - [[#highlight-todo][Highlight Todo]]
   - [[#icons][Icons]]
   - [[#modeline][Modeline]]
@@ -23,7 +22,7 @@
   - [[#solaire-mode][Solaire Mode]]
   - [[#theme][Theme]]
 - [[#language-support][Language Support]]
-  - [[#flycheck][Flycheck]]
+  - [[#flymake][Flymake]]
   - [[#language-modes][Language modes]]
   - [[#lsp][LSP]]
   - [[#treesitter][Treesitter]]
@@ -92,7 +91,6 @@
   :ensure t
   :config
   (setq gcmh-idle-delay 'auto
-		gcmh-verbose nil
 		gcmh-auto-idle-delay-factor 10
 		gcmh-high-cons-threshold (* 16 1024 1024 2))
   :hook (elpaca-after-init . gcmh-mode))
@@ -117,8 +115,8 @@
         display-line-numbers-grow-only t)
   (setq use-dialog-box nil)
   (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
-  (setq scroll-margin 10)
-  (setq scroll-conservatively 101)
+  (setq scroll-margin 10
+        scroll-conservatively 101)
   (setq-default tab-width 4)
   (setq-default indicate-empty-lines t)
   (setq load-prefer-newer t)
@@ -156,6 +154,14 @@
   :after evil
   :defer 5
   :config (evil-commentary-mode 1))
+(use-package evil-goggles
+  :ensure t
+  :config
+  (custom-set-faces
+   '(evil-goggles-default-face ((t (:inherit 'highlight))))) ;; default is to inherit 'region
+  ;; run `M-x list-faces-display` in a fresh emacs to get a list of faces on your emacs
+  (evil-goggles-mode)
+  (evil-goggles-use-diff-faces))
 #+end_src
 
 ** Custom Bindings
@@ -192,6 +198,7 @@
     "fr" '(consult-recent-file :wk "Find recent files")
     "fi" '(consult-imenu :wk "Find buffer item")
     "fy" '(consult-yank-pop :wk "Find yank")
+    "fd" '(consult-flymake :wk "Find diagnostic")
     "fu" '(sudo-edit-find-file :wk "Sudo find file")
     "fU" '(sudo-edit :wk "Sudo edit this file"))
 
@@ -518,15 +525,6 @@ one, an error is signaled."
   (dashboard-setup-startup-hook))
 #+end_src
 
-** Goggles
-#+begin_src emacs-lisp
-(use-package goggles
-  :ensure t
-  :hook ((prog-mode text-mode) . goggles-mode)
-  :config
-  (setq-default goggles-pulse t))
-#+end_src
-
 ** Highlight Todo
 #+begin_src emacs-lisp
 (use-package hl-todo
@@ -634,12 +632,10 @@ one, an error is signaled."
 
 
 * Language Support
-** Flycheck
+** Flymake
 #+begin_src emacs-lisp
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode 1))
+(use-package flymake
+  :hook prog-mode)
 #+end_src
 
 ** Language modes
@@ -648,6 +644,13 @@ one, an error is signaled."
 
 ** LSP
 #+begin_src emacs-lisp
+(use-package eglot
+  :hook
+  ((c-ts-mode c++-ts-mode) . eglot-ensure)
+  (after-save . eglot-format-buffer)
+  :custom
+  (eglot-imenu))
+  
 
 #+end_src
 
@@ -659,7 +662,7 @@ one, an error is signaled."
   (treesit-auto-install 'prompt)
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
-  (setq treesit-font-lock-level 3)
+  (setq treesit-font-lock-level 4)
   (setq c-ts-mode-indent-offset 4)
   (global-treesit-auto-mode 1))
 #+end_src
@@ -676,8 +679,7 @@ one, an error is signaled."
   (setq org-edit-src-content-indentation 0)
   (org-indent-mode 1)
   (auto-fill-mode 0)
-  (visual-line-mode 1)
-  (setq evil-auto-indent nil))
+  (visual-line-mode 1))
 (use-package org
   :hook (org-mode . spence/org-mode-setup)
   :config
@@ -700,12 +702,14 @@ one, an error is signaled."
 
 ** ORG Tempo
 #+begin_src emacs-lisp
-(use-package org-tempo)
+(use-package org-tempo
+  :hook (org-mode . org-tempo-setup))
 #+end_src
 
 * Projects
 #+begin_src emacs-lisp
-(use-package project)
+(use-package project
+  :after dashboard)
 #+end_src
 
 * Terminal
