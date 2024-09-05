@@ -5,10 +5,10 @@ return {
 		delete_to_trash = true,
 		default_file_explorer = true,
 		columns = {
-			"icon",
 			"permissions",
 			"size",
 			"mtime",
+			"icon",
 		},
 	},
 	dependencies = { "nvim-tree/nvim-web-devicons" },

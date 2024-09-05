@@ -92,8 +92,8 @@
   :config
   (setq gcmh-idle-delay 'auto
 		gcmh-auto-idle-delay-factor 10
-		gcmh-high-cons-threshold (* 16 1024 1024 2))
-  :hook (elpaca-after-init . gcmh-mode))
+		gcmh-high-cons-threshold (* 32 1024 1024))
+  :hook elpaca-after-init)
 #+end_src
 
 ** Native Tweaks
@@ -117,6 +117,7 @@
   (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
   (setq scroll-margin 10
         scroll-conservatively 101)
+  (setq read-process-output-max (* 1024 1024))
   (setq-default tab-width 4)
   (setq-default indicate-empty-lines t)
   (setq load-prefer-newer t)
@@ -160,8 +161,7 @@
   (custom-set-faces
    '(evil-goggles-default-face ((t (:inherit 'highlight))))) ;; default is to inherit 'region
   ;; run `M-x list-faces-display` in a fresh emacs to get a list of faces on your emacs
-  (evil-goggles-mode)
-  (evil-goggles-use-diff-faces))
+  (evil-goggles-mode))
 #+end_src
 
 ** Custom Bindings
@@ -478,8 +478,8 @@ one, an error is signaled."
   (corfu-auto t)               
   (corfu-separator ?\s)         
   (corfu-preselect 'prompt)      
-  (corfu-scroll-margin 5)        
-  :config
+  (corfu-count 7)
+  (corfu-scroll-margin 1)
   (corfu-popupinfo-mode 1)
   :init
   (global-corfu-mode))
@@ -583,12 +583,12 @@ one, an error is signaled."
 
 ;;   :init
 ;;   (doom-modeline-mode 1))
-(use-package mood-line
-  :ensure t
-  ;; Enable mood-line
-  :config
-  (setq moode-line-format mood-line-format-default-extended)
-  (mood-line-mode))
+;; (use-package mood-line
+;;   :ensure t
+;;   ;; Enable mood-line
+;;   :config
+;;   (setq moode-line-format mood-line-format-default-extended)
+;;   (mood-line-mode))
 #+end_src
 *** Hide
 #+begin_src emacs-lisp
@@ -640,17 +640,36 @@ one, an error is signaled."
 
 ** Language modes
 #+begin_src emacs-lisp
+(use-package markdown-mode
+  :ensure t
+  :defer 5
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
 #+end_src
 
 ** LSP
 #+begin_src emacs-lisp
 (use-package eglot
   :hook
-  ((c-ts-mode c++-ts-mode) . eglot-ensure)
-  (after-save . eglot-format-buffer)
+  ((c-ts-mode c++-ts-mode python-ts-mode) . eglot-ensure)
+  :config
+  (setq eldoc-echo-area-use-multiline-p nil
+        eldoc-echo-area-prefer-doc-buffer t
+        eldoc-display-functions 'eldoc-display-in-buffer)
+  (setq eglot-ignored-server-capabilities '( :inlayHintProvider))
   :custom
   (eglot-imenu))
-  
+;; (use-package eglot-booster
+;;   :ensure t
+;;   :host github
+;;   :repo 
+;;   :hook eglot-managed-mode)
+(use-package eldoc-box
+  :ensure t
+  :after eglot
+  :config
+  (set-face-attribute 'eldoc-box-border nil :background '"#ebdbb2")
+  (evil-collection-define-key 'normal 'eglot-mode-map "K" 'eldoc-box-help-at-point))
 
 #+end_src
 

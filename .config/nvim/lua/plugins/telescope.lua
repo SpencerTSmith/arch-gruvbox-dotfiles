@@ -17,31 +17,31 @@ return {
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 		keys = {
-			{ "<leader>f",  "",                                       desc = "Find: " },
-			{ "<leader>fh", require("telescope.builtin").help_tags,   desc = "Find: help" },
-			{ "<leader>fk", require("telescope.builtin").keymaps,     desc = "Find: keymaps" },
-			{ "<leader>ff", require("telescope.builtin").find_files,  desc = "Find: files" },
-			{ "<leader>fs", require("telescope.builtin").builtin,     desc = "Find: selectors" },
+			{ "<leader>f", "", desc = "Find: " },
+			{ "<leader>fh", require("telescope.builtin").help_tags, desc = "Find: help" },
+			{ "<leader>fk", require("telescope.builtin").keymaps, desc = "Find: keymaps" },
+			{ "<leader>ff", require("telescope.builtin").find_files, desc = "Find: files" },
+			{ "<leader>fs", require("telescope.builtin").builtin, desc = "Find: selectors" },
 			{ "<leader>fw", require("telescope.builtin").grep_string, desc = "Find: current word" },
-			{ "<leader>fg", require("telescope.builtin").live_grep,   desc = "Find: by Grep" },
+			{ "<leader>fg", require("telescope.builtin").live_grep, desc = "Find: Grep" },
 			{
 				"<leader>fd",
 				require("telescope.builtin").diagnostics,
-				desc = "Find: Diagnostics"
+				desc = "Find: Diagnostics",
 			},
-			{ "<leader>fr", require("telescope.builtin").oldfiles, desc = 'Find: recent' },
-			{ "<leader>fb", require("telescope.builtin").buffers,  desc = "Find: existing buffers" },
+			{ "<leader>fr", require("telescope.builtin").oldfiles, desc = "Find: recent" },
+			{ "<leader>fb", require("telescope.builtin").buffers, desc = "Find: existing buffers" },
 		},
 		opts = {
 			defaults = {
-				layout_strategy = 'bottom_pane',
+				layout_strategy = "bottom_pane",
 				layout_config = {
 					height = 0.25,
 				},
 				mappings = {
-					i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+					i = { ["<c-enter>"] = "to_fuzzy_refine" },
 				},
-				sorting_strategy = 'ascending',
+				sorting_strategy = "ascending",
 				prompt_prefix = "❯ ",
 				selection_caret = "  ",
 				border = true,
