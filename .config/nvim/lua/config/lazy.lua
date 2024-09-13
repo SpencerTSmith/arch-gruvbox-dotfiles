@@ -7,7 +7,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
+			{ out, "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -42,7 +42,7 @@ vim.opt.updatetime = 250
 vim.opt.fillchars:append(",eob: ")
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "▏ ", trail = "·", nbsp = "␣", }
+vim.opt.listchars = { tab = "▏ ", trail = "·", nbsp = "␣" }
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner

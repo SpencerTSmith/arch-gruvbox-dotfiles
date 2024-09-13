@@ -33,7 +33,7 @@ return {
 					desc = "Update",
 					group = "@property",
 					action = "Lazy update",
-					key = "u"
+					key = "u",
 				},
 				{
 					icon = " ",
@@ -50,13 +50,19 @@ return {
 					key = "q",
 				},
 			},
-			project = { enable = true, limit = 8, icon = '  ', label = 'Recent Projects: ', action = 'Telescope find_files cwd=', },
-			mru = { limit = 10, icon = '  ', label = 'Recent Files: ', cwd_only = false, },
-			footer = {}
+			project = {
+				enable = true,
+				limit = 8,
+				icon = "  ",
+				label = "Recent Projects: ",
+				action = "Telescope find_files cwd=",
+			},
+			mru = { limit = 10, icon = "  ", label = "Recent Files: ", cwd_only = false },
+			footer = {},
 		},
 		hide = {
 			statusline = false,
-		}
+		},
 	},
 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }

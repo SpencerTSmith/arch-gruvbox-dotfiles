@@ -10,7 +10,7 @@
   - [[#idle-garbage-collection][Idle Garbage Collection]]
   - [[#native-tweaks][Native Tweaks]]
   - [[#evil-mode][Evil Mode]]
-  - [[#custom-bindings][Custom Bindings]]
+  - [[#custom-keybindings][Custom Keybindings]]
   - [[#fonts][Fonts]]
 - [[#completions][Completions]]
 - [[#gui-modifications][GUI Modifications]]
@@ -22,10 +22,12 @@
   - [[#solaire-mode][Solaire Mode]]
   - [[#theme][Theme]]
 - [[#language-support][Language Support]]
+  - [[#dap][DAP]]
   - [[#flymake][Flymake]]
   - [[#language-modes][Language modes]]
   - [[#lsp][LSP]]
   - [[#treesitter][Treesitter]]
+- [[#magit][Magit]]
 - [[#org-mode][ORG Mode]]
   - [[#org-tweaks][Org Tweaks]]
   - [[#toc][TOC]]
@@ -136,6 +138,8 @@
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-d-scroll t)
   (setq evil-want-vsplit-window-right t)
   (setq evil-split-window-below t)
   (setq evil-undo-system 'undo-redo)
@@ -157,6 +161,7 @@
   :config (evil-commentary-mode 1))
 (use-package evil-goggles
   :ensure t
+  :defer 5
   :config
   (custom-set-faces
    '(evil-goggles-default-face ((t (:inherit 'highlight))))) ;; default is to inherit 'region
@@ -164,7 +169,7 @@
   (evil-goggles-mode))
 #+end_src
 
-** Custom Bindings
+** Custom Keybindings
 *** General
 #+begin_src emacs-lisp
 (use-package general
@@ -194,7 +199,7 @@
     "ff" '(find-file :wk "Find file")
     "fp" '(project-find-file :wk "Find file in project")
     "fw" '(find-file-other-window :wk "Find file in new window")
-    "fc" '((lambda() (interactive) (find-file "~/.config/emacs/config.org")) :wk "Find file in .config")
+    "fc" '((lambda() (interactive) (find-file "~/.config/emacs/config.org")) :wk "Find emacs config")
     "fr" '(consult-recent-file :wk "Find recent files")
     "fi" '(consult-imenu :wk "Find buffer item")
     "fy" '(consult-yank-pop :wk "Find yank")
@@ -258,6 +263,12 @@
     "wJ" '(buf-move-down :wk "Window move down")
     "wK" '(buf-move-up :wk "Window move up")
     "wL" '(buf-move-right :wk "Window move right"))
+
+  (spence/leader-keys
+    "c" '(:ignore t :wk "Code")
+    "ca" '(eglot-code-actions  :wk "Code actions")
+    "cf" '(eglot-format-buffer :wk "Code format")
+    "cc" '(project-compile :wk "Code project compile"))
 
   ;; Org [M]ode
   (spence/leader-keys
@@ -475,12 +486,15 @@ one, an error is signaled."
   :ensure t
   :custom
   (corfu-cycle t)             
-  (corfu-auto t)               
+  (corfu-auto nil)               
   (corfu-separator ?\s)         
   (corfu-preselect 'prompt)      
-  (corfu-count 7)
-  (corfu-scroll-margin 1)
+  (corfu-count 10)
+  (corfu-scroll-margin 0)
   (corfu-popupinfo-mode 1)
+  :config
+  (setq corfu-auto-delay 0.3
+        corfu-auto-prefix 3)
   :init
   (global-corfu-mode))
 (use-package emacs
@@ -630,12 +644,35 @@ one, an error is signaled."
   (doom-themes-org-config))
 #+end_src
 
-
 * Language Support
+** DAP
+#+begin_src emacs-lisp
+(use-package dape
+  :ensure t
+  :hook eglot-server-initialized)
+#+end_src
+
 ** Flymake
 #+begin_src emacs-lisp
 (use-package flymake
   :hook prog-mode)
+;; not sure which I like... inline error seems nice but slow and distracting since it creates a new line
+;; (use-package flycheck
+;;   :ensure t
+;;   :hook prog-mode)
+;; (use-package flycheck-eglot
+;;   :ensure t
+;;   :after (flycheck eglot)
+;;   :custom (flycheck-eglot-exclusive nil)
+;;   :config
+;;   (global-flycheck-eglot-mode 1))
+;; (use-package consult-flycheck
+;;   :ensure t
+;;   :after flycheck)
+;; (use-package flycheck-inline
+;;   :ensure t
+;;   :config (flycheck-inline-mode 1)
+;;   :after flycheck)
 #+end_src
 
 ** Language modes
@@ -644,7 +681,9 @@ one, an error is signaled."
   :ensure t
   :defer 5
   :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
+  :config
+  (setq markdown-command "multimarkdown"
+        markdown-fontify-code-blocks-natively t))
 #+end_src
 
 ** LSP
@@ -656,14 +695,12 @@ one, an error is signaled."
   (setq eldoc-echo-area-use-multiline-p nil
         eldoc-echo-area-prefer-doc-buffer t
         eldoc-display-functions 'eldoc-display-in-buffer)
-  (setq eglot-ignored-server-capabilities '( :inlayHintProvider))
+  (setq eglot-ignored-server-capabilities '( :inlayHintProvider)
+        eglot-autoshutdown t)
   :custom
   (eglot-imenu))
-;; (use-package eglot-booster
-;;   :ensure t
-;;   :host github
-;;   :repo 
-;;   :hook eglot-managed-mode)
+(use-package eglot-booster
+  :hook eglot-managed-mode)
 (use-package eldoc-box
   :ensure t
   :after eglot
@@ -686,6 +723,10 @@ one, an error is signaled."
   (global-treesit-auto-mode 1))
 #+end_src
 
+* Magit
+#+begin_src emacs-lisp
+
+#+end_src>
 * ORG Mode
 ** Org Tweaks
 #+begin_src emacs-lisp
