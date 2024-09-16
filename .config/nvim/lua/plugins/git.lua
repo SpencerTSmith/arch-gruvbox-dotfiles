@@ -1,7 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufEnter",
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		opts = {},
 	},
 	{ "tpope/vim-fugitive", event = "CmdlineEnter" },
