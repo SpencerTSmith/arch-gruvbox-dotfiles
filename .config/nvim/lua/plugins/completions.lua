@@ -29,8 +29,7 @@ return {
 						vim.snippet.expand(args.body)
 					end,
 				},
-				window = {
-				},
+				window = {},
 				completion = { completeopt = "menu,menuone,noinsert,noselect" },
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -41,16 +40,16 @@ return {
 					["<C-n>"] = cmp.mapping.select_next_item(),
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 					-- snippet jumps
-					['<C-l>'] = cmp.mapping(function()
+					["<C-l>"] = cmp.mapping(function()
 						if luasnip.expand_or_locally_jumpable() then
 							luasnip.expand_or_jump()
 						end
-					end, { 'i', 's' }),
-					['<C-h>'] = cmp.mapping(function()
+					end, { "i", "s" }),
+					["<C-h>"] = cmp.mapping(function()
 						if luasnip.locally_jumpable(-1) then
 							luasnip.jump(-1)
 						end
-					end, { 'i', 's' }),
+					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
@@ -69,7 +68,7 @@ return {
 				sources = {
 					{ name = "buffer" },
 				},
-			}) -- `:` cmdline setup.
+			})
 			cmp.setup.cmdline(":", {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = cmp.config.sources({

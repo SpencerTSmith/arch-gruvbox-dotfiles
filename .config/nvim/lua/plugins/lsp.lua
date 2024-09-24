@@ -26,6 +26,7 @@ return {
 
 			lspconfig.jsonls.setup({})
 			lspconfig.lua_ls.setup({})
+			lspconfig.texlab.setup({})
 			lspconfig.clangd.setup({
 				cmd = {
 					"clangd",
