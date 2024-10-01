@@ -79,9 +79,9 @@ return {
 	-- 		return opts
 	-- 	end,
 	-- },
-	{ "echasnovski/mini.starter", version = false, event = "VimEnter", opts = {
-		evaluate_single = true,
-	} },
+	-- { "echasnovski/mini.starter", version = false, event = "VimEnter", opts = {
+	-- 	evaluate_single = true,
+	-- } },
 	{
 		"echasnovski/mini.pick",
 		version = false,
