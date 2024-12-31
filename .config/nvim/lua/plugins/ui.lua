@@ -6,6 +6,7 @@ return {
 			delete_to_trash = true,
 			default_file_explorer = true,
 			watch_for_changes = true,
+			constrain_cursor = "editable",
 			columns = {
 				"permissions",
 				"size",

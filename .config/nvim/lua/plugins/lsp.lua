@@ -31,6 +31,10 @@ return {
 				cmd = {
 					"clangd",
 					"--fallback-style=llvm",
+					"--log=verbose",
+					"--background-index",
+					"--compile-commands-dir=build",
+					"--clang-tidy",
 				},
 			})
 			lspconfig.glsl_analyzer.setup({})
@@ -44,6 +48,7 @@ return {
 					local map = function(keys, func, desc)
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
+
 					map("gd", function()
 						require("mini.extra").pickers.lsp({ scope = "definition" })
 					end, "Goto definition")
@@ -56,21 +61,23 @@ return {
 						require("mini.extra").pickers.lsp({ scope = "implementation" })
 					end, "Goto implementation")
 
-					map("<leader>fs", function()
-						require("mini.extra").pickers.lsp({ scope = "document_symbol" })
-					end, "Document symbols")
+					map("<leader>lr", vim.lsp.buf.rename, "Rename")
 
-					map("<leader>ws", function()
-						require("mini.extra").pickers.lsp({ scope = "workspace_symbol" })
-					end, "Workspace symbols")
-
-					map("<leader>rn", vim.lsp.buf.rename, "Rename")
-
-					map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+					map("<leader>lc", vim.lsp.buf.code_action, "Code action")
 
 					map("K", vim.lsp.buf.hover, "Hover documentation")
 
-					map("gD", vim.lsp.buf.declaration, "Goto declaration")
+					map("gD", function()
+						require("mini.extra").pickers.lsp({ scope = "declaration" })
+					end, "Goto declaration")
+
+					map("gT", function()
+						require("mini.extra").pickers.lsp({ scope = "type_definition" })
+					end, "Goto type definition")
+
+					map("gH", function()
+						vim.cmd("ClangdSwitchSourceHeader")
+					end, "Goto .c/.h")
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
@@ -106,7 +113,7 @@ return {
 					end
 
 					if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-						map("<leader>th", function()
+						map("<leader>lt", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 						end, "Toggle Inlay Hints")
 					end

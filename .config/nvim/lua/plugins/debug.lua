@@ -36,10 +36,10 @@ return {
 				end
 			end,
 		},
-		{
-			"theHamsta/nvim-dap-virtual-text",
-			opts = {},
-		},
+		-- {
+		-- 	"theHamsta/nvim-dap-virtual-text",
+		-- 	opts = {},
+		-- },
 		"nvim-neotest/nvim-nio",
 		"williamboman/mason.nvim",
 		"jay-babu/mason-nvim-dap.nvim",

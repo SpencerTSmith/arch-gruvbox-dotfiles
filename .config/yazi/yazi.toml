@@ -2,3 +2,6 @@
 play = [
 	{ run = 'celluloid "$@"', orphan = true, for = "unix" },
 ]
+
+[manager]
+show_hidden = true

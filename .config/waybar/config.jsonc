@@ -55,7 +55,8 @@
 			"Steam": "",
 			"(.*)Spotify(.*)": "",
 			"(.*) thunar": "",
-			"(.*).pdf": ""
+			"(.*).pdf": "",
+			"Alacritty": ""
 		},
 		"separate-outputs": true
 	},
@@ -112,11 +113,11 @@
 	"cpu": {
 		"format": " {usage}%  ",
 		"tooltip": true,
-		"on-click": "kitty -e btop"
+		"on-click": "alacritty -e btop"
 	},
 	"memory": {
 		"format": " {}%  ",
-		"on-click": "kitty -e btop"
+		"on-click": "alacritty -e btop"
 	},
 	"temperature": {
 		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
@@ -127,7 +128,7 @@
 			"",
 			""
 		],
-		"on-click": "kitty -e btop"
+		"on-click": "alacritty -e btop"
 	},
 	"wireplumber": {
 		"format": " {volume}% {icon} ",

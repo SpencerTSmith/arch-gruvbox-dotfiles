@@ -13,6 +13,7 @@ return {
 			{
 				"L3MON4D3/LuaSnip",
 				lazy = true,
+				run = "make install_jsregexp",
 				dependencies = {
 					"saadparwaiz1/cmp_luasnip",
 				},
