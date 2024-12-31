@@ -31,7 +31,7 @@ return {
 					end,
 				},
 				window = {},
-				completion = { completeopt = "menu,menuone,noinsert,noselect" },
+				completion = { completeopt = "menu,menuone,noinsert,noselect,fuzzy,popup" },
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),

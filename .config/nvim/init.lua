@@ -1,2 +1,2 @@
-require("config.custom")
-require("config.lazy")
+require("config")
+require("lazynvim")

@@ -44,7 +44,6 @@ return {
 		"williamboman/mason.nvim",
 		"jay-babu/mason-nvim-dap.nvim",
 	},
-
 	keys = {
 		{
 			"<leader>d",

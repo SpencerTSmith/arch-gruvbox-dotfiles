@@ -31,6 +31,10 @@ return {
 			keymaps_help = {
 				border = "single",
 			},
+			keymaps = {
+				["<C-h>"] = false,
+				["<C-l>"] = false,
+			},
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
