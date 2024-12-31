@@ -26,6 +26,9 @@ decorations = "None"
 style = { shape = "Block", blinking = "On"}
 vi_mode_style = "Block"
 
+[colors]
+draw_bold_text_with_bright_colors = true
+
 # Colors (Gruvbox dark)
 
 # Default colors
