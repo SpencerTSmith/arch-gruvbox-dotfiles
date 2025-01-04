@@ -3,4 +3,4 @@ font-size = 12
 theme = GruvboxDark
 window-theme = ghostty
 window-padding-balance = true
-window-decoration = false
+window-decoration = true

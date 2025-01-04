@@ -2,6 +2,8 @@ return {
 	{
 		"stevearc/oil.nvim",
 		event = "VimEnter",
+		---@module 'oil'
+		---@type oil.SetupOpts
 		opts = {
 			delete_to_trash = true,
 			default_file_explorer = true,
@@ -48,29 +50,6 @@ return {
 		},
 	},
 	{
-		"rcarriga/nvim-notify",
-		opts = {
-			render = "wrapped-compact",
-			stages = "static",
-			timeout = 3000,
-			max_height = function()
-				return math.floor(vim.o.lines * 0.75)
-			end,
-			max_width = function()
-				return math.floor(vim.o.columns * 0.75)
-			end,
-			on_open = function(win)
-				local config = vim.api.nvim_win_get_config(win)
-				config.border = "single"
-				vim.api.nvim_win_set_config(win, config)
-			end,
-		},
-		config = function(_, opts)
-			require("notify").setup(opts)
-			vim.notify = require("notify")
-		end,
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		opts = function()
 			local custom_gruvbox = require("lualine.themes.gruvbox")
@@ -86,19 +65,9 @@ return {
 				},
 				extensions = { "oil", "nvim-dap-ui", "fugitive", "mason", "neo-tree", "lazy" },
 			}
-
 			return opts
 		end,
 	},
-	-- {
-	-- 	"mikesmithgh/borderline.nvim",
-	-- 	enabled = true,
-	-- 	lazy = true,
-	-- 	event = "VeryLazy",
-	-- 	opts = {
-	-- 		border = "single",
-	-- 	},
-	-- },
 	{
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000,

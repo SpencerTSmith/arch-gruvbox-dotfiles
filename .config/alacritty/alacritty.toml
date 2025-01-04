@@ -1,5 +1,5 @@
 [font]
-size = 13.0
+size = 12.0
 
 [font.bold]
 family = "BlexMono Nerd Font"
@@ -33,9 +33,9 @@ draw_bold_text_with_bright_colors = true
 
 # Default colors
 [colors.primary]
-# hard contrast background = = '#1d2021'
-background = '#282828'
-# soft contrast background = = '#32302f'
+background = '#1d2021'
+# background = '#282828'
+# background = '#32302f'
 foreground = '#ebdbb2'
 
 # Normal colors

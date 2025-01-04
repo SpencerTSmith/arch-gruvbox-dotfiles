@@ -24,22 +24,21 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 
-			lspconfig.jsonls.setup({})
-			lspconfig.lua_ls.setup({})
-			lspconfig.texlab.setup({})
 			lspconfig.clangd.setup({
 				cmd = {
 					"clangd",
 					"--fallback-style=llvm",
-					"--log=verbose",
 					"--background-index",
 					"--compile-commands-dir=build",
-					"--clang-tidy",
+					"--pch-storage=memory",
+					"-j=4",
 				},
 			})
+			lspconfig.jsonls.setup({})
+			lspconfig.lua_ls.setup({})
+			lspconfig.texlab.setup({})
 			lspconfig.glsl_analyzer.setup({})
 			lspconfig.pyright.setup({})
-
 			lspconfig.hyprls.setup({})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
