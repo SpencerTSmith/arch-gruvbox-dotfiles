@@ -36,13 +36,9 @@ return {
 				end
 			end,
 		},
-		-- {
-		-- 	"theHamsta/nvim-dap-virtual-text",
-		-- 	opts = {},
-		-- },
 		"nvim-neotest/nvim-nio",
 		"williamboman/mason.nvim",
-		"jay-babu/mason-nvim-dap.nvim",
+		{ "jay-babu/mason-nvim-dap.nvim", opts = { ensure_installed = { "cpptools" } } },
 	},
 	keys = {
 		{
@@ -179,20 +175,23 @@ return {
 					require("mason-nvim-dap").default_setup(config)
 				end,
 				cppdbg = function(config)
+					local executable_path
 					config.configurations = {
 						{
 							name = "Launch file",
 							type = "cppdbg",
 							request = "launch",
+							program = function()
+								executable_path = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+								return executable_path
+							end,
 							args = function()
 								local args_string = vim.fn.input("Input arguments: ")
 								return vim.split(args_string, " ")
 							end,
-							program = function()
-								return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+							cwd = function()
+								return vim.fn.fnamemodify(executable_path, ":h")
 							end,
-							cwd = "${workspaceFolder}",
-							stopAtEntry = false,
 						},
 					}
 					require("mason-nvim-dap").default_setup(config)

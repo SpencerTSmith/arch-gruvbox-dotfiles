@@ -35,6 +35,11 @@ zle-paste-from-clipboard() {
 zle -N zle-paste-from-clipboard
 bindkey -M vicmd 'p' zle-paste-from-clipboard
 
+setopt IGNORE_EOF
+
+bindkey "^D" clear-screen
+bindkey "^L" list-choices
+
 # Exports
 export EDITOR=nvim
 export VISUAL=nvim
@@ -46,4 +51,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Aliases
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
+
+# Sourcing multiple times will redefine starship... stop that
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
 eval "$(starship init zsh)"

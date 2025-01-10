@@ -15,11 +15,11 @@ return {
 						"clangd",
 						"glsl_analyzer",
 						"hyprls",
-						"pyright",
 					},
 				},
 			},
 			"echasnovski/mini.extra",
+			"folke/snacks.nvim",
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -48,35 +48,47 @@ return {
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
-					map("gd", function()
-						require("mini.extra").pickers.lsp({ scope = "definition" })
-					end, "Goto definition")
+					map(
+						"gd",
+						"<cmd>FzfLua lsp_definitions jump_to_single_result=true ignore_current_line=true<cr>",
+						"Goto definition"
+					)
 
-					map("gr", function()
-						require("mini.extra").pickers.lsp({ scope = "references" })
-					end, "Goto references")
+					map(
+						"gr",
+						"<cmd>FzfLua lsp_references jump_to_single_result=true ignore_current_line=true<cr>",
+						"Goto references"
+					)
 
-					map("gI", function()
-						require("mini.extra").pickers.lsp({ scope = "implementation" })
-					end, "Goto implementation")
+					map(
+						"gI",
+						"<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>",
+						"Goto implementation"
+					)
 
-					map("<leader>lr", vim.lsp.buf.rename, "Rename")
+					map("<leader>lr", vim.lsp.buf.rename, "Rename symbol")
 
 					map("<leader>lc", vim.lsp.buf.code_action, "Code action")
 
 					map("K", vim.lsp.buf.hover, "Hover documentation")
 
-					map("gD", function()
-						require("mini.extra").pickers.lsp({ scope = "declaration" })
-					end, "Goto declaration")
+					map(
+						"gD",
+						"<cmd>FzfLua lsp_declaration jump_to_single_result=true ignore_current_line=true<cr>",
+						"Goto declaration"
+					)
 
-					map("gT", function()
-						require("mini.extra").pickers.lsp({ scope = "type_definition" })
-					end, "Goto type definition")
+					map(
+						"gT",
+						"<cmd>FzfLua lsp_typedefs jump_to_single_result=true ignore_current_line=true<cr>",
+						"Goto type definition"
+					)
 
-					map("gH", function()
-						vim.cmd("ClangdSwitchSourceHeader")
-					end, "Goto .c/.h")
+					map("gH", "<cmd>ClangdSwitchSourceHeader<cr>", "Goto .c/.h")
+
+					map("<leader>lf", function()
+						vim.cmd("lua Snacks.rename.rename_file()")
+					end, "Rename current file")
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
