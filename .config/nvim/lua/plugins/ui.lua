@@ -60,7 +60,7 @@ return {
 					disabled_filetypes = {
 						"dashboard",
 					},
-					component_separators = "",
+					component_separators = "|",
 					section_separators = "",
 				},
 				extensions = { "oil", "nvim-dap-ui", "fugitive", "mason", "neo-tree", "lazy" },
@@ -87,12 +87,22 @@ return {
 			invert_selection = false,
 			invert_signs = false,
 			invert_tabline = false,
-			invert_intend_guides = true,
+			invert_intend_guides = false,
 			inverse = true, -- invert background for search, diffs, statuslines and errors
 			contrast = "", -- can be "hard", "soft" or empty string
 			palette_overrides = {},
 			overrides = {
-				-- SignColumn = { bg = "#282828" },
+				SignColumn = { bg = "#282828" },
+				ColorColumn = { bg = "#282828" },
+				FoldColumn = { bg = "#282828" },
+				CursorLineNr = { bg = "#282828" },
+				GruvboxRedSign = { bg = "#282828" },
+				GruvboxGreenSign = { bg = "#282828" },
+				GruvboxYellowSign = { bg = "#282828" },
+				GruvboxBlueSign = { bg = "#282828" },
+				GruvboxPurpleSign = { bg = "#282828" },
+				GruvboxAquaSign = { bg = "#282828" },
+				GruvboxOrangeSign = { bg = "#282828" },
 			},
 			dim_inactive = false,
 			transparent_mode = false,

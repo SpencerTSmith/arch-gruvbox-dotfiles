@@ -84,7 +84,11 @@ return {
 						"Goto type definition"
 					)
 
-					map("gH", "<cmd>ClangdSwitchSourceHeader<cr>", "Goto .c/.h")
+					map("gh", "<cmd>ClangdSwitchSourceHeader<cr>", "Goto .c/.h")
+					map("gH", function()
+						vim.cmd("vsplit")
+						vim.cmd("ClangdSwitchSourceHeader")
+					end, "Open .c/.h in vertical split")
 
 					map("<leader>lf", function()
 						vim.cmd("lua Snacks.rename.rename_file()")
