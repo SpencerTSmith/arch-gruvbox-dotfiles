@@ -108,3 +108,15 @@ window#waybar.empty #window {
 #scratchpad.empty {
 	background-color: transparent;
 }
+
+#battery {
+	color: @aqua;
+}
+
+#battery.warning {
+	color: @yellow;
+}
+
+#battery.critical {
+	color: @red;
+}

@@ -12,7 +12,8 @@
 		"hyprland/workspaces",
 		"cpu",
 		"memory",
-		"temperature"
+		"temperature",
+		"battery"
 	],
 	"modules-center": [
 		"custom/updates",
@@ -171,5 +172,21 @@
 		"format-icons": "",
 		"tooltip": false,
 		"on-click": "wlogout -b 2"
+	},
+	"battery": {
+		"interval": 60,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": " {capacity}% {icon} ",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"max-length": 25
 	}
 }
