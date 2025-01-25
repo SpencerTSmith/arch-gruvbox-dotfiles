@@ -7,7 +7,6 @@ return {
 		opts = {
 			bigfile = { enabled = true },
 			indent = { enabled = true, animate = { enabled = false } },
-			notifier = { enabled = true },
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
