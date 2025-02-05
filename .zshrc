@@ -30,13 +30,14 @@ bindkey -M vicmd 'y' zle-yank-to-clipboard
 zle-paste-from-clipboard() {
     # Fetch clipboard content and insert it at the cursor position
     local clipboard_content=$(wl-paste)
-    LBUFFER+="$clipboard_content"
+    RBUFFER+="$clipboard_content"
 }
 zle -N zle-paste-from-clipboard
 bindkey -M vicmd 'p' zle-paste-from-clipboard
 
 setopt IGNORE_EOF
 
+# Swap around ctr l and ctrl d, so tmux can still have nice vim keybinds
 bindkey "^D" clear-screen
 bindkey "^L" list-choices
 
@@ -49,8 +50,20 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME' # dotfiles repo
+alias ..='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ~='cd ~'
 
+alias mkdir="mkdir -pv"	
+alias rm="rm -iv"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias chmod="chmod -v"
+alias ls='ls -alh --color=auto'
+
+alias pyvenv='source venv/bin/activate'
 
 # Sourcing multiple times will redefine starship... stop that
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
