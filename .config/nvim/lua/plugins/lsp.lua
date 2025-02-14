@@ -15,6 +15,9 @@ return {
 						"clangd",
 						"glsl_analyzer",
 						"hyprls",
+						"jsonls",
+						"pyright",
+						"bashls",
 					},
 				},
 			},
@@ -36,10 +39,10 @@ return {
 			})
 			lspconfig.jsonls.setup({})
 			lspconfig.lua_ls.setup({})
-			lspconfig.texlab.setup({})
 			lspconfig.glsl_analyzer.setup({})
 			lspconfig.pyright.setup({})
 			lspconfig.hyprls.setup({})
+			lspconfig.bashls.setup({})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),

@@ -4,12 +4,11 @@ vim.g.maplocalleader = " "
 vim.o.termguicolors = true
 vim.g.c_syntax_for_h = true
 
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 vim.o.shiftround = true
-vim.o.tabstop = 4
+vim.o.tabstop = 2
 vim.o.smartindent = true
-vim.o.cindent = true
 vim.o.autoindent = true
 vim.o.breakindent = true
 
