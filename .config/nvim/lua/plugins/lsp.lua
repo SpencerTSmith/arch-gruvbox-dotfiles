@@ -18,6 +18,7 @@ return {
 						"jsonls",
 						"pyright",
 						"bashls",
+						"ols",
 					},
 				},
 			},
@@ -43,6 +44,7 @@ return {
 			lspconfig.pyright.setup({})
 			lspconfig.hyprls.setup({})
 			lspconfig.bashls.setup({})
+			lspconfig.ols.setup({})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -51,21 +53,13 @@ return {
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
-					map(
-						"gd",
-						"<cmd>FzfLua lsp_definitions jump_to_single_result=true ignore_current_line=true<cr>",
-						"Goto definition"
-					)
+					map("gd", "<cmd>FzfLua lsp_definitions jump1=true ignore_current_line=true<cr>", "Goto definition")
 
-					map(
-						"gr",
-						"<cmd>FzfLua lsp_references jump_to_single_result=true ignore_current_line=true<cr>",
-						"Goto references"
-					)
+					map("gr", "<cmd>FzfLua lsp_references jump1=true ignore_current_line=true<cr>", "Goto references")
 
 					map(
 						"gI",
-						"<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>",
+						"<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>",
 						"Goto implementation"
 					)
 
@@ -75,15 +69,11 @@ return {
 
 					map("K", vim.lsp.buf.hover, "Hover documentation")
 
-					map(
-						"gD",
-						"<cmd>FzfLua lsp_declaration jump_to_single_result=true ignore_current_line=true<cr>",
-						"Goto declaration"
-					)
+					map("gD", "<cmd>FzfLua lsp_declaration jump1=true ignore_current_line=true<cr>", "Goto declaration")
 
 					map(
 						"gT",
-						"<cmd>FzfLua lsp_typedefs jump_to_single_result=true ignore_current_line=true<cr>",
+						"<cmd>FzfLua lsp_typedefs jump1=true ignore_current_line=true<cr>",
 						"Goto type definition"
 					)
 

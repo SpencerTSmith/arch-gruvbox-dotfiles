@@ -22,3 +22,14 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
 vim.keymap.set("x", "gp", [["_dP]], { desc = "Paste without replacing register" })
+
+local diagnostics_enabled = true
+vim.keymap.set("x", "<leader>td", function()
+	diagnostics_enabled = not diagnostics_enabled
+	if diagnostics_enabled then
+		vim.diagnostic.enable()
+	else
+		vim.diagnostic.enable(false)
+	end
+
+end, { desc = "Toggle diagnostics"})

@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 vim.o.termguicolors = true
 vim.g.c_syntax_for_h = true
 
+vim.o.expandtab = true
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.shiftround = true

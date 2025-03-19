@@ -87,6 +87,9 @@
   (require 'use-package))
 #+end_src
 
+#+RESULTS:
+: use-package
+
 ** Idle Garbage Collection
 #+begin_src emacs-lisp
 (use-package gcmh
