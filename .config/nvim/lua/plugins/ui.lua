@@ -10,6 +10,7 @@ return {
 			watch_for_changes = true,
       skip_confirm_for_simple_edits = false,
 			constrain_cursor = "editable",
+      cleanup_delay_ms = 200,
       buf_options = {
         buflisted = false,
         bufhidden = 'hide',
