@@ -22,6 +22,6 @@ case "$CHOICE" in
     *Reboot)     systemctl reboot ;;
     *Lock)       hyprlock ;;
     *Suspend)    systemctl suspend ;;
-    *Logout)     hyprctl exit ;;
+    *Logout)     hyprctl dispatch exit ;;
     *)            ;;  # If you hit Esc or click outside
 esac
