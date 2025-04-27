@@ -9,7 +9,6 @@
   - [[#package-manager-elpaca][Package Manager (Elpaca)]]
   - [[#idle-garbage-collection][Idle Garbage Collection]]
   - [[#native-tweaks][Native Tweaks]]
-  - [[#evil-mode][Evil Mode]]
   - [[#custom-keybindings][Custom Keybindings]]
   - [[#fonts][Fonts]]
 - [[#completions][Completions]]
@@ -134,158 +133,7 @@
   (setq sentence-end-double-space nil))
 #+end_src
 
-** Evil Mode
-#+begin_src emacs-lisp
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-d-scroll t)
-  (setq evil-want-vsplit-window-right t)
-  (setq evil-split-window-below t)
-  (setq evil-undo-system 'undo-redo)
-  (evil-mode 1))
-(use-package evil-collection
-  :ensure t
-  :after evil
-  :config
-  (evil-collection-init))
-(use-package evil-surround
-  :ensure t
-  :after evil
-  :defer 5
-  :config (global-evil-surround-mode 1))
-(use-package evil-commentary
-  :ensure t
-  :after evil
-  :defer 5
-  :config (evil-commentary-mode 1))
-(use-package evil-goggles
-  :ensure t
-  :defer 5
-  :config
-  (custom-set-faces
-   '(evil-goggles-default-face ((t (:inherit 'highlight))))) ;; default is to inherit 'region
-  ;; run `M-x list-faces-display` in a fresh emacs to get a list of faces on your emacs
-  (evil-goggles-mode))
-#+end_src
-
 ** Custom Keybindings
-*** General
-#+begin_src emacs-lisp
-(use-package general
-  :ensure t
-  :config
-  (general-evil-setup)
-  ;; set up 'SPC' as the global leader key
-  (general-create-definer spence/leader-keys
-    :states '(normal insert visual emacs)
-    :keymaps 'override
-    :prefix "SPC" ;; set leader
-    :global-prefix "M-SPC") ;; access leader in insert mode
-
-  ;; Misc bindings
-  (spence/leader-keys
-    "SPC" '(execute-extended-command :wk "M-x mode"))
-
-  ;; [D]ired
-  (spence/leader-keys
-    "d" '(:ignore t :wk "Dired")
-    "dd" '(dired :wk "Dired open")
-    "dj" '(dired-jump :wk "Dired jump to current"))
-
-  ;; [F]ind stuff
-  (spence/leader-keys
-    "f" '(:ignore t :wk "Find")
-    "ff" '(find-file :wk "Find file")
-    "fp" '(project-find-file :wk "Find file in project")
-    "fw" '(find-file-other-window :wk "Find file in new window")
-    "fc" '((lambda() (interactive) (find-file "~/.config/emacs/config.org")) :wk "Find emacs config")
-    "fr" '(consult-recent-file :wk "Find recent files")
-    "fi" '(consult-imenu :wk "Find buffer item")
-    "fy" '(consult-yank-pop :wk "Find yank")
-    "fd" '(consult-flymake :wk "Find diagnostic")
-    "fu" '(sudo-edit-find-file :wk "Sudo find file")
-    "fU" '(sudo-edit :wk "Sudo edit this file"))
-
-  ;; [B]uffer stuff
-  (spence/leader-keys
-    "b" '(:ignore t :wk "Buffer")
-    "bb" '(consult-buffer :wk "Switch buffer")
-    "bw" '(consult-buffer-other-window :wk "Open buffer in new window")
-    "bi" '(ibuffer :wk "Ibuffer")
-    "bk" '(kill-this-buffer :wk "Kill this buffer")
-    "bn" '(next-buffer :wk "Next buffer")
-    "bp" '(previous-buffer :wk "Previous buffer")
-    "br" '(revert-buffer :wk "Reload buffer"))
-
-  ;; [H]elp me!
-  (spence/leader-keys
-    "h" '(:ignore t :wk "Help/Home")
-    "hf" '(describe-function :wk "Describe function")
-    "hv" '(describe-variable :wk "Describe variable")
-    "hm" '(elpaca-manager :wk "Open elpaca manager")
-    "hd" '(dashboard-open :wk "Open dashboard")
-    "hrr" '((lambda() (interactive) (load-file "~/.config/emacs/init.el")) :wk "Reload emacs config"))
-
-  ;; [E]valuate stuff
-  (spence/leader-keys
-    "e" '(:ignore t :wk "Evaluate")    
-    "eb" '(eval-buffer :wk "Evaluate elisp in buffer")
-    "ed" '(eval-defun :wk "Evaluate defun containing or after point")
-    "ee" '(eval-expression :wk "Evaluate and elisp expression")
-    "el" '(eval-last-sexp :wk "Evaluate elisp expression before point")
-    "er" '(eval-region :wk "Evaluate elisp in region"))
-
-  ;; [T]oggle stuff
-  (spence/leader-keys
-    "t" '(:ignore t :wk "Toggle")
-    "tl" '(display-line-numbers-mode :wk "Toggle line numbers")
-    "tt" '(visual-line-mode :wk "Toggle truncated lines")
-    "tv" '(vterm-toggle :wk "Toggle vterm"))
-
-  ;; [W]indow management
-  (spence/leader-keys    
-    "w" '(:ignore t :wk "Windows")
-    ;; Window splits
-    "wc" '(evil-window-delete :wk "Close window")
-    "wn" '(evil-window-new :wk "New window")
-    "ws" '(evil-window-split :wk "Horizontal split window")
-    "wv" '(evil-window-vsplit :wk "Vertical split window")
-    "wo" '(delete-other-windows :wk "Close all but focus")
-    ;; Window motions
-    "wh" '(evil-window-left :wk "Window left")
-    "wj" '(evil-window-down :wk "Window down")
-    "wk" '(evil-window-up :wk "Window up")
-    "wl" '(evil-window-right :wk "Window right")
-    "ww" '(evil-window-next :wk "Goto next window")
-    ;; Move windows
-    "wH" '(buf-move-left :wk "Window move left")
-    "wJ" '(buf-move-down :wk "Window move down")
-    "wK" '(buf-move-up :wk "Window move up")
-    "wL" '(buf-move-right :wk "Window move right"))
-
-  (spence/leader-keys
-    "c" '(:ignore t :wk "Code")
-    "ca" '(eglot-code-actions  :wk "Code actions")
-    "cf" '(eglot-format-buffer :wk "Code format")
-    "cc" '(project-compile :wk "Code project compile"))
-
-  ;; Org [M]ode
-  (spence/leader-keys
-    "m" '(:ignore t :wk "Org")
-    "mf" '(consult-org-heading :wk "Org find heading")
-    "ma" '(org-agenda :wk "Org agenda")
-    "me" '(org-export-dispatch :wk "Org export dispatch")
-    "mi" '(org-toggle-item :wk "Org toggle item")
-    "mt" '(org-todo :wk "Org todo")
-    "mB" '(org-babel-tangle :wk "Org babel tangle")
-    "mT" '(org-todo-list :wk "Org todo list")))
-
-#+end_src
-
 **** Move buffers (for keybinds)
 #+begin_src emacs-lisp
 (use-package windmove)
@@ -363,14 +211,14 @@ one, an error is signaled."
 (use-package emacs
   :init
   (set-face-attribute 'default nil
-                      :font "JetBrainsMono Nerd Font"
-                      :height 140)
+                      :font "BlexMono Nerd Font"
+                      :height 110)
   (set-face-attribute 'variable-pitch nil
-                      :font "JetBrainsMono Nerd Font"
-                      :height 140)
+                      :font "BlexMono Nerd Font"
+                      :height 110)
   (set-face-attribute 'fixed-pitch nil
-                      :font "JetBrainsMono Nerd Font"
-                      :height 140)
+                      :font "BlexMono Nerd Font"
+                      :height 110)
   ;; Makes commented text and keywords italics.
   ;; This is working in emacsclient but not emacs.
   ;; Your font must have an italic face available.
@@ -382,7 +230,7 @@ one, an error is signaled."
 ;; This sets the default font on all graphical frames created after restarting Emacs.
 ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
 ;; are not right unless I also add this method of setting the default font.
-(add-to-list 'default-frame-alist '(font . "JetBrainsMono Nerd Font-14"))
+(add-to-list 'default-frame-alist '(font . "BlexMono Nerd Font-11"))
 #+end_src
 
 * Completions
@@ -708,9 +556,7 @@ one, an error is signaled."
   :ensure t
   :after eglot
   :config
-  (set-face-attribute 'eldoc-box-border nil :background '"#ebdbb2")
-  (evil-collection-define-key 'normal 'eglot-mode-map "K" 'eldoc-box-help-at-point))
-
+  (set-face-attribute 'eldoc-box-border nil :background '"#ebdbb2"))
 #+end_src
 
 ** Treesitter
@@ -721,8 +567,8 @@ one, an error is signaled."
   (treesit-auto-install 'prompt)
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
-  (setq treesit-font-lock-level 4)
-  (setq c-ts-mode-indent-offset 4)
+  (setq treesit-font-lock-level 3)
+  (setq c
   (global-treesit-auto-mode 1))
 #+end_src
 

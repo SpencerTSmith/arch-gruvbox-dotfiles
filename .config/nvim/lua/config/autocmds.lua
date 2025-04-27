@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 vim.api.nvim_create_augroup("AutoEqualizeSplits", { clear = true })
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	group = "AutoEqualizeSplits",
-	command = "wincmd =",
+	command = "tabdo wincmd =",
 })
 
 -- Highlight when yanking (copying) text
@@ -53,4 +53,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
 	end,
+})
+
+-- Remove trailing whitespace on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+        local save_cursor = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", save_cursor)
+    end,
+})
+
+-- Auto-create parent directories when saving
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    local dir = vim.fn.expand("<afile>:p:h")
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end
 })

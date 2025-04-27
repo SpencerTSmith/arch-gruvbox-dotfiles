@@ -8,13 +8,28 @@ return {
 			delete_to_trash = true,
 			default_file_explorer = true,
 			watch_for_changes = true,
+      skip_confirm_for_simple_edits = false,
 			constrain_cursor = "editable",
+      buf_options = {
+        buflisted = false,
+        bufhidden = 'hide',
+      },
 			columns = {
 				"permissions",
 				"size",
 				"mtime",
 				"icon",
 			},
+      win_options = {
+        wrap = false,
+        signcolumn = "no",
+        cursorcolumn = false,
+        foldcolumn = "0",
+        spell = false,
+        list = false,
+        conceallevel = 3,
+        concealcursor = "nvic",
+      },
 			view_options = {
 				show_hidden = true,
 			},
@@ -22,6 +37,9 @@ return {
 				border = "single",
 			},
 			preview = {
+				border = "single",
+			},
+			confirmation = {
 				border = "single",
 			},
 			progress = {

@@ -24,6 +24,7 @@ vim.o.splitkeep = "screen"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.signcolumn = "yes"
+-- vim.o.colorcolumn = "100"
 vim.o.scrolloff = 10
 vim.o.cursorline = true
 
@@ -44,6 +45,7 @@ vim.o.timeoutlen = 300
 vim.o.showmode = false
 vim.o.ruler = false
 vim.o.cmdheight = 1
+vim.o.laststatus = 3
 
 -- Preview substitutions live, as you type!
 vim.o.incsearch = true
@@ -64,10 +66,14 @@ vim.o.infercase = true
 
 vim.o.virtualedit = "block,onemore"
 
-vim.opt.shortmess:append("aWCI")
 
 -- vim.o.pumblend = 10
 -- vim.o.winblend = 10
 vim.o.pumheight = 10
 
+vim.o.equalalways = true
+
 vim.o.hlsearch = true
+
+vim.opt.shortmess:append("aWCI")
+vim.opt.iskeyword:remove("_")

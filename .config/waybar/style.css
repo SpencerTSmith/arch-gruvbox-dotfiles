@@ -9,7 +9,7 @@ window#waybar {
 }
 
 window#waybar.empty #window {
-    background-color: transparent;
+  background-color: transparent;
 	color: transparent;
 	padding: 0;
 }
@@ -32,6 +32,15 @@ window#waybar.empty #window {
 	border-color: @fg1;
 }
 
+#battery:hover, #cpu:hover, #memory:hover,
+#temperature:hover, #wireplumber:hover,
+#clock:hover, #window:hover,
+#custom-power:hover, #custom-updates:hover,
+#custom-notification:hover {
+  background-color: @bg1;
+  transition: all 0.2s ease;
+}
+
 #window {
 	padding-right:0.6em;
 	padding-left:0.6em;
@@ -44,8 +53,20 @@ window#waybar.empty #window {
 	background-color: @bg2;
 }
 
+#custom-power:hover,
+#custom-updates:hover,
+#tray:hover,
+#workspaces:hover {
+  background-color: @bg3;
+  transition: all 0.2s ease;
+}
+
 #workspaces button.active label {
 	color: @aqua;
+}
+
+#workspaces button:hover {
+	color: @fg1;
 }
 
 #clock {
