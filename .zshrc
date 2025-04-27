@@ -56,7 +56,7 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ~='cd ~'
 
-alias mkdir="mkdir -pv"	
+alias mkdir="mkdir -pv"
 alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
@@ -64,6 +64,15 @@ alias chmod="chmod -v"
 alias ls='ls -alh --color=auto'
 
 alias pyvenv='source venv/bin/activate'
+
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias gl='git pull'
+alias gp='git push'
+alias gs='git status'
 
 # Sourcing multiple times will redefine starship... stop that
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
