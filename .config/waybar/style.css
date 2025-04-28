@@ -3,6 +3,7 @@
 * {
 	border-radius: 0px;
 	color: @fg1;
+  transition: all 0.2s ease;
 }
 
 window#waybar {
@@ -14,12 +15,11 @@ window#waybar.empty #window {
 	color: transparent;
 	padding: 0;
 }
-/* If workspaces is the leftmost module, omit left margin */
+
 .modules-left > widget:first-child > #workspaces {
 	margin-left: 0px;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
 	margin-right: 0px;
 }
@@ -99,7 +99,7 @@ window#waybar.empty #window {
 }
 
 #tray {
-	padding-right: 0.4em;
+	padding-right: 0.6em;
 	padding-left: 0.6em;
 }
 
@@ -121,14 +121,6 @@ window#waybar.empty #window {
 
 #custom-updates {
 	color: @blue;
-}
-
-#scratchpad {
-	background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
 }
 
 #battery {

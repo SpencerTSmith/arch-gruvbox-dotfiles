@@ -22,9 +22,9 @@ CHOICE=$(printf '%s\n' "$MENU" \
 
 # Act on the choice
 case "$CHOICE" in
-    *Shutdown)   systemctl poweroff ;;
-    *Reboot)     systemctl reboot ;;
-    *Lock)       hyprlock ;;
-    *Suspend)    systemctl suspend ;;
-    *Logout)     hyprctl dispatch exit ;;
+    *Shutdown) systemctl poweroff ;;
+    *Reboot)   systemctl reboot ;;
+    *Lock)     hyprlock ;;
+    *Suspend)  systemctl suspend ;;
+    *Logout)   hyprctl dispatch exit ;;
 esac
