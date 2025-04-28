@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+$MENU=""
 read -r -d '' MENU << EOF
   Shutdown
   Reboot
@@ -10,11 +11,14 @@ EOF
 
 # Launch fuzzel
 CHOICE=$(printf '%s\n' "$MENU" \
-    | fuzzel --dmenu \
+         | fuzzel --dmenu \
              --anchor top \
              --lines 5 \
+             --width 20 \
              --y-margin 5 \
-      )
+             --select-index 2 \
+             --prompt "[POWER]: " \
+           )
 
 # Act on the choice
 case "$CHOICE" in
@@ -23,5 +27,4 @@ case "$CHOICE" in
     *Lock)       hyprlock ;;
     *Suspend)    systemctl suspend ;;
     *Logout)     hyprctl dispatch exit ;;
-    *)            ;;  # If you hit Esc or click outside
 esac

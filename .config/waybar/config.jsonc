@@ -83,7 +83,7 @@
 		}
 	},
 	"tray": {
-		"icon-size": 21,
+		"icon-size": 20,
 		"spacing": 10
 	},
 	"clock": {
@@ -118,6 +118,7 @@
 	},
 	"memory": {
 		"format": " {}%  ",
+		"tooltip": true,
 		"on-click": "alacritty -e btop"
 	},
 	"temperature": {
@@ -130,6 +131,7 @@
 			"",
 			""
 		],
+		"tooltip": false,
 		"on-click": "alacritty -e btop"
 	},
 	"wireplumber": {
@@ -165,6 +167,7 @@
 	},
 	"custom/updates": {
 		"format": " {icon} ",
+		"tooltip": false,
 		"format-icons": ""
 	},
 	"custom/power": {

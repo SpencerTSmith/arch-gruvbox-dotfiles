@@ -1,4 +1,5 @@
 @import url("../gruvbox-colors.css");
+
 * {
 	border-radius: 0px;
 	color: @fg1;

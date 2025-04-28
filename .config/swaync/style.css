@@ -1,10 +1,14 @@
 @import url("../gruvbox-colors.css");
 
 * {
-	font-size: 14px;
+	font-size: 12px;
 	border-width: 3px;
 	border-color: @fg1;
 	border-radius: 0px;
+}
+
+.notification-panel {
+    background-color: @bg;
 }
 
 .control-center .notification-row:focus,
