@@ -123,6 +123,10 @@ window#waybar.empty #window {
 	color: @blue;
 }
 
+#custom-updates.updates-available {
+	color: @yellow;
+}
+
 #battery {
 	color: @aqua;
 }
@@ -134,3 +138,4 @@ window#waybar.empty #window {
 #battery.critical {
 	color: @red;
 }
+

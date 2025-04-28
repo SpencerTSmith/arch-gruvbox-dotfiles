@@ -167,8 +167,11 @@
 	},
 	"custom/updates": {
 		"format": " {icon} ",
-		"tooltip": false,
-		"format-icons": ""
+		"tooltip": true,
+		"format-icons": "",
+    "interval" : 3600,
+    "exec" : "$HOME/.config/scripts/check_updates.sh",
+    "return-type" : "json"
 	},
 	"custom/power": {
 		"format": " {icon} ",
