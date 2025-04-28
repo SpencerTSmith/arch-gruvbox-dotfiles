@@ -3,6 +3,7 @@
 	"layer": "top",
 	"position": "top",
 	"spacing": 0,
+  "height" : 35,
 	"margin-top": 5,
 	"margin-right": 5,
 	"margin-left": 5,
@@ -75,13 +76,6 @@
 		"dynamic-len": 40,
 		"dynamic-separator": "|"
 	},
-	"idle_inhibitor": {
-		"format": "{icon}",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
-	},
 	"tray": {
 		"icon-size": 20,
 		"spacing": 10
@@ -123,7 +117,7 @@
 	},
 	"temperature": {
 		"thermal-zone": 2,
-		//"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
+		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input",
 		"critical-threshold": 90,
 		"format": " {temperatureC}°C {icon} ",
 		"format-icons": [
@@ -131,7 +125,7 @@
 			"",
 			""
 		],
-		"tooltip": false,
+    "tooltip" : false,
 		"on-click": "alacritty -e btop"
 	},
 	"wireplumber": {
@@ -171,12 +165,13 @@
 		"format-icons": "",
     "interval" : 3600,
     "exec" : "$HOME/.config/scripts/check_updates.sh",
-    "return-type" : "json"
+    "return-type" : "json",
+    "on-click" : "alacritty --class floating -e paru"
 	},
 	"custom/power": {
 		"format": " {icon} ",
 		"format-icons": "",
-		"tooltip": false,
+		"tooltip-format": "Power",
 		"on-click": "$HOME/.config/scripts/fuzzel-power-menu.sh"
 	},
 	"battery": {

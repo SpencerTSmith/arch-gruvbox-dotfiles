@@ -1,9 +1,10 @@
 @import url("../gruvbox-colors.css");
 
 * {
-	border-radius: 0px;
+	border-radius: 0;
 	color: @fg1;
   transition: all 0.2s ease;
+  min-height: 0;
 }
 
 window#waybar {
