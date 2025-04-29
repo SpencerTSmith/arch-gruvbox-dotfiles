@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 messages=(
-  # GENERIC
+  # GENERIC/BIBLE/ETC
   "AD MELIORA"
   "NIHIL SUB SOLE"
   "REMEMBER, YOU WILL DIE"
@@ -29,6 +29,7 @@ messages=(
   "A POSSESSION FOR ALL TIME"
   "IN THE FORTUNE OF A SINGLE MOMENT, AT THE CLIMAX OF GLORY NOT OF FEAR, THEY PASSED AWAY"
   "WHEN STRUCK DOWN IN THE FULL FLOWER OF HIS STRENGTH"
+  "BUT, WAR IS A VIOLENT MASTER"
 
   # CALLICLES, first is a quotation of PINDAR
   "BRINGS ON AND RENDERS JUST WHAT IS MOST VIOLENT"
@@ -52,7 +53,7 @@ colors=(
     "\033[1;36m"  # Bold Cyan
 )
 color_reset="\033[0m"
-color_bold="\033[1;37m"
+color_bold_white="\033[1;37m"
 
 random_index=$((RANDOM % ${#messages[@]}))
 message="${messages[$random_index]}"
@@ -70,6 +71,6 @@ terminal_width=$(tput cols)
 padding_left=$(( (terminal_width - border_length) / 2 ))
 padding=$(printf '%*s' "$padding_left" "")
 
-echo -e "${padding}${color_bold}${border}${color_reset}"
+echo -e "${padding}${color_bold_white}${border}${color_reset}"
 echo -e "${padding}    ${color}${message}${color_reset}"
-echo -e "${padding}${color_bold}${border}${color_reset}"
+echo -e "${padding}${color_bold_white}${border}${color_reset}"

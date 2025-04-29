@@ -56,12 +56,14 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ~='cd ~'
 
-alias mkdir="mkdir -pv"
-alias rm="rm -iv"
-alias cp="cp -iv"
-alias mv="mv -iv"
-alias chmod="chmod -v"
+alias mkdir='mkdir -pv'
+alias rm='rm -iv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias chmod='chmod -v'
 alias ls='ls -alh --color=auto'
+
+alias zshrc='source ~/.zshrc'
 
 alias pyvenv='source venv/bin/activate'
 
