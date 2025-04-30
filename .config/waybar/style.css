@@ -76,7 +76,7 @@ window#waybar.empty #window {
 }
 
 #cpu {
-	color: @green;
+	color: @blue;
 }
 
 #memory {
@@ -92,7 +92,7 @@ window#waybar.empty #window {
 }
 
 #temperature {
-	color: @blue;
+	color: @green;
 }
 
 #temperature.critical {
