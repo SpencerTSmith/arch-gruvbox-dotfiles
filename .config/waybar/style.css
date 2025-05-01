@@ -34,6 +34,14 @@ window#waybar.empty #window {
 	border-color: @fg1;
 }
 
+tooltip {
+	background: @bg;
+	border-width: 1px;
+	border-style: solid;
+	border-color: @fg1;
+  opacity: 0.9;
+}
+
 #battery:hover, #cpu:hover, #memory:hover,
 #temperature:hover, #wireplumber:hover,
 #clock:hover, #window:hover,
