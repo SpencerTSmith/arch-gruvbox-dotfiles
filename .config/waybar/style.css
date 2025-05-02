@@ -84,7 +84,7 @@ tooltip {
 }
 
 #cpu {
-	color: @blue;
+	color: @green;
 }
 
 #memory {
@@ -100,7 +100,7 @@ tooltip {
 }
 
 #temperature {
-	color: @green;
+	color: @blue;
 }
 
 #temperature.critical {
