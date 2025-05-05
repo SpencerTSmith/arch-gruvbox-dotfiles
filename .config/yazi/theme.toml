@@ -1,7 +1,0 @@
-[flavor]
-use = "gruvbox"
-
-[icon]
-prepend_dirs = [
-	{ name = "Development", text = "󰅩" },
-]

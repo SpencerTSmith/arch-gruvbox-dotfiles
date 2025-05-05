@@ -44,6 +44,7 @@ bindkey "^L" list-choices
 # Exports
 export EDITOR=nvim
 export VISUAL=nvim
+export PATH="$HOME/.config/scripts/:$PATH"
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

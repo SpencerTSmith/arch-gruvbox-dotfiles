@@ -37,11 +37,11 @@
 			"default": ""
 		},
 		"persistent-workspaces": {
-			"HDMI-A-2": [
+			"HDMI-A-6": [
 				1,
 				2
 			],
-			"DP-2": [
+			"DP-4": [
 				3,
 				4
 			]
@@ -82,19 +82,19 @@
 	},
 	"clock": {
 		"format": " {:%I:%M %p}  ",
-		"format-alt": " {:%A, %B %d, %Y (%R)} ",
-		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"format-alt": " {:%A, %B %d, %Y (%R)}  ",
+		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {
 			"mode": "year",
 			"mode-mon-col": 3,
 			"weeks-pos": "right",
 			"on-scroll": 1,
 			"format": {
-				"months": "<b>{}</b>",
-				"days": "<b>{}</b>",
-				"weeks": "<b>W{}</b>",
-				"weekdays": "<b>{}</b>",
-				"today": "<b><u>{}</u></b>"
+				"months": "<span color='#fabd2f'><b><i>{}</i></b></span>",
+				"days": "{}",
+				"weeks": "<span color='#8ec07c'><b>W{}</b></span>",
+				"weekdays": "<span color='#b8bb26'><b>{}</b></span>",
+				"today": "<span color='#fe8019'><b><u>{}</u></b></span>"
 			}
 		},
 		"actions": {
@@ -141,22 +141,21 @@
 	},
 	"custom/notification": {
 		"tooltip": false,
-		"format": " {icon} ",
-		"format-icons": {
-			"notification": "󱅫",
-			"none": "󰂚",
-			"dnd-notification": "󱏧",
-			"dnd-none": "",
-			"inhibited-notification": "<span foreground='red'><sup></sup></span>",
-			"inhibited-none": "",
-			"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-			"dnd-inhibited-none": ""
-		},
-		"return-type": "json",
-		"exec-if": "which swaync-client",
-		"exec": "swaync-client -swb",
-		"on-click": "swaync-client -t -sw",
-		"on-click-right": "swaync-client -d -sw",
+		"format": " 󰂚 ",
+		// "format-icons": {
+		// 	"notification": "󱅫",
+		// 	"none": "󰂚",
+		// 	"dnd-notification": "󱏧",
+		// 	"dnd-none": "",
+		// 	"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+		// 	"inhibited-none": "",
+		// 	"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+		// 	"dnd-inhibited-none": ""
+		// },
+		// "return-type": "json",
+		// "exec": "$HOME/.config/scripts/fuzzel-notification-hist.sh",
+		"on-click": "$HOME/.config/scripts/fuzzel-notification-hist.sh",
+		"on-click-right": "makoctl restore",
 		"escape": true
 	},
 	"custom/updates": {

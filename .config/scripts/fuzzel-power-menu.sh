@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-$MENU=""
+MENU=""
 read -r -d '' MENU << EOF
   Shutdown
   Reboot
