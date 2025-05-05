@@ -1,0 +1,27 @@
+font=BlexMonoNerdFont 11
+sort=-time
+layer=overlay
+text-alignment=left
+icons=1
+history=1
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+
+background-color=#282828ff
+text-color=#ebdbb2ff
+border-color=#ebdbb2ff
+
+border-size=3
+padding=10
+margin=5
+
+default-timeout=5000
+max-visible=5
+
+[app-name=volume-notify]
+history=0
+progress-color=#83a598ff
+text-color=#282828ff
+
+[urgency=high]
+progress-color=#fb4934ff
+default-timeout=0

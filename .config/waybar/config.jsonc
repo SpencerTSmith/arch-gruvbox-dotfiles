@@ -163,9 +163,9 @@
 		"tooltip": true,
 		"format-icons": "",
     "interval" : 3600,
-    "exec" : "$HOME/.config/scripts/check_updates.sh",
+    "exec" : "$HOME/.config/scripts/check-updates.sh",
     "return-type" : "json",
-    "on-click" : "alacritty --class floating -e $HOME/.config/scripts/waybar_update_button.sh",
+    "on-click" : "alacritty --class floating -e $HOME/.config/scripts/waybar-update-button.sh",
     "signal" : 10 // So we can refresh on signal from the script
 	},
 	"custom/power": {
