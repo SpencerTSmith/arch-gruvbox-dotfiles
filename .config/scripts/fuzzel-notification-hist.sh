@@ -12,22 +12,22 @@ COUNT=$(echo "$NOTIFICATIONS" | grep -c "^Notification [0-9]\+:")
 declare -A NOTIFICATION_MAP
 DISPLAY_LIST=""
 
-delimiter="---ENTRY_DELIMITER---"
-entry_id=0
+DELIMITER="---------------------"
+ENTRY_ID=0
 
 while IFS= read -r line; do
   if [[ $line =~ ^Notification\ ([0-9]+):\ (.*)$ ]]; then
       # If this isn't the first notification, add a delimiter
-      if [ $entry_id -gt 0 ]; then
-          DISPLAY_LIST="${DISPLAY_LIST}${delimiter}\n"
+      if [ $ENTRY_ID -gt 0 ]; then
+          DISPLAY_LIST="${DISPLAY_LIST}\n${DELIMITER}\n"
       fi
 
       current_id="${BASH_REMATCH[1]}"
       current_title="${BASH_REMATCH[2]}"
 
       # Start a new multi-line entry
-      entry_id=$((entry_id + 1))
-      entry_key="entry_${entry_id}"
+      ENTRY_ID=$((ENTRY_ID + 1))
+      entry_key="entry_${ENTRY_ID}"
 
       # First line: ID and title
       current_entry="ID: ${current_id} - ${current_title}"

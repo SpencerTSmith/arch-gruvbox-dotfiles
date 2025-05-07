@@ -11,16 +11,18 @@ text-color=#ebdbb2ff
 border-color=#ebdbb2ff
 
 border-size=3
-padding=10
+padding=5
 margin=5
 
-default-timeout=5000
+default-timeout=2000
 max-visible=5
 
 [app-name=volume-notify]
 history=0
 progress-color=#83a598ff
 text-color=#282828ff
+height=50
+font=BlexMonoNerdFont 10
 
 [urgency=high]
 progress-color=#fb4934ff
