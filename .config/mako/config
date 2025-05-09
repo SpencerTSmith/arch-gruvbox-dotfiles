@@ -4,7 +4,7 @@ layer=overlay
 text-alignment=left
 icons=1
 history=1
-on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+# on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 
 background-color=#282828ff
 text-color=#ebdbb2ff
@@ -12,7 +12,7 @@ border-color=#ebdbb2ff
 
 border-size=3
 padding=5
-margin=5
+margin=10
 
 default-timeout=2000
 max-visible=5
