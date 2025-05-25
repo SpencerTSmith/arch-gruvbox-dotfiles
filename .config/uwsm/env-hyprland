@@ -1,0 +1,28 @@
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
+
+export NVD_BACKEND=direct
+export LIBVA_DRIVER_NAME=nvidia
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDER_LIBRARY_NAME=nvidia
+export __GL_GSYNC_ALLOWED=1
+export __GL_VRR_ALLOWED=1
+
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland,x11,*
+export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
+
+export GDK_BACKEND=wayland,x11,*
+export GTK_THEME=Gruvbox-Dark-Medium
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORM=wayland;xcb
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+export MOZ_ENABLE_WAYLAND=1
+
+export XCURSOR_THEME=Capitaine Cursors (Gruvbox) - White
+export XCURSOR_SIZE=15
