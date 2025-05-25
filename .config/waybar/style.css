@@ -11,6 +11,7 @@
 }
 
 window#waybar {
+  transition: all 0.2s ease-in-out;
 	background-color: @bg;
 }
 
@@ -163,4 +164,8 @@ tooltip {
 
 #mpris {
   color: @green;
+}
+
+#backlight {
+  color: blue;
 }

@@ -83,7 +83,10 @@ alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias chmod='chmod -v'
-alias ls='ls -alh --color=auto'
+
+alias ls='eza --icons --group-directories-first --color=auto'
+alias la='eza -alh --icons --group-directories-first --color=auto'
+alias tree="eza -T --icons --group-directories-first --color=auto"
 
 alias zshrc='source ~/.zshrc'
 

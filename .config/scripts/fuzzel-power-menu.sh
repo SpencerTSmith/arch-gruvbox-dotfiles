@@ -6,7 +6,7 @@ read -r -d '' MENU << EOF
   Reboot
   Lock
 󰒲  Suspend
-󰍃  Logout
+󰍃  Exit
 EOF
 
 # Launch fuzzel
@@ -26,5 +26,5 @@ case "$CHOICE" in
     *Reboot)   systemctl reboot ;;
     *Lock)     hyprlock ;;
     *Suspend)  systemctl suspend ;;
-    *Logout)   hyprctl dispatch exit ;;
+    *Exit)   uwsm stop ;;
 esac
