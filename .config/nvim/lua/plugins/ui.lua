@@ -55,6 +55,19 @@ return {
 			keymaps = {
 				["<C-h>"] = false,
 				["<C-l>"] = false,
+        ["gx"] = function()
+          -- Override the default app for zip files
+          local entry = require("oil").get_cursor_entry()
+          if not entry then return end
+
+          local path = require("oil").get_current_dir() .. "/" .. entry.name
+
+          if path:match("%.zip$") or path:match("%.7z$") or path:match("%.rar$") then
+            vim.cmd("!7z x " .. vim.fn.shellescape(path) .. " -o" .. vim.fn.shellescape(require("oil").get_current_dir()))
+          else
+            require("oil.actions").open_external.callback()
+          end
+        end,
 			},
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },

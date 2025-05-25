@@ -1,14 +1,17 @@
 @import url("../gruvbox-colors.css");
 
 * {
+  border-width: 0;
 	border-radius: 0;
+	border-style: solid;
 	color: @fg1;
   transition: all 0.2s ease;
   min-height: 0;
+	border-color: @fg1;
 }
 
 window#waybar {
-	background-color: transparent;
+	background-color: @bg;
 }
 
 window#waybar.empty #window {
@@ -29,16 +32,12 @@ window#waybar.empty #window {
 .modules-center,
 .modules-left {
 	background: @bg;
-	border-width: 2px;
-	border-style: solid;
-	border-color: @fg1;
+	border-bottom-width: 2px;
 }
 
 tooltip {
 	background: @bg;
-	border-width: 1px;
-	border-style: solid;
-	border-color: @fg1;
+	border-width: 2px;
   opacity: 0.9;
 }
 
@@ -46,7 +45,9 @@ tooltip {
 #temperature:hover, #wireplumber:hover,
 #clock:hover, #window:hover,
 #custom-power:hover, #custom-updates:hover,
-#custom-notification:hover {
+#custom-notification:hover, #disk:hover,
+#network:hover, #custom-gpu:hover,
+#mpris:hover {
   background-color: @bg1;
   transition: all 0.2s ease;
 }
@@ -137,7 +138,7 @@ tooltip {
 }
 
 #battery {
-	color: @aqua;
+	color: @green;
 }
 
 #battery.warning {
@@ -148,3 +149,18 @@ tooltip {
 	color: @red;
 }
 
+#disk {
+  color: @yellow;
+}
+
+#network {
+  color: @aqua;
+}
+
+#custom-gpu {
+  color: @orange;
+}
+
+#mpris {
+  color: @green;
+}

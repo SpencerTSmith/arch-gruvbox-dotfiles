@@ -55,6 +55,7 @@ DISPLAY_LIST=${DISPLAY_LIST%\\n}
 SELECTED=$(echo -e "$DISPLAY_LIST" | fuzzel --dmenu \
                                         --anchor top-right \
                                         --y-margin 5 \
+                                        --x-margin 5 \
                                         --prompt "[NOTIFY]: " \
                                       )
 
