@@ -27,7 +27,6 @@
 	"modules-right": [
     "mpris",
 		"wireplumber",
-    "backlight",
 		"clock",
 		"custom/notification",
 		"tray"
@@ -183,10 +182,10 @@
 		"format": " {icon} ",
 		"tooltip": true,
 		"format-icons": "",
-    "interval" : 3600,
+    "interval" : "once",
     "exec" : "$HOME/.config/scripts/check-updates.sh",
     "return-type" : "json",
-    "on-click" : "setsid alacritty --class floating -e $HOME/.config/scripts/waybar-update-button.sh",
+    "on-click" : "hyprctl dispatch exec \"[float] alacritty -e paru\" && pkill -SIGRTMIN+10 waybar",
     "signal" : 10 // So we can refresh on signal from the script
 	},
 	"custom/power": {
@@ -195,12 +194,12 @@
 		"tooltip-format": "Power",
 		"on-click": "$HOME/.config/scripts/fuzzel-power-menu.sh"
 	},
-	"battery": {
-		"interval": 60,
-		"states": {
-			"warning": 30,
-			"critical": 15
-		},
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
 		"format": " {capacity}% {icon} ",
 		"format-icons": [
 			"",
