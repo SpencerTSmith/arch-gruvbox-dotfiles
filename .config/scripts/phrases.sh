@@ -18,7 +18,7 @@ messages=(
   "A TIGERISH LUST TO ANNIHILATE"
   "CURIOUS TO A VICE, INVESTIGATORS TO THE POINT OF CRUELTY"
   "GRATEFUL TO GOD, DEVIL, SHEEP, AND WORM IN US"
-  "EVERYTHING IN HIM THAT IS KIN TO BEASTS OF PREY AND SERPENTS"
+  "GRATEFUL TO GOD, DEVIL, SHEEP, AND WORM IN US"
 
   # MILTON
   "AND JUSTIFY THE WAYS OF GOD TO MAN"
@@ -53,15 +53,15 @@ messages=(
 )
 
 colors=(
-    "\033[1;31m"  # Bold Red
-    "\033[1;32m"  # Bold Green
-    "\033[1;33m"  # Bold Yellow
-    "\033[1;34m"  # Bold Blue
-    "\033[1;35m"  # Bold Magenta
-    "\033[1;36m"  # Bold Cyan
+    "\033[1;91m"  # Bright Bold Red
+    "\033[1;92m"  # Bright Bold Green
+    "\033[1;93m"  # Bright Bold Yellow
+    "\033[1;94m"  # Bright Bold Blue
+    "\033[1;95m"  # Bright Bold Magenta
+    "\033[1;96m"  # Bright Bold Cyan
 )
 color_reset="\033[0m"
-color_bold_white="\033[1;37m"
+color_bold_white="\033[1;97m"
 
 random_index=$((RANDOM % ${#messages[@]}))
 message="${messages[$random_index]}"

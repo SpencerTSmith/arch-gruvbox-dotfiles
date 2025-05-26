@@ -86,6 +86,7 @@ return {
 		opts = function()
 			local custom_gruvbox = require("lualine.themes.gruvbox")
 			custom_gruvbox.normal.a.bg = "#FABD2F"
+			custom_gruvbox.normal.a.fg = "#282828"
 			local opts = {
 				options = {
 					theme = custom_gruvbox,
