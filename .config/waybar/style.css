@@ -126,6 +126,11 @@ tooltip {
 	color: @aqua;
 }
 
+#custom-notification.dnd-none,
+#custom-notification.dnd-notification {
+	color: @red;
+}
+
 #custom-power {
 	color: @green;
 }

@@ -124,12 +124,14 @@
 	"cpu": {
 		"format": " {usage}%  ",
 		"tooltip": true,
-		"on-click": "alacritty -e btop"
+		"on-click": "alacritty -e btop",
+    "interval": 5
 	},
 	"memory": {
 		"format": " {}%  ",
 		"tooltip": true,
-		"on-click": "alacritty -e btop"
+		"on-click": "alacritty -e btop",
+    "interval": 5
 	},
 	"temperature": {
 		"thermal-zone": 2,
@@ -142,13 +144,15 @@
 			""
 		],
     "tooltip" : false,
-		"on-click": "alacritty -e btop"
+		"on-click": "alacritty -e btop",
+    "interval": 5
 	},
 	"wireplumber": {
 		"format": " {volume}% {icon} ",
 		"tooltip": true,
 		"max-volume": 150,
 		"on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
 		"format-icons": [
 			"",
 			"",
@@ -157,22 +161,23 @@
 	},
 	"custom/notification": {
 		"tooltip": false,
-		"format": " 󰂚 ",
-		// "format-icons": {
-		// 	"notification": "󱅫",
-		// 	"none": "󰂚",
-		// 	"dnd-notification": "󱏧",
-		// 	"dnd-none": "",
-		// 	"inhibited-notification": "<span foreground='red'><sup></sup></span>",
-		// 	"inhibited-none": "",
-		// 	"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-		// 	"dnd-inhibited-none": ""
-		// },
-		// "return-type": "json",
-		// "exec": "$HOME/.config/scripts/fuzzel-notification-hist.sh",
-		"on-click": "$HOME/.config/scripts/fuzzel-notification-hist.sh",
-		"on-click-right": "makoctl restore",
-		"escape": true
+		"format": " {} {icon} ",
+		"format-icons": {
+			"notification": "󱅫",
+			"none": "󰂚",
+			"dnd-notification": "󱏧",
+			"dnd-none": "",
+			"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"inhibited-none": "",
+			"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-inhibited-none": ""
+		},
+		"return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
 	},
 	"custom/updates": {
 		"format": " {icon} ",
@@ -221,7 +226,7 @@
   "custom/gpu": {
     "format": " {}%  ",
     "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
-    "interval": 60,
+    "interval": 5,
     "tooltip": false,
 		"on-click": "alacritty -e btop"
   },

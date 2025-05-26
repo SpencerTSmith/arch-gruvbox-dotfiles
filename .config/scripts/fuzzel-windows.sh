@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 
-CLIENTS=$(hyprctl clients -j)
-CLASSES=$(echo $CLIENTS | jq -r '.[] | .class')
-TITLES=$(echo $CLIENTS | jq -r '.[] | .title')
-ADDRESSES=$(echo $CLIENTS | jq -r '.[] | .address')
-CHOICES=""
+# Adapted to bash from https://github.com/MrSom3body/dotfiles/blob/main/pkgs/fuzzel-goodies/scripts/fuzzel-windows.fish
+clients=$(hyprctl clients -j)
+readarray -t classes < <(echo "$clients" | jq -r '.[] | .class')
+readarray -t titles < <(echo "$clients" | jq -r '.[] | .title')
+readarray -t addresses < <(echo "$clients" | jq -r '.[] | .address')
 
-for i in "${!CLASSES[@]}"; do
-  CLASS="${CLASSES[$i]}"
-  TITLE="${TITLES[$i]}"
-  ADDRESS="${ADDRESSES[$i]}"
+choices=""
+for ((i=0; i<${#classes[@]}; i++)); do
+    if [[ "${classes[i]}" == *.*.* ]]; then
+        choices+="${titles[i]}\t${classes[i]}\0icon\x1f${classes[i]}\n"
+    else
+        class="${classes[i],,}"
+        choices+="${titles[i]}\t${classes[i]}\0icon\x1f$class\n"
+    fi
+done
 
-  if [[ "$CLASS" == *.*.* ]]; then
-    choices+="${TITLE}\t${class}\0icon\x1f${CLASS}\n"
+choices="${choices%\\n}"
+
+choice=$(echo -e "$choices" | fuzzel --dmenu --prompt "[WINDOW]: " --index --width 50 --tabs 200) || exit
+
+hyprctl dispatch focuswindow "address:${addresses[choice]}"

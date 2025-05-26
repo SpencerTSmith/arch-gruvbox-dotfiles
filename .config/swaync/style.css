@@ -1,0 +1,87 @@
+@import url("../gruvbox-colors.css");
+
+* {
+  border-width: 2px;
+  border-radius: 0;
+  border-color: @fg1;
+  background: transparent;
+  color: @fg1;
+  transition: all 0.2s ease-in-out; /* Add global transition */
+}
+
+.blank-window {
+    background: transparent;
+}
+
+.control-center-list-placeholder {
+    opacity: 0.0;
+}
+
+.control-center {
+  border: 2px solid @fg1;
+}
+
+.control-center,
+.control-center .notification-row,
+.close-button,
+.notification-content,
+.notification-default-action,
+.notification-action,
+.notification-row,
+.notification-row .notification-background,
+.notification-row .notification-background .notification,
+.widget-title,
+.widget-dnd,
+.widget-label,
+.widget-buttons-grid,
+.widget-buttons-grid > flowbox > flowboxchild > button,
+.control-center-dnd,
+.control-center-clear-all {
+  background: @bg;
+}
+
+.control-center .notification-row:focus,
+.control-center .notification-row:hover,
+.close-button:hover,
+.notification-content:hover,
+.notification-default-action:hover,
+.notification-action:hover,
+.notification-row:hover,
+.notification-row .notification-background:hover,
+.notification-row .notification-background .close-button:hover,
+.notification-row .notification-background .notification:hover,
+.widget-title:hover,
+.widget-dnd:hover,
+.widget-label:hover,
+.widget-buttons-grid > flowbox > flowboxchild > button:hover,
+.control-center-dnd:hover,
+.control-center-clear-all:hover {
+  background: @bg1;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: @blue;
+}
+
+.widget-dnd > switch:checked {
+  background: @red;
+}
+
+.widget-dnd > switch slider {
+  background: @fg1;
+}
+
+.notification-row .notification-background .close-button {
+  color: @fg1;
+  text-shadow: none;
+  padding: 0;
+  margin-top: 5px;
+  margin-right: 5px;
+  box-shadow: none;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.widget-volume {
+  color: @fg1;
+}

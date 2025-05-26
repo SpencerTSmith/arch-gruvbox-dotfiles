@@ -22,6 +22,9 @@ padding = {x = 0}
 dynamic_padding = true
 decorations = "None"
 
+[scrolling]
+multiplier = 10
+
 [cursor]
 style = { shape = "Block", blinking = "On"}
 vi_mode_style = "Block"

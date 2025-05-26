@@ -1,1 +1,1 @@
-cliphist list | fuzzel --dmenu --prompt "[CLIPBOARD]: " --width 50 --no-sort | cliphist decode | wl-copy
+cliphist list | fuzzel --dmenu --prompt "[PASTE]: " --width 50 --no-sort --with-nth 2 --lines 15 | cliphist decode | wl-copy
