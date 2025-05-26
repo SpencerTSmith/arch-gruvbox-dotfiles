@@ -19,16 +19,14 @@
 
 .control-center {
   border: 2px solid @fg1;
+  /* overflow: hidden; */
 }
 
 .control-center,
 .control-center .notification-row,
 .close-button,
-.notification-content,
 .notification-default-action,
 .notification-action,
-.notification-row,
-.notification-row .notification-background,
 .notification-row .notification-background .notification,
 .widget-title,
 .widget-dnd,
@@ -75,8 +73,6 @@
   color: @fg1;
   text-shadow: none;
   padding: 0;
-  margin-top: 5px;
-  margin-right: 5px;
   box-shadow: none;
   min-width: 24px;
   min-height: 24px;

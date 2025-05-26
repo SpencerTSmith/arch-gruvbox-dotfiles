@@ -68,6 +68,7 @@
 		// 	"Alacritty": ""
 		// },
     "icon": true,
+    "icon-size": 15,
 		"separate-outputs": true
 	},
 	"mpris": {
@@ -90,7 +91,7 @@
 	"tray": {
 		"icon-size": 15,
 		"spacing": 10,
-    "show-passive-items": true
+    "show-passive-items": false
 	},
 	"clock": {
 		"format": " {:%I:%M %p}  ",
