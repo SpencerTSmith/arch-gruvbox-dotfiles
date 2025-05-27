@@ -246,11 +246,11 @@
   },
   "group/hardware": {
     "orientation": "inherit",
-    "drawer": {
-        "transition-duration": 200,
-        "children-class": "not-power",
-        "transition-left-to-right": true
-    },
+    // "drawer": {
+    //     "transition-duration": 200,
+    //     "children-class": "not-power",
+    //     "transition-left-to-right": true
+    // },
     "modules": [
       "cpu",
       "temperature",

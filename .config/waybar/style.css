@@ -141,7 +141,7 @@ tooltip {
 }
 
 #battery {
-	color: @green;
+	color: @aqua;
 }
 
 #battery.warning {
@@ -153,11 +153,11 @@ tooltip {
 }
 
 #disk {
-  color: @yellow;
+  color: @gray;
 }
 
 #network {
-  color: @aqua;
+  color: @yellow;
 }
 
 #custom-gpu {
