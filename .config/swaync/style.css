@@ -14,7 +14,7 @@
 }
 
 .control-center-list-placeholder {
-    opacity: 0.0;
+    opacity: 0.5;
 }
 
 .control-center {
@@ -36,6 +36,7 @@
 .control-center-dnd,
 .control-center-clear-all {
   background: @bg;
+  opacity: 0.90;
 }
 
 .control-center .notification-row:focus,
