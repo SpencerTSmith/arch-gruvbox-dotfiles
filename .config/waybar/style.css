@@ -225,5 +225,5 @@ hardware {
 }
 
 #backlight {
-  color: @blue;
+  color: @purple;
 }
