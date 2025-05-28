@@ -71,10 +71,7 @@ alias ls='eza --icons --group-directories-first --color=auto'
 alias la='eza -alh --icons --group-directories-first --color=auto'
 alias tree="eza -T --icons --group-directories-first --color=auto"
 
-alias zshrc='source ~/.zshrc'
-
-alias pyvenv='source venv/bin/activate'
-
+# Git
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
@@ -83,6 +80,8 @@ alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
 alias gs='git status'
+
+alias tma='tmux attach-session -t SCRATCH || tmux new-session -s SCRATCH'
 
 # Sourcing multiple times will redefine starship... stop that
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
