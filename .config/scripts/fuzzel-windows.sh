@@ -8,16 +8,13 @@ readarray -t addresses < <(echo "$clients" | jq -r '.[] | .address')
 
 choices=""
 for ((i=0; i<${#classes[@]}; i++)); do
-    if [[ "${classes[i]}" == *.*.* ]]; then
-        choices+="${titles[i]}\t${classes[i]}\0icon\x1f${classes[i]}\n"
-    else
-        class="${classes[i],,}"
-        choices+="${titles[i]}\t${classes[i]}\0icon\x1f$class\n"
-    fi
+  class="${classes[i],,}"
+  class="${class/footclient/foot}" # For some reason footclient doesn't show up right!
+  choices+="${titles[i]}\t${classes[i]}\0icon\x1f$class\n"
 done
 
 choices="${choices%\\n}"
 
-choice=$(echo -e "$choices" | fuzzel --dmenu --prompt "[WINDOW]: " --index --width 50 --tabs 200) || exit
+choice=$(echo -e "$choices" | fuzzel --dmenu --prompt "[WINDOW]: " --index --width 40 --tabs 200) || exit
 
 hyprctl dispatch focuswindow "address:${addresses[choice]}"

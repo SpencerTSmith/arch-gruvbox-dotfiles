@@ -37,6 +37,9 @@ bindkey -M vicmd 'p' zle-paste-from-clipboard
 
 setopt IGNORE_EOF
 
+# Annoying ass
+stty -ixon
+
 # Swap around ctr l and ctrl d so tmux can still have nice vim keybinds
 bindkey "^D" clear-screen
 bindkey "^L" list-choices
@@ -49,6 +52,8 @@ export PATH="$HOME/.config/scripts/:$PATH"
 
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-c"
+
+export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -70,6 +75,8 @@ alias chmod='chmod -v'
 alias ls='eza --icons --group-directories-first --color=auto'
 alias la='eza -alh --icons --group-directories-first --color=auto'
 alias tree="eza -T --icons --group-directories-first --color=auto"
+
+alias sk='sk --color=16'
 
 # Git
 alias ga='git add'

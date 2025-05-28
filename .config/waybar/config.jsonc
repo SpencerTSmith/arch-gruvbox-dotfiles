@@ -13,14 +13,16 @@
 	"modules-left": [
 		"hyprland/workspaces",
     "group/hardware",
-		"battery"
-	],
-	"modules-center": [
-		"custom/updates",
-		"hyprland/window",
+		"battery",
+    "custom/line",
     "group/power"
 	],
+	"modules-center": [
+		"hyprland/window"
+	],
 	"modules-right": [
+    "group/actions",
+    "custom/line",
     "mpris",
     "wireplumber",
     "backlight",
@@ -28,8 +30,46 @@
 		"custom/notification",
 		"tray"
 	],
+  "group/hardware": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu",
+      "temperature",
+      "memory",
+      "custom/gpu",
+      "disk"
+      // "network"
+    ]
+  },
+  "group/actions": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 200,
+        "children-class": "hardware-child",
+        "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/updates",
+      "custom/kill"
+    ]
+  },
+  "group/power": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 200,
+        "children-class": "power-child",
+        "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/shutdown",
+      "custom/reboot",
+      "custom/lock",
+      "custom/suspend",
+      "custom/exit"
+    ]
+  },
 	"hyprland/workspaces": {
-		"format": "{icon}",
+		"format": " {icon} ",
 		"format-icons": {
 			"1": "",
 			"2": "",
@@ -55,12 +95,13 @@
 			]
 		}
 	},
+  "custom/line": {
+    "format": "│",
+    "tooltip": false
+  },
 	"hyprland/window": {
 		"format": "{}",
 		"max-length": 50,
-		"rewrite": {
-			"foot": "Footerminal"
-		},
     "icon": true,
     "icon-size": 15,
     "on-click": "$HOME/.config/scripts/fuzzel-windows.sh",
@@ -86,7 +127,7 @@
 	},
 	"tray": {
 		"icon-size": 15,
-		"spacing": 10,
+		"spacing": 15,
     "show-passive-items": false
 	},
 	"clock": {
@@ -171,9 +212,16 @@
     "interval" : "once",
     "exec" : "$HOME/.config/scripts/check-updates.sh",
     "return-type" : "json",
-    "on-click" : "hyprctl dispatch exec \"[float] alacritty -e paru\" && pkill -SIGRTMIN+10 waybar",
+    "on-click" : "hyprctl dispatch exec \"[float] foot -e paru\" && pkill -SIGRTMIN+10 waybar",
     "signal" : 10 // So we can refresh on signal from the script
 	},
+  "custom/kill": {
+		"format": " {icon} ",
+		"tooltip": true,
+    "tooltip-format": "Kill process",
+		"format-icons": "󱎘",
+    "on-click" : "$HOME/.config/scripts/fuzzel-kill.sh"
+  },
 	"custom/shutdown": {
 		"format": " {icon} ",
 		"format-icons": "",
@@ -204,31 +252,16 @@
 		"tooltip-format": "Exit",
 		"on-click": "uwsm stop"
 	},
-  "group/power": {
-    "orientation": "inherit",
-    "drawer": {
-        "transition-duration": 200,
-        "children-class": "power-child",
-        "transition-left-to-right": true
-    },
-    "modules": [
-      "custom/shutdown",
-      "custom/reboot",
-      "custom/lock",
-      "custom/suspend",
-      "custom/exit"
-    ]
-  },
 	"cpu": {
 		"format": " {usage}%  ",
 		"tooltip": true,
-		"on-click": "alacritty -e btop",
+		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 5
 	},
 	"memory": {
 		"format": " {}%  ",
 		"tooltip": true,
-		"on-click": "alacritty -e btop",
+		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 5
 	},
 	"temperature": {
@@ -242,18 +275,18 @@
 			""
 		],
     "tooltip" : false,
-		"on-click": "alacritty -e btop",
+		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 5
 	},
   "disk": {
     "interval": 3600,
     "format": " {percentage_used}%  ",
     "path": "/",
-		"on-click": "alacritty -e btop"
+		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\""
   },
   "network": {
     "format": " {bandwidthDownBits}  {bandwidthUpBits}  ",
-		"on-click": "alacritty -e btop",
+		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "tooltip-format": "{ifname} via {gwaddr}"
   },
   "custom/gpu": {
@@ -261,7 +294,7 @@
     "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
     "interval": 5,
     "tooltip": false,
-		"on-click": "alacritty -e btop"
+		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\""
   },
   "battery": {
     "interval": 30,
@@ -278,22 +311,6 @@
 			""
 		],
 		"max-length": 25,
-		"on-click": "alacritty -e btop"
-	},
-  "group/hardware": {
-    "orientation": "inherit",
-    // "drawer": {
-    //     "transition-duration": 200,
-    //     "children-class": "hardware-child",
-    //     "transition-left-to-right": true
-    // },
-    "modules": [
-      "cpu",
-      "temperature",
-      "memory",
-      "custom/gpu",
-      "disk",
-      "network"
-    ]
-  }
+		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\""
+	}
 }

@@ -17,6 +17,7 @@ return {
 			["pointer"] = { "fg", "PreProc" },
 			["spinner"] = { "fg", "PreProc" },
 			["header"] = { "fg", "Comment" },
+      ["gutter"] = "-1",
 		},
 		winopts = {
 			border = "none",
@@ -34,7 +35,7 @@ return {
 				horizontal = "right:50%", -- right|left:size
 			},
 		},
-    fzf_opts = { ["--tmux"] = "bottom,20%,100%" },
+    -- fzf_opts = { ["--tmux"] = "bottom,20%,100%" },
 		actions = {
 			files = {
 				true,

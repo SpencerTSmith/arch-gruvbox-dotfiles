@@ -8,8 +8,14 @@
   transition: all 0.2s ease-in-out;
   min-height: 0;
 	border-color: @fg1;
+  margin: 0;
+  padding:0;
 }
 
+tooltip,
+.modules-right,
+.modules-center,
+.modules-left,
 window#waybar {
 	background-color: @bg;
 }
@@ -17,7 +23,6 @@ window#waybar {
 window#waybar.empty #window {
   background-color: transparent;
 	color: transparent;
-	padding: 0;
 }
 
 .modules-left > widget:first-child > #workspaces {
@@ -28,25 +33,17 @@ window#waybar.empty #window {
 	margin-right: 0px;
 }
 
-.modules-right,
-.modules-center,
-.modules-left {
-	background: @bg;
-	border-bottom-width: 2px;
+#tray {
+	padding-right: 0.6em;
+	padding-left: 0.6em;
 }
 
-tooltip {
-	background: @bg;
+#tray > .passive {
+	-gtk-icon-effect: dim;
 }
 
-#battery:hover, #cpu:hover, #memory:hover,
-#temperature:hover, #wireplumber:hover,
-#clock:hover, #window:hover,
-#custom-shutdown:hover, #custom-updates:hover,
-#custom-notification:hover, #disk:hover,
-#network:hover, #custom-gpu:hover,
-#mpris:hover, #backlight:hover {
-  background-color: @bg1;
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
 }
 
 #window {
@@ -54,12 +51,34 @@ tooltip {
 	padding-left:0.6em;
 }
 
+#battery,
+#cpu,
+#memory,
+#temperature,
+#wireplumber,
+#clock,
 #custom-shutdown,
+#custom-updates,
+#custom-notification,
+#disk,
+#network,
+#custom-gpu,
+#mpris,
+#backlight {
+  background-color: @bg;
+}
+
+#window,
+#custom-shutdown,
+#custom-kill,
 #custom-reboot,
 #custom-lock,
 #custom-suspend,
 #custom-updates,
-#custom-exit,
+#custom-exit {
+	background-color: @bg;
+}
+
 #tray,
 #workspaces {
 	background-color: @bg2;
@@ -67,14 +86,37 @@ tooltip {
 
 #custom-shutdown:hover,
 #custom-updates:hover,
+#custom-kill:hover,
 #custom-reboot:hover,
 #custom-lock:hover,
 #custom-suspend:hover,
 #custom-updates:hover,
 #custom-exit:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#wireplumber:hover,
+#clock:hover,
+#window:hover,
+#custom-shutdown:hover,
+#custom-updates:hover,
+#custom-notification:hover,
+#disk:hover,
+#network:hover,
+#custom-gpu:hover,
+#mpris:hover,
+#backlight:hover {
+  background-color: @bg1;
+}
+
 #tray:hover,
 #workspaces:hover {
   background-color: @bg3;
+}
+
+hardware {
+  background-color: @green;
 }
 
 #workspaces button.active label {
@@ -113,19 +155,6 @@ tooltip {
 	color: @red;
 }
 
-#tray {
-	padding-right: 0.6em;
-	padding-left: 0.6em;
-}
-
-#tray > .passive {
-	-gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-	-gtk-icon-effect: highlight;
-}
-
 #custom-notification {
 	color: @aqua;
 }
@@ -161,6 +190,10 @@ tooltip {
 
 #custom-updates.updates-available {
 	color: @yellow;
+}
+
+#custom-kill {
+	color: @red;
 }
 
 #battery {

@@ -125,17 +125,6 @@ return {
 			contrast = "", -- can be "hard", "soft" or empty string
 			palette_overrides = {},
 			overrides = {
-				SignColumn = { bg = "#282828" },
-				ColorColumn = { bg = "#282828" },
-				FoldColumn = { bg = "#282828" },
-				CursorLineNr = { bg = "#282828" },
-				GruvboxRedSign = { bg = "#282828" },
-				GruvboxGreenSign = { bg = "#282828" },
-				GruvboxYellowSign = { bg = "#282828" },
-				GruvboxBlueSign = { bg = "#282828" },
-				GruvboxPurpleSign = { bg = "#282828" },
-				GruvboxAquaSign = { bg = "#282828" },
-				GruvboxOrangeSign = { bg = "#282828" },
 			},
 			dim_inactive = false,
 			transparent_mode = false,
@@ -144,7 +133,6 @@ return {
 			require("gruvbox").setup(opts)
 			vim.cmd.colorscheme("gruvbox")
       vim.cmd('hi Normal ctermbg=NONE guibg=NONE')
-      -- vim.cmd('hi NonText ctermbg=NONE guibg=NONE')
 		end,
 	},
 }
