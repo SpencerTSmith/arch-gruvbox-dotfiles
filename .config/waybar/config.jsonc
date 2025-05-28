@@ -62,7 +62,7 @@
 			"foot": "Footerminal"
 		},
     "icon": true,
-    "icon-size": 20,
+    "icon-size": 15,
     "on-click": "$HOME/.config/scripts/fuzzel-windows.sh",
     "tooltip": false,
 		"separate-outputs": true
@@ -85,7 +85,7 @@
 		"dynamic-separator": " - "
 	},
 	"tray": {
-		"icon-size": 20,
+		"icon-size": 15,
 		"spacing": 10,
     "show-passive-items": false
 	},
