@@ -90,7 +90,7 @@
     "show-passive-items": false
 	},
 	"clock": {
-		"format": " {:%I:%M %p}  ",
+		"format": " {:%I:%M %p}  ",
 		"format-alt": " {:%A, %B %d, %Y (%R)}  ",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {

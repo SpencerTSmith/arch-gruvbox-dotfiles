@@ -25,3 +25,6 @@ export MOZ_ENABLE_WAYLAND=1
 
 export XCURSOR_THEME=Capitaine Cursors (Gruvbox) - White
 export XCURSOR_SIZE=15
+
+export HYPRCURSOR_THEME=Hyprcursor-Capitaine-Gruvbox-White
+export HYPRCURSOR_SIZE=15
