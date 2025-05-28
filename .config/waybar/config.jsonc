@@ -9,6 +9,7 @@
 	"margin-left": 0,
 	"margin-bottom": 0,
 	"reload_style_on_change": true,
+  "fixed-center": true,
 	"modules-left": [
 		"hyprland/workspaces",
     "group/hardware",
@@ -17,11 +18,11 @@
 	"modules-center": [
 		"custom/updates",
 		"hyprland/window",
-		"custom/power"
+    "group/power"
 	],
 	"modules-right": [
     "mpris",
-		"wireplumber",
+    "wireplumber",
     "backlight",
 		"clock",
 		"custom/notification",
@@ -57,18 +58,13 @@
 	"hyprland/window": {
 		"format": "{}",
 		"max-length": 50,
-		// "rewrite": {
-		// 	"Mozilla Firefox": "",
-		// 	"(.*) — Mozilla Firefox": "",
-		// 	"nvim(.*)": "",
-		// 	"Steam": "",
-		// 	"(.*)Spotify(.*)": "",
-		// 	"(.*) thunar": "",
-		// 	"(.*).pdf": "",
-		// 	"Alacritty": ""
-		// },
+		"rewrite": {
+			"foot": "Footerminal"
+		},
     "icon": true,
-    "icon-size": 15,
+    "icon-size": 20,
+    "on-click": "$HOME/.config/scripts/fuzzel-windows.sh",
+    "tooltip": false,
 		"separate-outputs": true
 	},
 	"mpris": {
@@ -89,7 +85,7 @@
 		"dynamic-separator": " - "
 	},
 	"tray": {
-		"icon-size": 15,
+		"icon-size": 20,
 		"spacing": 10,
     "show-passive-items": false
 	},
@@ -118,44 +114,36 @@
 			"on-scroll-down": "shift_down"
 		}
 	},
-	"cpu": {
-		"format": " {usage}%  ",
-		"tooltip": true,
-		"on-click": "alacritty -e btop",
-    "interval": 5
-	},
-	"memory": {
-		"format": " {}%  ",
-		"tooltip": true,
-		"on-click": "alacritty -e btop",
-    "interval": 5
-	},
-	"temperature": {
-		"thermal-zone": 2,
-		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input",
-		"critical-threshold": 90,
-		"format": " {temperatureC}°C {icon} ",
-		"format-icons": [
-			"",
-			"",
-			""
-		],
-    "tooltip" : false,
-		"on-click": "alacritty -e btop",
-    "interval": 5
-	},
 	"wireplumber": {
 		"format": " {volume}% {icon} ",
 		"tooltip": true,
-		"max-volume": 150,
+		"max-volume": 120,
+    "scroll-step": 5,
 		"on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
 		"format-icons": [
-			"",
-			"",
-			""
-		]
+      "",
+      "",
+      ""
+    ]
 	},
+  "backlight": {
+    "device": "intel_backlight",
+    "format": " {percent}% {icon} ",
+    "format-icons": [
+      "󰃚",
+      "󰃛",
+      "󰃜",
+      "󰃝",
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "on-scroll-up": "brightnessctl set +1%",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "smooth-scrolling-threshold": 1,
+    "tooltip": false
+  },
 	"custom/notification": {
 		"tooltip": false,
 		"format": " {} {icon} ",
@@ -186,28 +174,76 @@
     "on-click" : "hyprctl dispatch exec \"[float] alacritty -e paru\" && pkill -SIGRTMIN+10 waybar",
     "signal" : 10 // So we can refresh on signal from the script
 	},
-	"custom/power": {
+	"custom/shutdown": {
 		"format": " {icon} ",
 		"format-icons": "",
-		"tooltip-format": "Power",
-		"on-click": "$HOME/.config/scripts/fuzzel-power-menu.sh"
+		"tooltip-format": "Shutdown",
+		"on-click": "systemctl poweroff"
 	},
-  "battery": {
-    "interval": 60,
-    "states": {
-      "warning": 30,
-      "critical": 15
+	"custom/reboot": {
+		"format": " {icon} ",
+		"format-icons": "",
+		"tooltip-format": "Reboot",
+		"on-click": "systemctl reboot"
+	},
+	"custom/lock": {
+		"format": " {icon} ",
+		"format-icons": "",
+		"tooltip-format": "Lock",
+		"on-click": "hyprlock"
+	},
+	"custom/suspend": {
+		"format": " {icon} ",
+		"format-icons": "󰒲",
+		"tooltip-format": "Suspend",
+		"on-click": "systemctl suspend"
+	},
+	"custom/exit": {
+		"format": " {icon} ",
+		"format-icons": "󰍃",
+		"tooltip-format": "Exit",
+		"on-click": "uwsm stop"
+	},
+  "group/power": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 200,
+        "children-class": "power-child",
+        "transition-left-to-right": true
     },
-		"format": " {capacity}% {icon} ",
+    "modules": [
+      "custom/shutdown",
+      "custom/reboot",
+      "custom/lock",
+      "custom/suspend",
+      "custom/exit"
+    ]
+  },
+	"cpu": {
+		"format": " {usage}%  ",
+		"tooltip": true,
+		"on-click": "alacritty -e btop",
+    "interval": 5
+	},
+	"memory": {
+		"format": " {}%  ",
+		"tooltip": true,
+		"on-click": "alacritty -e btop",
+    "interval": 5
+	},
+	"temperature": {
+		"thermal-zone": 2,
+		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input",
+		"critical-threshold": 90,
+		"format": " {temperatureC}°C {icon} ",
 		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
+			"",
+			"",
+			""
 		],
-		"max-length": 25,
-		"on-click": "alacritty -e btop"
+    "tooltip" : false,
+		"on-click": "alacritty -e btop",
+    "interval": 5
 	},
   "disk": {
     "interval": 3600,
@@ -227,28 +263,28 @@
     "tooltip": false,
 		"on-click": "alacritty -e btop"
   },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": " {percent}% {icon} ",
-    "format-icons": [
-      "󰃚",
-      "󰃛",
-      "󰃜",
-      "󰃝",
-      "󰃞",
-      "󰃟",
-      "󰃠"
-    ],
-    "on-scroll-up": "brightnessctl set +1%",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "smooth-scrolling-threshold": 1,
-    "tooltip": false
-  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+		"format": " {capacity}% {icon} ",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"max-length": 25,
+		"on-click": "alacritty -e btop"
+	},
   "group/hardware": {
     "orientation": "inherit",
     // "drawer": {
     //     "transition-duration": 200,
-    //     "children-class": "not-power",
+    //     "children-class": "hardware-child",
     //     "transition-left-to-right": true
     // },
     "modules": [

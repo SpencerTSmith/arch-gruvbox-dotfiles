@@ -37,14 +37,12 @@ window#waybar.empty #window {
 
 tooltip {
 	background: @bg;
-	border-width: 2px;
-  opacity: 0.9;
 }
 
 #battery:hover, #cpu:hover, #memory:hover,
 #temperature:hover, #wireplumber:hover,
 #clock:hover, #window:hover,
-#custom-power:hover, #custom-updates:hover,
+#custom-shutdown:hover, #custom-updates:hover,
 #custom-notification:hover, #disk:hover,
 #network:hover, #custom-gpu:hover,
 #mpris:hover, #backlight:hover {
@@ -56,15 +54,24 @@ tooltip {
 	padding-left:0.6em;
 }
 
-#custom-power,
+#custom-shutdown,
+#custom-reboot,
+#custom-lock,
+#custom-suspend,
 #custom-updates,
+#custom-exit,
 #tray,
 #workspaces {
 	background-color: @bg2;
 }
 
-#custom-power:hover,
+#custom-shutdown:hover,
 #custom-updates:hover,
+#custom-reboot:hover,
+#custom-lock:hover,
+#custom-suspend:hover,
+#custom-updates:hover,
+#custom-exit:hover,
 #tray:hover,
 #workspaces:hover {
   background-color: @bg3;
@@ -128,8 +135,24 @@ tooltip {
 	color: @red;
 }
 
-#custom-power {
+#custom-shutdown {
 	color: @green;
+}
+
+#custom-reboot {
+	color: @yellow;
+}
+
+#custom-suspend {
+	color: @aqua;
+}
+
+#custom-lock {
+	color: @purple;
+}
+
+#custom-exit {
+	color: @orange;
 }
 
 #custom-updates {

@@ -22,6 +22,10 @@
   /* overflow: hidden; */
 }
 
+.widget-title {
+  color: @orange;
+}
+
 .control-center,
 .control-center .notification-row,
 .close-button,
@@ -35,8 +39,7 @@
 .widget-buttons-grid > flowbox > flowboxchild > button,
 .control-center-dnd,
 .control-center-clear-all {
-  background: @bg;
-  opacity: 0.90;
+  background: rgba(40, 40, 40, 0.9);
 }
 
 .control-center .notification-row:focus,
