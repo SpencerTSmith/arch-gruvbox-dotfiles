@@ -40,6 +40,7 @@ vim.opt.showbreak = "↪"
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
 vim.o.timeoutlen = 300
+vim.o.ttimeoutlen = 0
 
 -- status line does it
 vim.o.showmode = false

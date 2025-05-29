@@ -10,6 +10,10 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zmodload zsh/complist
 compinit
 
+# Plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Vim key binds
 bindkey -v
 bindkey -M menuselect 'h' vi-backward-char
@@ -17,6 +21,8 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+
+KEYTIMEOUT=1
 
 zle-yank-to-clipboard() {
     # Yank the current line into a variable
@@ -55,10 +61,6 @@ export MANROFFOPT="-c"
 
 export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
 
-# Plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Aliases
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME' # dotfiles repo
 alias ..='cd ..'
@@ -89,6 +91,8 @@ alias gp='git push'
 alias gs='git status'
 
 alias tma='tmux attach-session -t SCRATCH || tmux new-session -s SCRATCH'
+
+eval "$(zoxide init zsh)"
 
 # Sourcing multiple times will redefine starship... stop that
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
