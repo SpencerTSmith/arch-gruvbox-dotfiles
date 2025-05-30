@@ -66,7 +66,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME' # dotfil
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-alias ~='cd ~'
 
 alias mkdir='mkdir -pv'
 alias rm='rm -iv'

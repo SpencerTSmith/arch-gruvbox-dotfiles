@@ -50,7 +50,9 @@
     },
     "modules": [
       "custom/updates",
-      "custom/kill"
+      "custom/kill",
+      "custom/wallpaper",
+      "custom/hyprpicker"
     ]
   },
   "group/power": {
@@ -221,6 +223,20 @@
     "tooltip-format": "Kill process",
 		"format-icons": "󱎘",
     "on-click" : "$HOME/.config/scripts/fuzzel-kill.sh"
+  },
+  "custom/wallpaper": {
+		"format": " {icon} ",
+		"tooltip": true,
+    "tooltip-format": "Change wallpaper",
+		"format-icons": "",
+    "on-click" : "$HOME/.config/scripts/fuzzel-wallpaper.sh"
+  },
+  "custom/hyprpicker": {
+		"format": " {icon} ",
+		"tooltip": true,
+    "tooltip-format": "Color picker",
+		"format-icons": "",
+    "on-click" : "hyprpicker -laq"
   },
 	"custom/shutdown": {
 		"format": " {icon} ",

@@ -48,7 +48,7 @@ return {
 	keys = {
 		{ "<leader>f", "", desc = "Find: " },
 		{
-			"<leader>fh",
+			"<leader>fH",
 			"<cmd>FzfLua help_tags<cr>",
 			desc = "Find: help",
 		},
@@ -56,6 +56,11 @@ return {
 			"<leader>ff",
 			"<cmd>FzfLua files<cr>",
 			desc = "Find: files",
+		},
+		{
+			"<leader>fh",
+			"<cmd>FzfLua files cwd=~<cr>",
+			desc = "Find: files in home",
 		},
 		{
 			"<leader>fg",

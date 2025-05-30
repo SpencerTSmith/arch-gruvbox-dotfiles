@@ -14,10 +14,9 @@ export SDL_VIDEODRIVER=wayland,x11,*
 export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
 
 export GDK_BACKEND=wayland,x11,*
-export GTK_THEME=Gruvbox-Dark-Medium
 
-export QT_QPA_PLATFORMTHEME=qt6ct
-export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=gtk
+export QT_STYLE_OVERRIDE=adwaita-dark
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
