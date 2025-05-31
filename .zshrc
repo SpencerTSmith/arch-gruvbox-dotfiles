@@ -94,6 +94,7 @@ export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || r
 
 # Aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME' # dotfiles repo
+
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
