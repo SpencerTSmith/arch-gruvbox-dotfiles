@@ -134,12 +134,12 @@ window#waybar.empty #window {
 	color: @red;
 }
 
-#cpu,
 #custom-shutdown,
 #mpris {
 	color: @green;
 }
 
+#cpu,
 #wireplumber,
 #custom-reboot,
 #custom-updates.updates-available,

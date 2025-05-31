@@ -1,12 +1,33 @@
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTFILE=~/.zsh_hist
+HISTSIZE=10000
+SAVEHIST=10000
+HISTDUP=erase
+KEYTIMEOUT=1
 ZLE_RPROMPT_INDENT=0
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt hist_reduce_blanks
+setopt auto_cd
+setopt correct
+setopt glob_dots
+setopt IGNORE_EOF
 
 # Completions
 autoload -U compinit
 zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:warnings' format 'No matches: %d'
 zmodload zsh/complist
 compinit
 
@@ -20,13 +41,15 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey '^N' expand-or-complete
+bindkey '^P' reverse-menu-complete
+bindkey -M menuselect '^N' menu-complete
+bindkey -M menuselect '^P' reverse-menu-complete
 bindkey -v '^?' backward-delete-char
-
-KEYTIMEOUT=1
+bindkey -M vicmd 'k' history-search-backward
+bindkey -M vicmd 'j' history-search-forward
 
 zle-yank-to-clipboard() {
-    # Yank the current line into a variable
-    BUFFER=$(print -rn -- "$BUFFER")
     # Copy the content to the clipboard
     echo -n "$BUFFER" | wl-copy
 }
@@ -41,7 +64,15 @@ zle-paste-from-clipboard() {
 zle -N zle-paste-from-clipboard
 bindkey -M vicmd 'p' zle-paste-from-clipboard
 
-setopt IGNORE_EOF
+zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;      # block
+        viins|main) echo -ne '\e[5 q';; # beam
+    esac
+}
+zle -N zle-keymap-select
+zle-line-init() { echo -ne "\e[5 q"; }
+zle -N zle-line-init
 
 # Annoying ass
 stty -ixon
@@ -62,7 +93,7 @@ export MANROFFOPT="-c"
 export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
 
 # Aliases
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME' # dotfiles repo
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME' # dotfiles repo
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'

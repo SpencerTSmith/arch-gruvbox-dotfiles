@@ -10,26 +10,11 @@ return {
 			{ "hrsh7th/cmp-calc" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-emoji" },
-			{
-				"L3MON4D3/LuaSnip",
-				lazy = true,
-				run = "make install_jsregexp",
-				dependencies = {
-					"saadparwaiz1/cmp_luasnip",
-				},
-			},
 		},
 		config = function()
 			local cmp = require("cmp")
-			local luasnip = require("luasnip")
 
 			cmp.setup({
-				snippet = {
-					-- REQUIRED - you must specify a snippet engine
-					expand = function(args)
-						vim.snippet.expand(args.body)
-					end,
-				},
 				window = {},
 				completion = { completeopt = "menu,menuone,noinsert,noselect,fuzzy,popup" },
 				mapping = cmp.mapping.preset.insert({
@@ -40,17 +25,6 @@ return {
 					["<C-y>"] = cmp.mapping.confirm({ select = true }),
 					["<C-n>"] = cmp.mapping.select_next_item(),
 					["<C-p>"] = cmp.mapping.select_prev_item(),
-					-- snippet jumps
-					["<C-l>"] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						end
-					end, { "i", "s" }),
-					["<C-h>"] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						end
-					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
