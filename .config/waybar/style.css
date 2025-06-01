@@ -74,6 +74,7 @@ window#waybar.empty #window {
 #custom-suspend,
 #custom-updates,
 #custom-wallpaper,
+#custom-hyprsunset,
 #backlight,
 #custom-exit {
   background-color: @bg;
@@ -102,6 +103,7 @@ window#waybar.empty #window {
 #disk:hover,
 #network:hover,
 #custom-gpu:hover,
+#custom-hyprsunset:hover,
 #mpris:hover,
 #backlight:hover {
   background-color: @bg1;
@@ -142,6 +144,7 @@ window#waybar.empty #window {
 #cpu,
 #wireplumber,
 #custom-reboot,
+#custom-hyprsunset,
 #custom-updates.updates-available,
 #battery.warning,
 #network {

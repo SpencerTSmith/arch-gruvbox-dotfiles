@@ -4,8 +4,8 @@ SAVEHIST=10000
 HISTDUP=erase
 KEYTIMEOUT=1
 ZLE_RPROMPT_INDENT=0
-setopt appendhistory
-setopt sharehistory
+setopt append_history
+setopt share_history
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -15,6 +15,9 @@ setopt hist_reduce_blanks
 setopt auto_cd
 setopt correct
 setopt glob_dots
+setopt always_to_end
+setopt complete_aliases
+setopt auto_menu
 setopt IGNORE_EOF
 
 # Completions

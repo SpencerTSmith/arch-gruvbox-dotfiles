@@ -56,7 +56,8 @@
       "custom/updates",
       "custom/kill",
       "custom/wallpaper",
-      "custom/hyprpicker"
+      "custom/hyprpicker",
+      "custom/hyprsunset"
     ]
   },
   "group/power": {
@@ -237,6 +238,13 @@
     "tooltip-format": "Color picker",
 		"format-icons": "",
     "on-click" : "hyprpicker -laq"
+  },
+  "custom/hyprsunset": {
+		"format": " {icon} ",
+		"tooltip": true,
+    "tooltip-format": "Toggle color temperature",
+		"format-icons": "",
+    "on-click" : "hyprctl hyprsunset temperature 3500"
   },
 	"custom/shutdown": {
 		"format": " {icon} ",
