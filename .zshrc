@@ -1,4 +1,4 @@
-HISTFILE=~/.zsh_hist
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 HISTDUP=erase
@@ -19,6 +19,12 @@ setopt always_to_end
 setopt complete_aliases
 setopt auto_menu
 setopt IGNORE_EOF
+setopt auto_param_slash
+setopt no_case_glob
+setopt no_case_match
+setopt globdots
+setopt extended_glob
+setopt interactive_comments
 
 # Completions
 autoload -U compinit

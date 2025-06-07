@@ -5,9 +5,6 @@
 		"color": {
 			"1": "green",
 			"2": "yellow"
-		},
-		"padding": {
-			"top": 1
 		}
 	},
 	"display": {
@@ -26,7 +23,6 @@
 		},
 		{
 			"type": "packages",
-			"format": "{} (pacman)",
 			"key": " ├ 󰏖 ",
 			"keyColor": "31",
 		},
@@ -57,13 +53,13 @@
 			"keyColor": "32",
 		},
 		{
-			"type": "terminal",
-			"key": " ├  ",
+			"type": "terminalfont",
+			"key": " ├  ",
 			"keyColor": "32",
 		},
 		{
-			"type": "terminalfont",
-			"key": " └  ",
+			"type": "terminal",
+			"key": " └  ",
 			"keyColor": "32",
 		},
 		"break",
@@ -91,11 +87,6 @@
 			"keyColor": "33",
 		},
 		{
-			"type": "swap",
-			"key": " ├ 󰓡 ",
-			"keyColor": "33",
-		},
-		{
 			"type": "disk",
 			"key": " ├ 󰋊 ",
 			"keyColor": "33",
@@ -106,5 +97,6 @@
 			"keyColor": "33",
 		},
 		"break",
+    "colors"
 	]
 }

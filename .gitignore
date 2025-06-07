@@ -1,9 +1,13 @@
 *
 !.gitignore
 !.icons
+!.themes
+!.local/share/themes
+!.local/share/themes/*
+!.local/share/icons
+!.local/share/icons/*
 !.zprofile
 !.zshrc
-!.themes
 !.config
 !.config/Kvantum
 !.config/Kvantum/*
