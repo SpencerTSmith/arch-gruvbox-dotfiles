@@ -1,5 +1,5 @@
 *
-!.gitignore
+!.zshenv
 !.icons
 !.themes
 !.local
@@ -8,9 +8,12 @@
 !.local/share/themes/*
 !.local/share/icons
 !.local/share/icons/*
-!.zprofile
-!.zshrc
 !.config
+!.config/git
+!.config/zsh
+!.config/zsh/.zshrc
+!.config/zsh/.zprofile
+!.config/git/*
 !.config/Kvantum
 !.config/Kvantum/*
 !.config/foot
