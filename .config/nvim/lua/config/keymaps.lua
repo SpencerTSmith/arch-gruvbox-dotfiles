@@ -27,6 +27,61 @@ vim.keymap.set("n", "N", "Nzz")
 
 vim.keymap.set("x", "gp", [["_dP]], { desc = "Paste without replacing register" })
 
+-- function align_equals()
+--   -- visual selection
+--   local start_line = vim.fn.line("'<")
+--   local end_line   = vim.fn.line("'>")
+-- 
+--   -- all the lines in the selection
+--   local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+-- 
+--   local max_pos = 0
+--   local line_data = {}
+-- 
+--   -- go through each looking for equals to balance
+--   for i, line in ipairs(lines) do
+--     local equals_pos = string.find(line, "=")
+--     if equals_pos then
+--       -- we have an equal sign, split them up and insert into table
+--       local before_equals = string.match(line, "^(.-)%s*=")
+--       if before_equals then
+--         local trimmed_pos = string.len(before_equals)
+--         max_pos = math.max(max_pos, trimmed_pos) -- update max position
+-- 
+--         local after_equals = string.match(line, "=%s*(.*)")
+--         table.insert(line_data, {
+--           before = before_equals,
+--           after = after_equals or "",
+--           original_line = i
+--         })
+--       end
+--     else
+--       -- don't change if no equals
+--       table.insert(line_data, {
+--         before = line,
+--         after = nil,
+--         original_line = i
+--       })
+--     end
+--   end
+-- 
+--   local new_lines = {}
+--   -- construct, add padding to the max length
+--   for _, data in ipairs(line_data) do
+--     if data.after ~= nil then
+--       local padding = string.rep(" ", max_pos - string.len(data.before))
+--       local new_line = data.before .. padding .. " = " .. data.after
+--       table.insert(new_lines, new_line)
+--     else
+--         table.insert(new_lines, data.before)
+--     end
+--   end
+-- 
+--     vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, new_lines)
+-- end
+-- vim.api.nvim_create_user_command('AlignEquals', align_equals(), { range = true })
+-- vim.keymap.set("x", "gb", ":<C-u>lua align_equals()<CR>", {desc = "Balance ="})
+
 local diagnostics_enabled = true
 
 vim.keymap.set("n", "<leader>td", function()

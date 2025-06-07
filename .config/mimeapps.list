@@ -1,15 +1,29 @@
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop
-text/plain=nvim.desktop
-inode/directory=thunar.desktop
-x-scheme-handler=http=firefox.desktop
-x-scheme-handler=https=firefox.desktop
+
+text/plain=neovim.desktop
+
+inode/directory=nemo.desktop
+
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/about=firefox.desktop;
+x-scheme-handler/unknown=firefox.desktop;
+
 image/jpeg=imv.desktop
 image/png=imv.desktop
 image/gif=imv.desktop
 image/bmp=imv.desktop
+image/svg=imv.desktop
+
+audio/mpeg = celluloid.desktop;
+audio/flac = celluloid.desktop;
+audio/ogg = celluloid.desktop;
 video/mp4=celluloid.desktop
+video/x-matroska=celluloid.desktop
 video/webm=celluloid.desktop
+
+x-scheme-handler/magnet = transmission-gtk.desktop;
 
 [Added Associations]
 

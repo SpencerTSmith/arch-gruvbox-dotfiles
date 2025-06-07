@@ -136,6 +136,14 @@
   --scrollbar-outline-color: @scrollbar_outline_color;
 }
 
+tooltip {
+  background-color: @dialog_bg_color;
+}
+
+tooltip * {
+  color: @window_fg_color;
+}
+
 button.titlebutton.close,
 windowcontrols > button.close > image,
 button.titlebutton.close:hover:backdrop,

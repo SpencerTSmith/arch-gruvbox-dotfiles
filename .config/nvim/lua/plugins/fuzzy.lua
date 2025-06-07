@@ -3,7 +3,6 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	lazy = false,
 	opts = {
-    fzf_bin = 'sk',
 		fzf_colors = {
 			true,
 			["fg"] = { "fg", "CursorLine" },
@@ -35,7 +34,7 @@ return {
 				horizontal = "right:50%", -- right|left:size
 			},
 		},
-    fzf_opts = { ["--tmux"] = "bottom,20%,100%" },
+    fzf_opts = { ["--tmux"] = "bottom,100%,20%" },
 		actions = {
 			files = {
 				true,

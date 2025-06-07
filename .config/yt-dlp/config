@@ -1,1 +1,1 @@
--o ~/Videos/%(title)s.%(ext)s
+-o $XDG_VIDEOS_DIR/yt-dlp/%(title)s.%(ext)s
