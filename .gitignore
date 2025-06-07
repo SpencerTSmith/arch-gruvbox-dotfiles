@@ -2,6 +2,8 @@
 !.gitignore
 !.icons
 !.themes
+!.local
+!.local/share
 !.local/share/themes
 !.local/share/themes/*
 !.local/share/icons
