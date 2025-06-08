@@ -77,16 +77,6 @@ zle-paste-from-clipboard() {
 zle -N zle-paste-from-clipboard
 bindkey -M vicmd 'p' zle-paste-from-clipboard
 
-zle-keymap-select () {
-    case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
-        viins|main) echo -ne '\e[5 q';; # beam
-    esac
-}
-zle -N zle-keymap-select
-zle-line-init() { echo -ne "\e[5 q"; }
-zle -N zle-line-init
-
 # Annoying ass
 stty -ixon
 
@@ -155,14 +145,22 @@ alias gp='git push'
 alias gs='git status'
 alias tma='tmux attach-session -t SCRATCH || tmux new-session -s SCRATCH'
 
-eval "$(zoxide init zsh)"
+# Prompt
+zle -N zle-keymap-select
+zle-line-init() { echo -ne "\e[5 q"; }
+zle -N zle-line-init
+zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;      # block
+        viins|main) echo -ne '\e[5 q';; # beam
+    esac
 
-# Sourcing multiple times will redefine starship... stop that
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
-fi
-eval "$(starship init zsh)"
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+
+setopt prompt_subst
+PROMPT='%B%F{15}[%F{10}%n%F{15}@%F{208}%m %F{11}%~%F{15}]%(?.%F{12}.%F{9})$%f%b '
 
 # Message
 phrases.sh
