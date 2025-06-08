@@ -1,4 +1,5 @@
-HISTFILE="$ZDOTDIR/.zsh_history"
+[ -d "$XDG_STATE_HOME"/zsh ] || mkdir -p "$XDG_STATE_HOME"/zsh
+HISTFILE="$XDG_STATE_HOME"/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
 HISTDUP=erase
@@ -27,7 +28,7 @@ setopt extended_glob
 setopt interactive_comments
 
 # Completions
-[ -d "$XDG_STATE_HOME"/zsh ] || mkdir -p "$XDG_STATE_HOME"/zsh
+[ -d "$XDG_CACHE_HOME"/zsh ] || mkdir -p "$XDG_CACHE_HOME"/zsh
 autoload -U compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
@@ -102,7 +103,36 @@ export PATH="$HOME/.config/scripts/:$PATH"
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-c"
 
+# Clean home
+export GOPATH="$XDG_DATA_HOME"/go
+export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
+export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc":"$XDG_CONFIG_HOME/gtk-2.0/gtkrc.mine"
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export FFMPEG_DATADIR="$XDG_CONFIG_HOME"/ffmpeg
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export PYTHON_EGG_CACHE="$XDG_CACHE_HOME"/python-eggs
+export PYENV_ROOT=$XDG_DATA_HOME/pyenv
+export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
+export PYTHON_HISTORY=$XDG_STATE_HOME/python_history
+export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
+export PYTHONUSERBASE=$XDG_DATA_HOME/python
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
+export RUFF_CACHE_DIR=$XDG_CACHE_HOME/ruff
+export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
+
 # Aliases
+alias vi='nvim'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+
+alias neofetch='fastfetch --config neofetch.jsonc'
+
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME' # dotfiles repo
 
 alias mkdir='mkdir -pv'
@@ -115,7 +145,7 @@ alias ls='eza --icons --group-directories-first --color=auto'
 alias la='eza -alh --icons --group-directories-first --color=auto'
 alias tree="eza -T --icons --group-directories-first --color=auto"
 
-# Git
+# Convenience
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
@@ -124,7 +154,6 @@ alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
 alias gs='git status'
-
 alias tma='tmux attach-session -t SCRATCH || tmux new-session -s SCRATCH'
 
 eval "$(zoxide init zsh)"

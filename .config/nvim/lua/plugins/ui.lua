@@ -31,27 +31,13 @@ return {
         conceallevel = 3,
         concealcursor = "nvic",
       },
-			view_options = {
-				show_hidden = true,
-			},
-			float = {
-				border = "single",
-			},
-			preview = {
-				border = "single",
-			},
-			confirmation = {
-				border = "single",
-			},
-			progress = {
-				border = "single",
-			},
-			ssh = {
-				border = "single",
-			},
-			keymaps_help = {
-				border = "single",
-			},
+			view_options = { show_hidden = true, },
+			float = { border = "single", },
+			preview = { border = "single", },
+			confirmation = { border = "single", },
+			progress = { border = "single", },
+			ssh = { border = "single", },
+			keymaps_help = { border = "single", },
 			keymaps = {
 				["<C-h>"] = false,
 				["<C-l>"] = false,
@@ -86,7 +72,6 @@ return {
 		opts = function()
 			local custom_gruvbox = require("lualine.themes.gruvbox")
 			custom_gruvbox.normal.a.bg = "#FABD2F"
-			custom_gruvbox.normal.a.fg = "#282828"
 			local opts = {
 				options = {
 					theme = custom_gruvbox,
@@ -124,8 +109,7 @@ return {
 			inverse = true, -- invert background for search, diffs, statuslines and errors
 			contrast = "", -- can be "hard", "soft" or empty string
 			palette_overrides = {},
-			overrides = {
-			},
+			overrides = {},
 			dim_inactive = false,
 			transparent_mode = false,
 		},

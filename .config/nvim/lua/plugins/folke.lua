@@ -11,11 +11,7 @@ return {
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
 			notifier = { enabled = true },
-			styles = {
-				notification = {
-					border = "single",
-				},
-			},
+			styles = { notification = { border = "single", }, },
 			rename = { enabled = true },
 		},
 	},

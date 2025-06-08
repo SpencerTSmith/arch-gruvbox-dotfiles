@@ -2,7 +2,9 @@
 .config/gtk-3.0/bookmarks
 !.zshenv
 !.icons
+!.icons/**
 !.themes
+!.themes/**
 !.local
 !.local/share
 !.local/share/themes

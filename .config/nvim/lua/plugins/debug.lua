@@ -37,7 +37,7 @@ return {
 			end,
 		},
 		"nvim-neotest/nvim-nio",
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		{ "jay-babu/mason-nvim-dap.nvim", opts = { ensure_installed = { "cpptools" } } },
 	},
 	keys = {
@@ -163,9 +163,7 @@ return {
 	config = function()
 		require("mason-nvim-dap").setup({
 			automatic_installation = true,
-
 			automatic_setup = true,
-
 			ensure_installed = {
 				"cpptools",
 			},

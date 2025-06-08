@@ -1,2 +1,4 @@
-require("config")
+require("options")
+require("keymaps")
+require("autocmds")
 require("lazynvim")
