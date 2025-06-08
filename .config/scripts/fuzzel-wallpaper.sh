@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-WALLPAPER_DIR=$HOME/.config/wallpapers
-WALLPAPER_DIR_WRITE=\$HOME/.config/wallpapers
+WALLPAPER_DIR=$HOME/Pictures/wallpapers
+WALLPAPER_DIR_WRITE=\$HOME/Pictures/wallpapers
 WALLPAPERS=$(find $WALLPAPER_DIR -type f -printf "%f\n")
 
 HYPRPAPER_DIR=$HOME/.config/hypr/

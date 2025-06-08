@@ -23,8 +23,7 @@
 	"modules-right": [
     "group/actions",
     "custom/line",
-    "mpris",
-    "wireplumber",
+    "group/audio",
     "backlight",
 		"clock",
 		"custom/notification",
@@ -32,11 +31,11 @@
 	],
   "group/hardware": {
     "orientation": "inherit",
-    // "drawer": {
-    //     "transition-duration": 200,
-    //     "children-class": "hardware-child",
-    //     "transition-left-to-right": true
-    // },
+    "drawer": {
+        "transition-duration": 200,
+        "children-class": "hardware-child",
+        "transition-left-to-right": true
+    },
     "modules": [
       "cpu",
       "temperature",
@@ -73,6 +72,18 @@
       "custom/lock",
       "custom/suspend",
       "custom/exit"
+    ]
+  },
+  "group/audio": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 200,
+        "children-class": "hardware-child",
+        "transition-left-to-right": false
+    },
+    "modules": [
+      "wireplumber",
+      "mpris"
     ]
   },
 	"hyprland/workspaces": {

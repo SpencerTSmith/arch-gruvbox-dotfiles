@@ -1,6 +1,9 @@
 *
 .config/gtk-3.0/bookmarks
 !.zshenv
+!Pictures
+!Pictures/wallpapers
+!Pictures/wallpapers/*
 !.local
 !.local/share
 !.local/share/themes

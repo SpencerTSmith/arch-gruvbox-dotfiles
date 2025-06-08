@@ -102,6 +102,7 @@ export PATH="$HOME/.config/scripts/:$PATH"
 
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-c"
+export FZF_DEFAULT_OPTS='--color=16 --tmux "bottom,100%,100%"'
 
 # Clean home
 export GOPATH="$XDG_DATA_HOME"/go
