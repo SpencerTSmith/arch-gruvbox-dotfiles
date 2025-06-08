@@ -98,8 +98,6 @@ bindkey "^L" list-choices
 export EDITOR=nvim
 export VISUAL=nvim
 
-export PATH="$HOME/.config/scripts/:$PATH"
-
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-c"
 export FZF_DEFAULT_OPTS='--color=16 --tmux "bottom,100%,100%"'

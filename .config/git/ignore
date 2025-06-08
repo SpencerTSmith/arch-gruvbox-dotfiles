@@ -10,6 +10,8 @@
 !.local/share/themes/**
 !.local/share/icons
 !.local/share/icons/**
+!.local/bin
+!.local/bin/*
 !.config
 !.config/git
 !.config/zsh
