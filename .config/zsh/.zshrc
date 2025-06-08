@@ -165,4 +165,4 @@ fi
 eval "$(starship init zsh)"
 
 # Message
-~/.config/scripts/phrases.sh
+phrases.sh

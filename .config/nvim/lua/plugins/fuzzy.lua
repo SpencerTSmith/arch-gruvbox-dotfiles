@@ -30,7 +30,7 @@ return {
 			preview = {
 				border = "none",
 				scrollbar = false,
-				horizontal = "right:50%", -- right|left:size
+				horizontal = "right:50%",
 			},
 		},
     fzf_opts = { ["--tmux"] = "bottom,100%,20%" },

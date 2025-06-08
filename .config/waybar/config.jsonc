@@ -122,7 +122,7 @@
 		"max-length": 50,
     "icon": true,
     "icon-size": 15,
-    "on-click": "$HOME/.config/scripts/fuzzel-windows.sh",
+    "on-click": "fuzzel-windows.sh",
     "tooltip": false,
 		"separate-outputs": true
 	},
@@ -224,7 +224,7 @@
 		"tooltip": true,
 		"format-icons": "",
     "interval" : "once",
-    "exec" : "$HOME/.config/scripts/check-updates.sh",
+    "exec" : "check-updates.sh",
     "return-type" : "json",
     "on-click" : "hyprctl dispatch exec \"[float] foot -e paru\" && pkill -SIGRTMIN+10 waybar",
     "signal" : 10 // So we can refresh on signal from the script
@@ -234,14 +234,14 @@
 		"tooltip": true,
     "tooltip-format": "Kill process",
 		"format-icons": "󱎘",
-    "on-click" : "$HOME/.config/scripts/fuzzel-kill.sh"
+    "on-click" : "fuzzel-kill.sh"
   },
   "custom/wallpaper": {
 		"format": " {icon} ",
 		"tooltip": true,
     "tooltip-format": "Change wallpaper",
 		"format-icons": "",
-    "on-click" : "$HOME/.config/scripts/fuzzel-wallpaper.sh"
+    "on-click" : "fuzzel-wallpaper.sh"
   },
   "custom/hyprpicker": {
 		"format": " {icon} ",
@@ -255,7 +255,7 @@
 		"tooltip": true,
     "tooltip-format": "Toggle color temperature",
 		"format-icons": "",
-    "on-click" : "hyprctl hyprsunset temperature 3500"
+    "on-click" : "hyprsunset_toggle.sh"
   },
 	"custom/shutdown": {
 		"format": " {icon} ",
