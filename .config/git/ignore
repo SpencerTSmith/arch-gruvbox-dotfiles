@@ -33,8 +33,9 @@
 !.config/tmux/tmux.conf
 !.config/uwsm
 !.config/uwsm/*
+!.config/nvim
 !.config/nvim/lua
-!.config/nvim/lua/*
+!.config/nvim/lua/**
 !.config/nvim/init.lua
 !.config/hypr
 !.config/hypr/*
