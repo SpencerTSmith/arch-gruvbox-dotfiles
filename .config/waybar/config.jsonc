@@ -265,7 +265,7 @@
 	},
 	"custom/reboot": {
 		"format": " {icon} ",
-		"format-icons": "",
+		"format-icons": "",
 		"tooltip-format": "Reboot",
 		"on-click": "systemctl reboot"
 	},
@@ -277,7 +277,7 @@
 	},
 	"custom/suspend": {
 		"format": " {icon} ",
-		"format-icons": "󰒲",
+		"format-icons": "",
 		"tooltip-format": "Suspend",
 		"on-click": "systemctl suspend"
 	},
@@ -306,7 +306,9 @@
 		"format": " {temperatureC}°C {icon} ",
 		"format-icons": [
 			"",
+			"",
 			"",
+			"",
 			""
 		],
     "tooltip" : false,
@@ -338,6 +340,7 @@
       "critical": 15
     },
 		"format": " {capacity}% {icon} ",
+    "format-charging": " {capacity}%  ",
 		"format-icons": [
 			"",
 			"",

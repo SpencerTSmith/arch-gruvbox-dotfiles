@@ -90,7 +90,7 @@ return {
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
 		opts = {
-			terminal_colors = true, -- add neovim terminal colors
+			terminal_colors = true,
 			undercurl = true,
 			underline = true,
 			bold = true,
@@ -106,17 +106,25 @@ return {
 			invert_signs = false,
 			invert_tabline = false,
 			invert_intend_guides = false,
-			inverse = true, -- invert background for search, diffs, statuslines and errors
-			contrast = "", -- can be "hard", "soft" or empty string
+			inverse = true,
+			contrast = "",
 			palette_overrides = {},
-			overrides = {},
+			overrides = {
+				GruvboxRedSign = { bg = "NONE" },
+				GruvboxGreenSign = { bg = "NONE" },
+				GruvboxYellowSign = { bg = "NONE" },
+				GruvboxBlueSign = { bg = "NONE" },
+				GruvboxPurpleSign = { bg = "NONE" },
+				GruvboxAquaSign = { bg = "NONE" },
+				GruvboxOrangeSign = { bg = "NONE" },
+      },
 			dim_inactive = false,
 			transparent_mode = false,
 		},
 		config = function(_, opts)
 			require("gruvbox").setup(opts)
 			vim.cmd.colorscheme("gruvbox")
-      vim.cmd('hi Normal ctermbg=NONE guibg=NONE')
+		  vim.cmd('hi Normal ctermbg=NONE guibg=NONE')
 		end,
 	},
 }
