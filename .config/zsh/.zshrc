@@ -83,6 +83,8 @@ stty -ixon
 # Swap around ctr l and ctrl d so tmux can still have nice vim keybinds
 bindkey "^D" clear-screen
 bindkey "^L" list-choices
+bindkey -M vicmd "^D" clear-screen
+bindkey -M vicmd "^L" list-choices
 
 # Exports
 export EDITOR=nvim
@@ -160,7 +162,7 @@ zle-keymap-select () {
 zle -N zle-keymap-select
 
 setopt prompt_subst
-PROMPT='%B%F{15}[%F{10}%n%F{15}@%F{208}%m %F{11}%~%F{15}]%(?.%F{12}.%F{9})$%f%b '
+PROMPT='%B%F{9}[%F{11}%n%F{10}@%F{12}%m %F{13}%2~%F{9}]%(?.%F{15}.%F{9})$%f%b '
 
 # Message
 phrases.sh

@@ -24,7 +24,7 @@ CHOICE=$(printf '%s\n' "$MENU" \
 # Act on the choice
 case "$CHOICE" in
     *Update)    hyprctl dispatch exec "[float] foot -e paru" ;;
-    *Wallpaper) $HOME/.config/scripts/fuzzel-wallpaper.sh ;;
+    *Wallpaper) fuzzel-wallpaper.sh ;;
     *Dropper)   hyprpicker -laq ;;
-    *Kill)      $HOME/.config/scripts/fuzzel-kill.sh ;;
+    *Kill)      fuzzel-kill.sh ;;
 esac

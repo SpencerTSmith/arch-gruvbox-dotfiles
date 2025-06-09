@@ -4,13 +4,13 @@
 @define-color destructive_color #83a598;
 @define-color destructive_bg_color mix(#83a598, #282828,0.3);
 @define-color destructive_fg_color #ebdbb2;
-@define-color success_color #8ff0a4;
-@define-color success_bg_color #26a269;
+@define-color success_color #b8bb26;
+@define-color success_bg_color #98971a;
 @define-color success_fg_color #ebdbb2;
-@define-color warning_color #f8e45c;
+@define-color warning_color #fabd2f;
 @define-color warning_bg_color #cd9309;
 @define-color warning_fg_color rgba(0, 0, 0, 0.8);
-@define-color error_color #ff7b63;
+@define-color error_color #fb4934;
 @define-color error_bg_color mix(#83a598, #282828,0.3);
 @define-color error_fg_color #ebdbb2;
 @define-color window_bg_color #282828;
@@ -31,32 +31,32 @@
 @define-color popover_fg_color #ebdbb2;
 @define-color shade_color rgba(0,0,0,0.36);
 @define-color scrollbar_outline_color rgba(0,0,0,0.5);
-@define-color blue_1 #83a598;
+@define-color blue_1 #458588;
 @define-color blue_2 #83a598;
 @define-color blue_3 #83a598;
 @define-color blue_4 #83a598;
 @define-color blue_5 #83a598;
-@define-color green_1 #b8bb26;
+@define-color green_1 #98971a;
 @define-color green_2 #b8bb26;
 @define-color green_3 #b8bb26;
 @define-color green_4 #b8bb26;
 @define-color green_5 #b8bb26;
-@define-color yellow_1 #fabd2f;
+@define-color yellow_1 #d79921;
 @define-color yellow_2 #fabd2f;
 @define-color yellow_3 #fabd2f;
 @define-color yellow_4 #fabd2f;
 @define-color yellow_5 #fabd2f;
-@define-color orange_1 #fe8019;
+@define-color orange_1 #d65d0e;
 @define-color orange_2 #fe8019;
 @define-color orange_3 #fe8019;
 @define-color orange_4 #fe8019;
 @define-color orange_5 #fe8019;
-@define-color red_1 #fb4934;
+@define-color red_1 #cc2412;
 @define-color red_2 #fb4934;
 @define-color red_3 #fb4934;
 @define-color red_4 #fb4934;
 @define-color red_5 #fb4934;
-@define-color purple_1 #d3869b;
+@define-color purple_1 #b16286;
 @define-color purple_2 #d3869b;
 @define-color purple_3 #d3869b;
 @define-color purple_4 #d3869b;
@@ -71,11 +71,16 @@
 @define-color light_3 #d5c4a1;
 @define-color light_4 #bdae93;
 @define-color light_5 #a89984;
-@define-color dark_1 mix(#282828,white,0.5);
-@define-color dark_2 mix(#282828,white,0.2);
-@define-color dark_3 #282828;
-@define-color dark_4 mix(#282828,black,0.2);
-@define-color dark_5 mix(#282828,black,0.4);
+@define-color dark_1 #282828;
+@define-color dark_2 #3c3836;
+@define-color dark_3 #504945;
+@define-color dark_4 #665c54;
+@define-color dark_5 #7c6f64;
+@define-color aqua_1 #689d6a;
+@define-color aqua_2 #8ec07c;
+@define-color aqua_3 #8ec07c;
+@define-color aqua_4 #8ec07c;
+@define-color aqua_5 #8ec07c;
 
 :root {
   --accent-bg-color: @accent_bg_color;
@@ -148,36 +153,36 @@ button.titlebutton.close,
 windowcontrols > button.close > image,
 button.titlebutton.close:hover:backdrop,
 windowcontrols > button.close:hover:backdrop > image {
-  background-color: #cc241d;
+  background-color: @red_1;
 }
 
 button.titlebutton.close:hover,
 windowcontrols > button.close:hover > image {
-  background-color: #fb4934;
+  background-color: @red_1;
 }
 
 button.titlebutton.maximize,
 windowcontrols > button.maximize > image,
 button.titlebutton.maximize:hover:backdrop,
 windowcontrols > button.maximize:hover:backdrop > image {
-  background-color: #98971a;
+  background-color: @green_1;
 }
 
 button.titlebutton.maximize:hover,
 windowcontrols > button.maximize:hover > image {
-  background-color: #b8bb26;
+  background-color: @red_2;
 }
 
 button.titlebutton.minimize,
 windowcontrols > button.minimize > image,
 button.titlebutton.minimize:hover:backdrop,
 windowcontrols > button.minimize:hover:backdrop > image {
-  background-color: #d79921;
+  background-color: @yellow_1;
 }
 
 button.titlebutton.minimize:hover,
 windowcontrols > button.minimize:hover > image {
-  background-color: #fabd2f;
+  background-color: @yellow_2;
 }
 
 button.titlebutton.close:backdrop,
@@ -186,5 +191,5 @@ button.titlebutton.minimize:backdrop,
 windowcontrols > button.close:backdrop > image,
 windowcontrols > button.maximize:backdrop > image,
 windowcontrols > button.minimize:backdrop > image {
-  background-color: #665c54;
+  background-color: @dark_4;
 }

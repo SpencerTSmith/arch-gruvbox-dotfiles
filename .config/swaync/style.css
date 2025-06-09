@@ -1,11 +1,9 @@
-@import url("../gruvbox-colors.css");
-
 * {
   border-width: 2px;
   border-radius: 0;
-  border-color: @fg1;
+  border-color: @light_2;
   background: transparent;
-  color: @fg1;
+  color: @light_2;
   transition: all 0.2s ease-in-out; /* Add global transition */
 }
 
@@ -18,12 +16,11 @@
 }
 
 .control-center {
-  border: 2px solid @fg1;
-  /* overflow: hidden; */
+  border: 2px solid @light_2;
 }
 
 .widget-title {
-  color: @orange;
+  color: @orange_2;
 }
 
 .control-center,
@@ -58,23 +55,23 @@
 .widget-buttons-grid > flowbox > flowboxchild > button:hover,
 .control-center-dnd:hover,
 .control-center-clear-all:hover {
-  background: @bg1;
+  background: @dark_2;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-  background: @blue;
+  background: @blue_2;
 }
 
 .widget-dnd > switch:checked {
-  background: @red;
+  background: @red_2;
 }
 
 .widget-dnd > switch slider {
-  background: @fg1;
+  background: @light_2;
 }
 
 .notification-row .notification-background .close-button {
-  color: @fg1;
+  color: @light_2;
   text-shadow: none;
   padding: 0;
   box-shadow: none;
@@ -83,5 +80,5 @@
 }
 
 .widget-volume {
-  color: @fg1;
+  color: @light_2;
 }

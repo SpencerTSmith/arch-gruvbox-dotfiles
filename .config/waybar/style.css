@@ -1,15 +1,13 @@
-@import url("../gruvbox-colors.css");
-
 * {
   border-width: 0;
 	border-radius: 0;
 	border-style: solid;
-	color: @fg1;
+	color: @light_2;
   transition: all 0.2s ease-in-out;
   min-height: 0;
-	border-color: @fg1;
+	border-color: @light_2;
   margin: 0;
-  padding:0;
+  padding: 0;
 }
 
 tooltip,
@@ -17,7 +15,7 @@ tooltip,
 .modules-center,
 .modules-left,
 window#waybar {
-	background-color: @bg;
+	background-color: @dark_1;
 }
 
 window#waybar.empty #window {
@@ -77,7 +75,7 @@ window#waybar.empty #window {
 #custom-hyprsunset,
 #backlight,
 #custom-exit {
-  background-color: @bg;
+  background-color: @dark_1;
 }
 
 #custom-shutdown:hover,
@@ -106,17 +104,17 @@ window#waybar.empty #window {
 #custom-hyprsunset:hover,
 #mpris:hover,
 #backlight:hover {
-  background-color: @bg1;
+  background-color: @dark_2;
 }
 
 #tray,
 #workspaces {
-	background-color: @bg2;
+	background-color: @dark_3;
 }
 
 #tray:hover,
 #workspaces:hover {
-  background-color: @bg3;
+  background-color: @dark_4;
 }
 
 #workspaces button.active label,
@@ -124,7 +122,7 @@ window#waybar.empty #window {
 #custom-suspend,
 #battery,
 #custom-wallpaper {
-	color: @aqua;
+	color: @aqua_2;
 }
 
 #wireplumber.muted,
@@ -133,46 +131,46 @@ window#waybar.empty #window {
 #custom-notification.dnd-notification,
 #battery.critical,
 #custom-kill {
-	color: @red;
+	color: @red_2;
 }
 
 #custom-shutdown,
 #mpris {
-	color: @green;
+	color: @green_2;
 }
 
 #cpu,
 #wireplumber,
-#custom-reboot,
 #custom-hyprsunset,
 #custom-updates.updates-available,
 #battery.warning,
 #network {
-	color: @yellow;
+	color: @yellow_2;
 }
 
 #clock,
 #custom-exit,
 #custom-gpu {
-	color: @orange;
+	color: @orange_2;
 }
 
 #memory,
 #custom-lock,
 #custom-hyprpicker,
 #backlight {
-	color: @purple;
+	color: @purple_2;
 }
 
 #temperature,
+#custom-reboot,
 #custom-updates {
-	color: @blue;
+	color: @blue_2;
 }
 
 #disk {
-	color: @gray;
+  color: @light_5;
 }
 
 #workspaces button:hover {
-	color: @fg1;
+	color: @light_2;
 }
