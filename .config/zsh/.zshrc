@@ -148,6 +148,11 @@ alias gs='git status'
 alias tma='tmux attach-session -t SCRATCH || tmux new-session -s SCRATCH'
 
 # Prompt
+function precmd {
+    # Set window title
+    print -Pn "\e]0;%(1j,%j job%(2j|s|); ,)%~\e\\"
+}
+
 zle -N zle-keymap-select
 zle-line-init() { echo -ne "\e[5 q"; }
 zle -N zle-line-init
