@@ -89,12 +89,11 @@
 	"hyprland/workspaces": {
 		"format": " {icon} ",
 		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"4": "",
-      "urgent": "",
-      "default": ""
+			// "1": "",
+			// "2": "",
+			// "3": "",
+			// "4": "",
+      "urgent": ""
 		},
 		"persistent-workspaces": {
 			"HDMI-A-6": [
