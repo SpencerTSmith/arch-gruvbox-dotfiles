@@ -2,8 +2,6 @@ return {
 	{
 		"stevearc/oil.nvim",
 		event = "VimEnter",
-		---@module 'oil'
-		---@type oil.SetupOpts
 		opts = {
 			delete_to_trash = true,
 			default_file_explorer = true,
