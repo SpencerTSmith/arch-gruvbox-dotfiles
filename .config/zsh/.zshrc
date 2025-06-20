@@ -136,6 +136,11 @@ alias ls='eza --icons --group-directories-first --color=auto'
 alias la='eza -alh --icons --group-directories-first --color=auto'
 alias tree="eza -T --icons --group-directories-first --color=auto"
 
+# Functions
+function mkcd() {
+  mkdir -p $@ && $@;
+}
+
 # Convenience
 alias ga='git add'
 alias gb='git branch'
