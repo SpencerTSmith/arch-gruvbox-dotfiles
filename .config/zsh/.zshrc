@@ -90,8 +90,17 @@ bindkey -M vicmd "^L" list-choices
 export EDITOR=nvim
 export VISUAL=nvim
 
-export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANPAGER="less -R -M -i -j10"
 export MANROFFOPT="-c"
+
+export LESS_TERMCAP_md=$'\e[1;94m'
+export LESS_TERMCAP_us=$'\e[1;92m'
+export LESS_TERMCAP_so=$'\e[103;30m'
+export LESS_TERMCAP_mb=$'\e[1;91m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_ue=$'\e[0m'
+
 export FZF_DEFAULT_OPTS='--color=16 --tmux "bottom,100%,100%"'
 
 # Clean home
@@ -150,14 +159,9 @@ alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
 alias gs='git status'
-alias tma='tmux attach-session -t SCRATCH || tmux new-session -s SCRATCH'
+alias tma='tmux attach-session || tmux new-session -s SCRATCH'
 
 # Prompt
-function precmd {
-    # Set window title
-    print -Pn "\e]0;%(1j,%j job%(2j|s|); ,)%~\e\\"
-}
-
 zle -N zle-keymap-select
 zle-line-init() { echo -ne "\e[5 q"; }
 zle -N zle-line-init

@@ -9,12 +9,13 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.shiftround = true
 vim.o.tabstop = 2
+
 vim.o.smartindent = true
 vim.o.autoindent = true
-vim.o.breakindent = true
+vim.o.cindent = true
+vim.opt.cinoptions = "{0,}0"
 
--- Header files have nicer indent patterns
-vim.o.cinoptions = ":0,(0,w1,m1"
+vim.o.breakindent = true
 
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -24,8 +25,8 @@ vim.o.splitkeep = "screen"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.signcolumn = "yes"
--- vim.o.colorcolumn = "100"
 vim.o.scrolloff = 10
+vim.o.sidescrolloff = 10
 vim.o.cursorline = true
 
 vim.o.syntax = "enable"
@@ -69,11 +70,11 @@ vim.o.virtualedit = "block,onemore"
 
 -- vim.o.pumblend = 10
 -- vim.o.winblend = 10
-vim.o.pumheight = 10
+-- vim.o.pumheight = 10
 
 vim.o.equalalways = true
 
 vim.o.hlsearch = true
 
 vim.opt.shortmess:append("aWC")
-vim.opt.iskeyword:remove("_")
+-- vim.opt.iskeyword:remove("_")
