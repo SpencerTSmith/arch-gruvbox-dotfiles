@@ -40,6 +40,9 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+-- Easily yank brackets
+vim.keymap.set("n", "YY", "va{Vy")
+
 vim.keymap.set("n", "<leader>td", function()
   local enabled = vim.diagnostic.is_enabled()
 

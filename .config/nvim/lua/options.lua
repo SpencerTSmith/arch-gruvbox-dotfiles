@@ -60,6 +60,7 @@ vim.o.confirm = true
 -- Sync up default register with system clipboard
 vim.o.clipboard = "unnamedplus"
 
+
 vim.o.linebreak = true
 
 vim.o.ignorecase = true
@@ -68,6 +69,7 @@ vim.o.infercase = true
 
 vim.o.virtualedit = "block,onemore"
 
+vim.opt.winborder = "none"      -- https://neovim.io/doc/user/options.html#'winborder'
 -- vim.o.pumblend = 10
 -- vim.o.winblend = 10
 -- vim.o.pumheight = 10

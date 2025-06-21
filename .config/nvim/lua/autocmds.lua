@@ -14,14 +14,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- associate .h with correct file types
--- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
---   pattern = "*.h",
---   callback = function()
---     vim.bo.filetype = "c"
---   end,
--- })
-
 -- associate .vert with glsl file type
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.vert",
@@ -30,12 +22,46 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	end,
 })
 
+
 -- associate .frag with glsl file type
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.frag",
 	callback = function()
 		vim.bo.filetype = "glsl"
 	end,
+})
+
+-- Spellcheck on some text filetypes
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.txt", "*.md", "*.tex" },
+  callback = function()
+    vim.opt.spell = true
+    vim.opt.spelllang = "en"
+  end,
+})
+
+-- Close more things with q
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
+  pattern = {
+    "PlenaryTestPopup",
+    "help",
+    "lspinfo",
+    "man",
+    "notify",
+    "qf",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+    "neotest-output",
+    "checkhealth",
+    "neotest-summary",
+    "neotest-output-panel",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
 })
 
 vim.api.nvim_create_augroup("AutoEqualizeSplits", { clear = true })
