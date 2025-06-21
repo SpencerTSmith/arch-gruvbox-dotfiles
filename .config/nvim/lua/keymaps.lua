@@ -40,16 +40,14 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
-local diagnostics_enabled = true
 vim.keymap.set("n", "<leader>td", function()
-	diagnostics_enabled = not diagnostics_enabled
-	if diagnostics_enabled then
-		vim.diagnostic.enable()
-    print("Diagnostics enabled")
-	else
-		vim.diagnostic.enable(false)
+  local enabled = vim.diagnostic.is_enabled()
+
+	vim.diagnostic.enable(not enabled)
+
+  if enabled then
     print("Diagnostics disabled")
-	end
-
-
+  else
+    print("Diagnostics enabled")
+  end
 end, { desc = "Toggle diagnostics"})

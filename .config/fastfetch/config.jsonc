@@ -6,8 +6,8 @@
       "top": 2
     },
 		"color": {
-			"1": "green",
-			"2": "yellow"
+			"1": "92",
+			"2": "93"
 		}
 	},
 	"display": {
@@ -17,102 +17,102 @@
 		{
 			"type": "os",
 			"key": "OS",
-			"keyColor": "blue"
+			"keyColor": "94"
 		},
 		{
 			"type": "kernel",
 			"key": " ├  ",
-			"keyColor": "blue"
+			"keyColor": "94"
 		},
 		{
 			"type": "packages",
 			"key": " ├  ",
-			"keyColor": "blue"
+			"keyColor": "94"
 		},
 		{
 			"type": "uptime",
 			"key": " ├  ",
-			"keyColor": "blue"
+			"keyColor": "94"
 		},
 		{
 			"type": "shell",
 			"key": " └  ",
-			"keyColor": "blue"
+			"keyColor": "94"
 		},
 		"break",
 		{
 			"type": "wm",
 			"key": "WM",
-			"keyColor": "green"
+			"keyColor": "92"
 		},
 		{
 			"type": "theme",
 			"key": " ├ 󰉼 ",
-			"keyColor": "green"
+			"keyColor": "92"
 		},
 		{
 			"type": "icons",
 			"key": " ├ 󰀻 ",
-			"keyColor": "green"
+			"keyColor": "92"
 		},
 		{
 			"type": "cursor",
 			"key": " ├  ",
-			"keyColor": "green"
+			"keyColor": "92"
 		},
 		{
 			"type": "font",
 			"key": " ├  ",
-			"keyColor": "green"
+			"keyColor": "92"
 		},
 		{
 			"type": "editor",
 			"key": " ├  ",
-			"keyColor": "green"
+			"keyColor": "92"
 		},
 		{
 			"type": "terminal",
 			"key": " └  ",
-			"keyColor": "green"
+			"keyColor": "92"
 		},
 		"break",
 		{
 			"type": "host",
 			"format": "{5} {1} Type {2}",
 			"key": "PC",
-			"keyColor": "yellow"
+			"keyColor": "93"
 		},
 		{
 			"type": "cpu",
 			"key": " ├  ",
-			"keyColor": "yellow",
+			"keyColor": "93",
       "showPeCoreCount": true
 		},
 		{
 			"type": "gpu",
 			"key": " ├  ",
-			"keyColor": "yellow",
+			"keyColor": "93",
       "driverSpecific": true
 		},
 		{
 			"type": "memory",
 			"key": " ├  ",
-			"keyColor": "yellow"
+			"keyColor": "93"
 		},
 		{
 			"type": "disk",
 			"key": " ├  ",
-			"keyColor": "yellow"
+			"keyColor": "93"
 		},
 		{
 			"type": "monitor",
 			"key": " ├ 󰍹 ",
-			"keyColor": "yellow"
+			"keyColor": "93"
 		},
 		{
 			"type": "datetime",
 			"key": " └  ",
-			"keyColor": "yellow"
+			"keyColor": "93"
 		},
 		"break",
     "colors"

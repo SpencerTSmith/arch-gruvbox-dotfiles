@@ -36,14 +36,14 @@ return {
 				{ "z", group = "fold" },
 				{
 					"<leader>b",
-					group = "buffer",
+					group = "Buffers",
 					expand = function()
 						return require("which-key.extras").expand.buf()
 					end,
 				},
 				{
 					"<leader>w",
-					group = "windows",
+					group = "Windows",
 					proxy = "<c-w>",
 					expand = function()
 						return require("which-key.extras").expand.win()

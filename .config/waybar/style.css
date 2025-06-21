@@ -10,6 +10,14 @@
   padding: 0;
 }
 
+window#waybar > box {
+  box-shadow: 4px 4px 2px 1px rgba(255, 0, 0, 0.8); /* Red shadow for testing */
+}
+
+#workspaces button.active {
+  box-shadow: inset 0 -2px @light_2;
+}
+
 tooltip,
 .modules-right,
 .modules-center,
@@ -117,7 +125,6 @@ window#waybar.empty #window {
   background-color: @dark_4;
 }
 
-#workspaces button.active label,
 #custom-notification,
 #custom-suspend,
 #battery,
