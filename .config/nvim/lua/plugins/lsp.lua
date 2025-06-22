@@ -17,7 +17,8 @@ return {
     { "mason-org/mason.nvim", opts = {} },
 		"folke/snacks.nvim",
     "ibhagwan/fzf-lua",
-    {"neovim/nvim-lspconfig", config = function()
+    {"neovim/nvim-lspconfig",
+    config = function(_, opts)
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -49,10 +50,10 @@ return {
 						"Goto type definition"
 					)
 
-					map("gh", "<cmd>ClangdSwitchSourceHeader<cr>", "Goto .c/.h")
-					map("gH", function()
+					map("<leader>lh", "<cmd>LspClangdSwitchSourceHeader<cr>", "Goto .c/.h")
+					map("<leader>lH", function()
 						vim.cmd("vsplit")
-						vim.cmd("ClangdSwitchSourceHeader")
+						vim.cmd("LspClangdSwitchSourceHeader")
 					end, "Open .c/.h in vertical split")
 
 					map("<leader>lf", function()

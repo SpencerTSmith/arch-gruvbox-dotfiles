@@ -8,6 +8,12 @@ return {
 			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = false },
+      ensure_installed = {
+        "bash",
+        "c",
+        "lua",
+        "json",
+      }
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)

@@ -54,28 +54,56 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+
 bindkey '^N' expand-or-complete
 bindkey '^P' reverse-menu-complete
 bindkey -M menuselect '^N' menu-complete
 bindkey -M menuselect '^P' reverse-menu-complete
-bindkey -v '^?' backward-delete-char
-bindkey -M vicmd 'k' history-search-backward
-bindkey -M vicmd 'j' history-search-forward
+
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+
+bindkey -M vicmd 'k' up-line-or-history
+bindkey -M vicmd 'j' down-line-or-history
 
 zle-yank-to-clipboard() {
-    # Copy the content to the clipboard
+  if [[ -n $REGION_ACTIVE ]]; then
+    local start_pos end_pos
+    if (( MARK < CURSOR )); then
+      start_pos=$MARK
+      end_pos=$CURSOR
+    else
+      start_pos=$CURSOR
+      end_pos=$MARK
+    fi
+    local selected_text="${BUFFER:$start_pos:$(($end_pos - $start_pos + 1))}"
+    echo -n "$selected_text" | wl-copy
+    REGION_ACTIVE=0
+  else
     echo -n "$BUFFER" | wl-copy
+  fi
 }
 zle -N zle-yank-to-clipboard
-bindkey -M vicmd 'y' zle-yank-to-clipboard
 
 zle-paste-from-clipboard() {
-    # Fetch clipboard content and insert it at the cursor position
-    local clipboard_content=$(wl-paste)
-    RBUFFER+="$clipboard_content"
+  local clipboard_content=$(wl-paste)
+  BUFFER="${BUFFER:0:$CURSOR}$clipboard_content${BUFFER:$CURSOR}"
+  CURSOR=$(($CURSOR + ${#clipboard_content}))
 }
 zle -N zle-paste-from-clipboard
+
+bindkey -M vicmd 'y' zle-yank-to-clipboard
 bindkey -M vicmd 'p' zle-paste-from-clipboard
+bindkey -M visual 'y' zle-yank-to-clipboard
+
+autoload -U select-quoted
+  zle -N select-quoted
+  for m in visual viopp; do
+    for c in {a,i}{\',\",\`}; do
+      bindkey -M $m $c select-quoted
+    done
+  done
 
 # Annoying ass
 stty -ixon

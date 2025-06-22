@@ -10,10 +10,12 @@ vim.o.shiftwidth = 2
 vim.o.shiftround = true
 vim.o.tabstop = 2
 
+vim.o.title = true
+
 vim.o.smartindent = true
 vim.o.autoindent = true
 vim.o.cindent = true
-vim.opt.cinoptions = "{0,}0"
+vim.opt.cinoptions:append("(0,m1,W4,{0,}0,?1s,:1s")
 
 vim.o.breakindent = true
 
@@ -35,7 +37,7 @@ vim.o.syntax = "enable"
 vim.o.updatetime = 200
 
 vim.o.list = true
-vim.opt.listchars = { tab = "  ", extends = "…", precedes = "…", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "  ", extends = ">", precedes = "<", trail = "~", nbsp = "␣" }
 vim.opt.showbreak = "↪"
 
 -- Decrease mapped sequence wait time
@@ -60,6 +62,7 @@ vim.o.confirm = true
 -- Sync up default register with system clipboard
 vim.o.clipboard = "unnamedplus"
 
+vim.diagnostic.config({ virtual_text = true })
 
 vim.o.linebreak = true
 
@@ -69,7 +72,7 @@ vim.o.infercase = true
 
 vim.o.virtualedit = "block,onemore"
 
-vim.opt.winborder = "none"      -- https://neovim.io/doc/user/options.html#'winborder'
+vim.opt.winborder = "none"
 -- vim.o.pumblend = 10
 -- vim.o.winblend = 10
 -- vim.o.pumheight = 10
@@ -79,4 +82,3 @@ vim.o.equalalways = true
 vim.o.hlsearch = true
 
 vim.opt.shortmess:append("aWC")
--- vim.opt.iskeyword:remove("_")

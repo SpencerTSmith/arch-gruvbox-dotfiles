@@ -23,7 +23,7 @@
 	"modules-right": [
     "group/actions",
     "custom/line",
-    "group/audio",
+    "wireplumber",
     "backlight",
 		"clock",
 		"custom/notification",
@@ -72,18 +72,6 @@
       "custom/lock",
       "custom/suspend",
       "custom/exit"
-    ]
-  },
-  "group/audio": {
-    "orientation": "inherit",
-    // "drawer": {
-    //     "transition-duration": 200,
-    //     "children-class": "hardware-child",
-    //     "transition-left-to-right": false
-    // },
-    "modules": [
-      "mpris",
-      "wireplumber"
     ]
   },
 	"hyprland/workspaces": {

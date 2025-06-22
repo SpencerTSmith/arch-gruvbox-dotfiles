@@ -13,6 +13,9 @@ return {
         buflisted = false,
         bufhidden = 'hide',
       },
+      lsp_file_methods = {
+        enabled = true,
+      },
 			columns = {
 				"permissions",
 				"size",
@@ -30,15 +33,16 @@ return {
         concealcursor = "nvic",
       },
 			view_options = { show_hidden = true, },
-			float = { border = "single", },
-			preview = { border = "single", },
-			confirmation = { border = "single", },
-			progress = { border = "single", },
-			ssh = { border = "single", },
-			keymaps_help = { border = "single", },
+			float = { border = "none", },
+			preview = { border = "none", },
+			confirmation = { border = "none", },
+			progress = { border = "none", },
+			ssh = { border = "none", },
+			keymaps_help = { border = "none", },
 			keymaps = {
 				["<C-h>"] = false,
 				["<C-l>"] = false,
+        ["<C-v>"] = { "actions.select", opts = { vertical = true } },
         ["gx"] = function()
           -- Override the default app for zip files
           local entry = require("oil").get_cursor_entry()
