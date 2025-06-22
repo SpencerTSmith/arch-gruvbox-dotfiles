@@ -3,7 +3,7 @@
 	"layer": "top",
 	"position": "top",
 	"spacing": 0,
-  "height" : 25,
+  "height" : 30,
 	"margin-top": 0,
 	"margin-right": 0,
 	"margin-left": 0,
@@ -77,11 +77,7 @@
 	"hyprland/workspaces": {
 		"format": " {icon} ",
 		"format-icons": {
-			// "1": "",
-			// "2": "",
-			// "3": "",
-			// "4": "",
-      "urgent": ""
+      "urgent": "!"
 		},
 		"persistent-workspaces": {
 			"HDMI-A-6": [
@@ -114,7 +110,7 @@
 		"separate-outputs": true
 	},
 	"mpris": {
-		"format": " {dynamic} {player_icon} ",
+		"format": " {player_icon} {dynamic} ",
 		"format-paused": " {dynamic} {status_icon} ",
 		"format-stopped": " {dynamic} {status_icon} ",
 		"player-icons": {
@@ -136,8 +132,8 @@
     "show-passive-items": false
 	},
 	"clock": {
-		"format": " {:%I:%M %p}  ",
-		"format-alt": " {:%A, %B %d, %Y (%R)}  ",
+		"format": "  {:%I:%M %p} ",
+		"format-alt": "  {:%A, %B %d, %Y (%R)} ",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {
 			"mode": "year",
@@ -161,7 +157,7 @@
 		}
 	},
 	"wireplumber": {
-		"format": " {volume}% {icon} ",
+		"format": " {icon} {volume}% ",
 		"tooltip": true,
 		"max-volume": 120,
     "scroll-step": 2,
@@ -175,7 +171,7 @@
 	},
   "backlight": {
     "device": "intel_backlight",
-    "format": " {percent}% {icon} ",
+    "format": " {icon} {percent}% ",
     "format-icons": [
       "󰃚",
       "󰃛",
@@ -192,7 +188,7 @@
   },
 	"custom/notification": {
 		"tooltip": false,
-		"format": " {} {icon} ",
+		"format": " {icon} {} ",
 		"format-icons": {
 			"notification": "󱅫",
 			"none": "󰂚",
@@ -207,9 +203,8 @@
     "escape": true
 	},
 	"custom/updates": {
-		"format": " {icon} ",
+		"format": "  ",
 		"tooltip": true,
-		"format-icons": "",
     "interval" : "once",
     "exec" : "check-updates.sh",
     "return-type" : "json",
@@ -217,60 +212,51 @@
     "signal" : 10 // So we can refresh on signal from the script
 	},
   "custom/kill": {
-		"format": " {icon} ",
+		"format": " 󱎘 ",
 		"tooltip": true,
     "tooltip-format": "Kill process",
-		"format-icons": "󱎘",
     "on-click" : "fuzzel-kill.sh"
   },
   "custom/wallpaper": {
-		"format": " {icon} ",
+		"format": "  ",
 		"tooltip": true,
     "tooltip-format": "Change wallpaper",
-		"format-icons": "",
     "on-click" : "fuzzel-wallpaper.sh"
   },
   "custom/hyprpicker": {
-		"format": " {icon} ",
+		"format": "  ",
 		"tooltip": true,
     "tooltip-format": "Color picker",
-		"format-icons": "",
     "on-click" : "hyprpicker -laq"
   },
   "custom/hyprsunset": {
-		"format": " {icon} ",
+		"format": "  ",
 		"tooltip": true,
     "tooltip-format": "Toggle color temperature",
-		"format-icons": "",
     "on-click" : "hyprsunset_toggle.sh"
   },
 	"custom/shutdown": {
-		"format": " {icon} ",
-		"format-icons": "",
+		"format": "  ",
 		"tooltip-format": "Shutdown",
 		"on-click": "systemctl poweroff"
 	},
 	"custom/reboot": {
-		"format": " {icon} ",
-		"format-icons": "",
+		"format": "  ",
 		"tooltip-format": "Reboot",
 		"on-click": "systemctl reboot"
 	},
 	"custom/lock": {
-		"format": " {icon} ",
-		"format-icons": "",
+		"format": "  ",
 		"tooltip-format": "Lock",
 		"on-click": "hyprlock"
 	},
 	"custom/suspend": {
-		"format": " {icon} ",
-		"format-icons": "",
+		"format": "  ",
 		"tooltip-format": "Suspend",
 		"on-click": "systemctl suspend"
 	},
 	"custom/exit": {
-		"format": " {icon} ",
-		"format-icons": "󰍃",
+		"format": " 󰍃 ",
 		"tooltip-format": "Exit",
 		"on-click": "uwsm stop"
 	},

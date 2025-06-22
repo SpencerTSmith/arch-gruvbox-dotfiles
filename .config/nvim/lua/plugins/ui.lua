@@ -1,7 +1,7 @@
 return {
 	{
 		"stevearc/oil.nvim",
-		event = "VimEnter",
+    lazy = false,
 		opts = {
 			delete_to_trash = true,
 			default_file_explorer = true,

@@ -134,6 +134,7 @@ window#waybar.empty #window {
 
 #wireplumber.muted,
 #temperature.critical,
+#workspaces.urgent,
 #custom-notification.dnd-none,
 #custom-notification.dnd-notification,
 #battery.critical,
