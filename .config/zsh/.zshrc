@@ -153,6 +153,7 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export RUFF_CACHE_DIR=$XDG_CACHE_HOME/ruff
 export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 # Aliases
 alias vi='nvim'
