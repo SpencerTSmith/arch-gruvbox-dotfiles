@@ -28,8 +28,8 @@ vim.keymap.set("n", "J", "m`J``")
 
 vim.keymap.set("x", "gp", [["_dP]], { desc = "Paste without replacing register" })
 
-vim.keymap.set("x", "gh", "^", { desc = "Go to start of line"})
-vim.keymap.set("x", "gl", "$", { desc = "Go to end of line"})
+vim.keymap.set({"n", "v"}, "gh", "^", { desc = "Go to start of line"})
+vim.keymap.set({"n", "v"}, "gl", "$", { desc = "Go to end of line"})
 
 -- n always forward, N always backward
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
