@@ -5,7 +5,15 @@ return {
 		lazy = false,
 		opts = {
 			bigfile = { enabled = true },
-			indent = { enabled = true, animate = { enabled = false } },
+			indent = {
+        enabled = true,
+        indent = {
+          enabled = false,
+        },
+        animate = { enabled = false },
+        only_current = true,
+        only_scope = true,
+      },
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
