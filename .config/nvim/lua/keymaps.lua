@@ -1,6 +1,13 @@
 -- Keymaps
 vim.keymap.set("n", "<Esc>", '<C-c><cmd>nohlsearch<CR><cmd>echo ""<CR>', { noremap = true, silent = true })
 
+-- The greatest keymap of all time...
+-- just makes sure indent on a blank line gets the right indent
+vim.keymap.set('n', 'i', function ()
+  return string.match(vim.api.nvim_get_current_line(), '%g') == nil
+         and 'cc' or 'i'
+end, {expr=true, noremap=true})
+
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')

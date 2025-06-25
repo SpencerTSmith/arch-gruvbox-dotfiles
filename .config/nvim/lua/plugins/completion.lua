@@ -7,7 +7,6 @@ return {
     "sources.default",
   },
   dependencies = {
-    -- add blink.compat to dependencies
     {
       "saghen/blink.compat",
       lazy = true,
@@ -16,9 +15,6 @@ return {
     },
   },
   event = { "InsertEnter", "CmdlineEnter" },
-
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
   opts = {
     appearance = {
       nerd_font_variant = "mono",

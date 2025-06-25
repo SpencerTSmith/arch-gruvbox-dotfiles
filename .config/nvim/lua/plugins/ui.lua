@@ -77,13 +77,18 @@ return {
 			local opts = {
 				options = {
 					theme = custom_gruvbox,
-					disabled_filetypes = {
-						"dashboard",
-					},
 					component_separators = "|",
 					section_separators = "",
 				},
-				extensions = { "oil", "nvim-dap-ui", "fugitive", "mason", "neo-tree", "lazy" },
+				extensions = {
+          "fzf",
+          "oil",
+          "nvim-dap-ui",
+          "fugitive",
+          "mason",
+          "lazy",
+          "man",
+        },
 			}
 			return opts
 		end,
@@ -112,6 +117,8 @@ return {
 			contrast = "",
 			palette_overrides = {},
 			overrides = {
+				SignColumn = { bg = "NONE" },
+				Normal = { bg = "NONE" },
 				GruvboxRedSign = { bg = "NONE" },
 				GruvboxGreenSign = { bg = "NONE" },
 				GruvboxYellowSign = { bg = "NONE" },
@@ -126,7 +133,6 @@ return {
 		config = function(_, opts)
 			require("gruvbox").setup(opts)
 			vim.cmd.colorscheme("gruvbox")
-		  vim.cmd('hi Normal ctermbg=NONE guibg=NONE')
 		end,
 	},
 }
