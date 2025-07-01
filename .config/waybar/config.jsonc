@@ -80,11 +80,9 @@
       "urgent": "!"
 		},
 		"persistent-workspaces": {
-			"HDMI-A-6": [
+			"DP-2": [
 				1,
-				2
-			],
-			"DP-4": [
+				2,
 				3,
 				4
 			],
