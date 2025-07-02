@@ -1,4 +1,5 @@
-* {
+*
+{
   border-width: 0;
 	border-radius: 0;
 	border-style: solid;
@@ -10,49 +11,59 @@
   padding: 0;
 }
 
-window#waybar > box {
+window#waybar > box
+{
   box-shadow: 4px 4px 2px 1px rgba(255, 0, 0, 0.8); /* Red shadow for testing */
 }
 
-#workspaces button.active {
-  box-shadow: inset 0 -2px @light_2;
+#workspaces button.active
+{
+  box-shadow: inset 0 -2px @orange_2;
 }
 
 tooltip,
 .modules-right,
 .modules-center,
 .modules-left,
-window#waybar {
+window#waybar
+{
 	background-color: @dark_1;
 }
 
-window#waybar.empty #window {
+window#waybar.empty #window
+{
   background-color: transparent;
 	color: transparent;
 }
 
-.modules-left > widget:first-child > #workspaces {
+.modules-left > widget:first-child > #workspaces
+{
 	margin-left: 0px;
 }
 
-.modules-right > widget:last-child > #workspaces {
+.modules-right > widget:last-child > #workspaces
+{
 	margin-right: 0px;
 }
 
-#tray {
+#tray
+{
 	padding-right: 0.6em;
 	padding-left: 0.6em;
 }
 
-#tray > .passive {
+#tray > .passive
+{
 	-gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray > .needs-attention
+{
 	-gtk-icon-effect: highlight;
 }
 
-#window {
+#window
+{
 	padding-right:0.6em;
 	padding-left:0.6em;
 }
@@ -82,7 +93,8 @@ window#waybar.empty #window {
 #custom-wallpaper,
 #custom-hyprsunset,
 #backlight,
-#custom-exit {
+#custom-exit
+{
   background-color: @dark_1;
 }
 
@@ -111,24 +123,28 @@ window#waybar.empty #window {
 #custom-gpu:hover,
 #custom-hyprsunset:hover,
 #mpris:hover,
-#backlight:hover {
+#backlight:hover
+{
   background-color: @dark_2;
 }
 
 #tray,
-#workspaces {
+#workspaces
+{
 	background-color: @dark_3;
 }
 
 #tray:hover,
-#workspaces:hover {
+#workspaces:hover
+{
   background-color: @dark_4;
 }
 
 #custom-notification,
 #custom-suspend,
 #battery,
-#custom-wallpaper {
+#custom-wallpaper
+{
 	color: @aqua_2;
 }
 
@@ -138,12 +154,14 @@ window#waybar.empty #window {
 #custom-notification.dnd-none,
 #custom-notification.dnd-notification,
 #battery.critical,
-#custom-kill {
+#custom-kill
+{
 	color: @red_2;
 }
 
 #custom-shutdown,
-#mpris {
+#mpris
+{
 	color: @green_2;
 }
 
@@ -152,33 +170,40 @@ window#waybar.empty #window {
 #custom-hyprsunset,
 #custom-updates.updates-available,
 #battery.warning,
-#network {
+#network
+{
 	color: @yellow_2;
 }
 
 #clock,
 #custom-exit,
-#custom-gpu {
+#workspaces button.active *,
+#custom-gpu
+{
 	color: @orange_2;
 }
 
 #memory,
 #custom-lock,
 #custom-hyprpicker,
-#backlight {
+#backlight
+{
 	color: @purple_2;
 }
 
 #temperature,
 #custom-reboot,
-#custom-updates {
+#custom-updates
+{
 	color: @blue_2;
 }
 
-#disk {
+#disk
+{
   color: @light_5;
 }
 
-#workspaces button:hover {
+#workspaces button:hover
+{
 	color: @light_2;
 }

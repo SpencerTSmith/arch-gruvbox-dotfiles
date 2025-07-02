@@ -23,19 +23,19 @@
 	"modules-right": [
     "group/actions",
     "custom/line",
+		"clock",
     "wireplumber",
     "backlight",
-		"clock",
 		"custom/notification",
 		"tray"
 	],
   "group/hardware": {
     "orientation": "inherit",
-    // "drawer": {
-    //     "transition-duration": 200,
-    //     "children-class": "hardware-child",
-    //     "transition-left-to-right": true
-    // },
+    "drawer": {
+        "transition-duration": 200,
+        "children-class": "hardware-child",
+        "transition-left-to-right": true
+    },
     "modules": [
       "cpu",
       "temperature",
@@ -80,7 +80,7 @@
       "urgent": "!"
 		},
 		"persistent-workspaces": {
-			"DP-2": [
+			"DP-4": [
 				1,
 				2,
 				3,
@@ -130,7 +130,7 @@
     "show-passive-items": false
 	},
 	"clock": {
-		"format": "  {:%I:%M %p} ",
+		"format": "  <span color='#ebdbb2'>{:%I:%M %p}</span> ",
 		"format-alt": "  {:%A, %B %d, %Y (%R)} ",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {
@@ -155,9 +155,9 @@
 		}
 	},
 	"wireplumber": {
-		"format": " {icon} {volume}% ",
+		"format": " {icon} ",
 		"tooltip": true,
-		"max-volume": 120,
+		"max-volume": 100,
     "scroll-step": 2,
 		"on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -186,7 +186,7 @@
   },
 	"custom/notification": {
 		"tooltip": false,
-		"format": " {icon} {} ",
+		"format": " {icon} ",
 		"format-icons": {
 			"notification": "󱅫",
 			"none": "󰂚",
@@ -259,13 +259,13 @@
 		"on-click": "uwsm stop"
 	},
 	"cpu": {
-		"format": " {usage}%  ",
+		"format": " <span color='#ebdbb2'>{usage}%</span>  ",
 		"tooltip": true,
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 5
 	},
 	"memory": {
-		"format": " {}%  ",
+		"format": " <span color='#ebdbb2'>{}%</span>  ",
 		"tooltip": true,
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 5
@@ -274,7 +274,7 @@
 		"thermal-zone": 2,
 		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input",
 		"critical-threshold": 90,
-		"format": " {temperatureC}°C {icon} ",
+		"format": " <span color='#ebdbb2'>{temperatureC}°C</span> {icon} ",
 		"format-icons": [
 			"",
 			"",
@@ -288,7 +288,7 @@
 	},
   "disk": {
     "interval": 3600,
-    "format": " {percentage_used}%  ",
+    "format": " <span color='#ebdbb2'>{percentage_used}%</span>  ",
     "path": "/",
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\""
   },
@@ -298,7 +298,7 @@
     "tooltip-format": "{ifname} via {gwaddr}"
   },
   "custom/gpu": {
-    "format": " {}%  ",
+    "format": " <span color='#ebdbb2'>{}%</span>  ",
     "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
     "interval": 5,
     "tooltip": false,
@@ -310,7 +310,7 @@
       "warning": 30,
       "critical": 15
     },
-		"format": " {capacity}% {icon} ",
+		"format": " <span color='#ebdbb2'>{capacity}%</span> {icon} ",
     "format-charging": " {capacity}%  ",
 		"format-icons": [
 			"",
