@@ -203,6 +203,11 @@ window#waybar.empty #window
   color: @light_5;
 }
 
+#workspaces button.empty *
+{
+  color: @dark_5;
+}
+
 #workspaces button:hover
 {
 	color: @light_2;

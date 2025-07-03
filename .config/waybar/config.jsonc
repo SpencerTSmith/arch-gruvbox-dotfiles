@@ -259,13 +259,13 @@
 		"on-click": "uwsm stop"
 	},
 	"cpu": {
-		"format": " <span color='#ebdbb2'>{usage}%</span>  ",
+		"format": "  <span color='#ebdbb2'>{usage}%</span> ",
 		"tooltip": true,
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 30
 	},
 	"memory": {
-		"format": " <span color='#ebdbb2'>{}%</span>  ",
+		"format": "  <span color='#ebdbb2'>{}%</span> ",
 		"tooltip": true,
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 30
@@ -274,7 +274,7 @@
 		"thermal-zone": 2,
 		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input",
 		"critical-threshold": 90,
-		"format": " <span color='#ebdbb2'>{temperatureC}°C</span> {icon} ",
+		"format": " {icon} <span color='#ebdbb2'>{temperatureC}°C</span> ",
 		"format-icons": [
 			"",
 			"",
@@ -288,17 +288,12 @@
 	},
   "disk": {
     "interval": 3600,
-    "format": " <span color='#ebdbb2'>{percentage_used}%</span>  ",
+    "format": "  <span color='#ebdbb2'>{percentage_used}%</span> ",
     "path": "/",
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\""
   },
-  "network": {
-    "format": " {bandwidthDownBits}  {bandwidthUpBits}  ",
-		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
-    "tooltip-format": "{ifname} via {gwaddr}"
-  },
   "custom/gpu": {
-    "format": " <span color='#ebdbb2'>{}%</span>  ",
+    "format": "  <span color='#ebdbb2'>{}%</span> ",
     "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
     "interval": 30,
     "tooltip": false,
@@ -310,8 +305,8 @@
       "warning": 30,
       "critical": 15
     },
-		"format": " <span color='#ebdbb2'>{capacity}%</span> {icon} ",
-    "format-charging": " {capacity}%  ",
+		"format": " {icon} <span color='#ebdbb2'>{capacity}%</span> ",
+    "format-charging": "  {capacity}% ",
 		"format-icons": [
 			"",
 			"",
