@@ -7,12 +7,12 @@ return {
     "sources.default",
   },
   dependencies = {
-    {
-      "saghen/blink.compat",
-      lazy = true,
-      opts = {},
-      version = "2.*"
-    },
+    -- {
+    --   "saghen/blink.compat",
+    --   lazy = true,
+    --   opts = {},
+    --   version = "2.*"
+    -- },
   },
   event = { "InsertEnter", "CmdlineEnter" },
   opts = {
