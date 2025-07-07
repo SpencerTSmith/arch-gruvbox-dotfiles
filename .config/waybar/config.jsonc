@@ -133,7 +133,7 @@
 	},
 	"clock": {
 		"format": "  <span color='#ebdbb2'>{:%I:%M %p}</span> ",
-		"format-alt": "  {:%A, %B %d, %Y (%R)} ",
+		"format-alt": "  <span color='#ebdbb2'>{:%A, %B %d, %Y (%R)}</span> ",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {
 			"mode": "year",
@@ -157,7 +157,7 @@
 		}
 	},
 	"wireplumber": {
-		"format": " {icon} ",
+		"format": " {icon} <span color='#ebdbb2'>{volume}%</span> ",
 		"tooltip": true,
 		"max-volume": 100,
     "scroll-step": 2,
@@ -171,7 +171,7 @@
 	},
   "backlight": {
     "device": "intel_backlight",
-    "format": " {icon} {percent}% ",
+    "format": " {icon} <span color='#ebdbb2'>{percent}%</span> ",
     "format-icons": [
       "󰃚",
       "󰃛",
