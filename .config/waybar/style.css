@@ -4,16 +4,11 @@
 	border-radius: 0;
 	border-style: solid;
 	color: @light_2;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
   min-height: 0;
 	border-color: @light_2;
   margin: 0;
   padding: 0;
-}
-
-window#waybar > box
-{
-  box-shadow: 4px 4px 2px 1px rgba(255, 0, 0, 0.8); /* Red shadow for testing */
 }
 
 #workspaces button.active
