@@ -1,7 +1,7 @@
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop
 text/plain=neovim.desktop
-inode/directory=nemo.desktop
+inode/directory=thunar.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/about=firefox.desktop;

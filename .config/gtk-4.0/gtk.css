@@ -20,8 +20,13 @@
 @define-color headerbar_bg_color #282828;
 @define-color headerbar_fg_color #ebdbb2;
 @define-color headerbar_border_color #ebdbb2;
-@define-color headerbar_backdrop_color @window_bg_color;
+@define-color headerbar_backdrop_color #282828;
 @define-color headerbar_shade_color rgba(0, 0, 0, 0.36);
+@define-color sidebar_bg_color #282828;
+@define-color sidebar_fg_color #ebdbb2;
+@define-color sidebar_backdrop_color #282828;
+@define-color sidebar_border_color #ebdbb2;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.36);
 @define-color card_bg_color rgba(255, 255, 255, 0.08);
 @define-color card_fg_color #ebdbb2;
 @define-color card_shade_color rgba(0, 0, 0, 0.36);
@@ -114,8 +119,8 @@
   --sidebar-bg-color: @sidebar_bg_color;
   --sidebar-fg-color: @sidebar_fg_color;
   --sidebar-backdrop-color: @sidebar_backdrop_color;
-  --sidebar-border-color: @sidebar_border_color;
-  --sidebar-shade-color: @sidebar_shade_color;
+  --sidebar-border-color:   @sidebar_border_color;
+  --sidebar-shade-color:    @sidebar_shade_color;
 
   --secondary-sidebar-bg-color: @secondary_sidebar_bg_color;
   --secondary-sidebar-fg-color: @secondary_sidebar_fg_color;
