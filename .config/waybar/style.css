@@ -155,13 +155,13 @@ window#waybar.empty #window
 }
 
 #custom-shutdown,
+#wireplumber,
 #mpris
 {
 	color: @green_2;
 }
 
 #cpu,
-#wireplumber,
 #custom-hyprsunset,
 #custom-updates.updates-available,
 #battery.warning,

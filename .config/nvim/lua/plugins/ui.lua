@@ -73,10 +73,10 @@ return {
 		"nvim-lualine/lualine.nvim",
 		opts = function()
 			local custom_gruvbox = require("lualine.themes.gruvbox")
-			custom_gruvbox.normal.a.bg = "#FABD2F"
+			-- custom_gruvbox.normal.a.bg = "#FABD2F"
 			local opts = {
 				options = {
-					theme = custom_gruvbox,
+					theme = "auto",
 					component_separators = "|",
 					section_separators = "",
 				},
