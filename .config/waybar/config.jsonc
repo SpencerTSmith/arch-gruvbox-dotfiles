@@ -314,7 +314,7 @@
       "critical": 15
     },
 		"format": " {icon} <span color='#ebdbb2'>{capacity}%</span> ",
-    "format-charging": "  {capacity}% ",
+    "format-charging": "  <span color='#ebdbb2'>{capacity}%</span> ",
 		"format-icons": [
 			"",
 			"",
