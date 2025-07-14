@@ -27,6 +27,7 @@ vim.o.splitkeep = "screen"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.signcolumn = "yes"
+-- vim.o.colorcolumn = "120"
 vim.o.scrolloff = 10
 vim.o.sidescrolloff = 10
 vim.o.cursorline = true
@@ -55,9 +56,14 @@ vim.o.laststatus = 3
 vim.o.incsearch = true
 
 vim.o.undofile = true
+vim.o.undodir = vim.fn.expand"~/.cache/nvim/"
 vim.o.backup = false
 vim.o.writebackup = false
+vim.o.swapfile = false
+vim.o.autoread = true
 vim.o.confirm = true
+
+vim.o.backspace = "indent,eol,start"
 
 -- Sync up default register with system clipboard
 vim.o.clipboard = "unnamedplus"

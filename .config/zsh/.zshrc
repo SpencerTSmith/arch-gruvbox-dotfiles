@@ -205,8 +205,8 @@ zle-keymap-select () {
 zle -N zle-keymap-select
 
 setopt prompt_subst
-PROMPT='%B%F{9}[%F{11}%n%F{10}@%F{12}%m%F{9}] %F{13}%2~
-%(?.%F{15}.%F{9}) λ%f%b '
+PROMPT='%B%F{15}[%F{11}%n%F{10}@%F{12}%m%F{15}] %F{13}%2~
+%(?.%F{15}.%F{15}) λ%f%b '
 
 # Message
 phrases.sh
