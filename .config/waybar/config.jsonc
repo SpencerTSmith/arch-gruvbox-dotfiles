@@ -164,7 +164,7 @@
 		"format": " {icon} <span color='#ebdbb2'>{volume}%</span> ",
 		"tooltip": true,
 		"max-volume": 100,
-    "scroll-step": 2,
+    "scroll-step": 1,
 		"on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
 		"format-icons": [
@@ -212,7 +212,7 @@
     "interval" : "once",
     "exec" : "check-updates.sh",
     "return-type" : "json",
-    "on-click" : "hyprctl dispatch exec \"[float] foot -e paru\" && pkill -SIGRTMIN+10 waybar && pkill -SIGRTMIN+10 waybar ", // see if doing the signal twice fixes
+    "on-click" : "hyprctl dispatch exec \"[float] foot -e paru\" && sleep 1 && pkill -SIGRTMIN+10 waybar ", // see if doing the signal twice fixes
     "signal" : 10 // So we can refresh on signal from the script
 	},
   "custom/kill": {

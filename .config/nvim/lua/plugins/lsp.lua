@@ -41,12 +41,6 @@ return {
 
         map( "gI", "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>", "Goto implementation")
 
-        map("<leader>lr", vim.lsp.buf.rename, "Rename symbol")
-
-        map("<leader>lc", vim.lsp.buf.code_action, "Code action")
-
-        map("K", vim.lsp.buf.hover, "Hover documentation")
-
         map("gD", "<cmd>FzfLua lsp_declaration jump1=true ignore_current_line=true<cr>", "Goto declaration")
 
         map( "gT", "<cmd>FzfLua lsp_typedefs jump1=true ignore_current_line=true<cr>", "Goto type definition")

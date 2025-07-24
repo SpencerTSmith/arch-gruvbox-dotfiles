@@ -88,3 +88,4 @@ vim.o.equalalways = true
 vim.o.hlsearch = true
 
 vim.opt.shortmess:append("aWC")
+vim.opt.formatoptions:remove("ro")
