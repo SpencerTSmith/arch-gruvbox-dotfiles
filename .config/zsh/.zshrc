@@ -56,6 +56,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^N' expand-or-complete
+bindkey '^O' expand-or-complete
 bindkey '^P' reverse-menu-complete
 bindkey -M menuselect '^N' menu-complete
 bindkey -M menuselect '^P' reverse-menu-complete
