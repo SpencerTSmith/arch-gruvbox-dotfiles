@@ -14,22 +14,8 @@ return {
         "c",
         "lua",
         "json",
+        "odin",
       },
-      -- textobjects = {
-      --   select = {
-      --     enable = true,
-      --     lookahead = true,
-      --     include_surrounding_whitespace = false,
-      --     selection_modes = {
-      --       ["@parameter.outer"] = "v",   -- charwise
-      --       ["@parameter.inner"] = "v",   -- charwise
-      --       ["@function.outer"] = "v",    -- charwise
-      --       ["@conditional.outer"] = "V", -- linewise
-      --       ["@loop.outer"] = "V",        -- linewise
-      --       ["@class.outer"] = "<c-v>",   -- blockwise
-      --     },
-      --   },
-      -- },
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
