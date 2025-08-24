@@ -6,14 +6,6 @@ return {
     "sources.compat",
     "sources.default",
   },
-  dependencies = {
-    -- {
-    --   "saghen/blink.compat",
-    --   lazy = true,
-    --   opts = {},
-    --   version = "2.*"
-    -- },
-  },
   event = { "InsertEnter", "CmdlineEnter" },
   opts = {
     appearance = {
@@ -45,7 +37,14 @@ return {
     signature = { enabled = true },
     cmdline = {
       keymap = { preset = 'inherit' },
-      completion = { menu = { auto_show = true } },
+      completion = {
+        menu = { auto_show = false },
+        list = {
+          selection = {
+            preselect = false, auto_insert = true
+          },
+        },
+      },
     },
     keymap = {
       preset = "default",

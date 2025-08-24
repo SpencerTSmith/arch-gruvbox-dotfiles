@@ -38,9 +38,4 @@ return {
       })
     end,
   },
-  {
-    "folke/ts-comments.nvim",
-    opts = {},
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-  },
 }

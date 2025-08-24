@@ -1,4 +1,4 @@
--- Jump to last cursor postion
+-- Jump to last cursor postion when opening buffer
 local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
 vim.api.nvim_clear_autocmds({ group = lastplace })
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- associate .vert with glsl file type
+-- Associate .vert with glsl file type
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.vert",
 	callback = function()
@@ -22,8 +22,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	end,
 })
 
-
--- associate .frag with glsl file type
+-- Associate .frag with glsl file type
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.frag",
 	callback = function()
@@ -64,12 +63,22 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Close quickfix when selecting something
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<CR>:cclose<CR>", { noremap = true, silent = true })
+  end,
+})
+
+-- Auto resize splits when the window resizes
 vim.api.nvim_create_augroup("AutoEqualizeSplits", { clear = true })
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	group = "AutoEqualizeSplits",
 	command = "tabdo wincmd =",
 })
 
+-- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	callback = function()

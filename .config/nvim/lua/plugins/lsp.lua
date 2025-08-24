@@ -17,27 +17,23 @@ return {
           "clangd",
           "glsl_analyzer",
           "hyprls",
-          "jsonls",
           "pyright",
           "bashls",
           "ols",
         },
       },
     },
-    "folke/snacks.nvim",
     "ibhagwan/fzf-lua",
   },
   config = function(_, opts)
     vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+      group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
       callback = function(event)
         local map = function(keys, func, desc)
           vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
         map("gd", "<cmd>FzfLua lsp_definitions jump1=true ignore_current_line=true<cr>", "Goto definition")
-
-        map("gr", "<cmd>FzfLua lsp_references jump1=true ignore_current_line=true<cr>", "Goto references")
 
         map( "gI", "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>", "Goto implementation")
 
@@ -50,10 +46,6 @@ return {
           vim.cmd("vsplit")
           vim.cmd("LspClangdSwitchSourceHeader")
         end, "Open .c/.h in vertical split")
-
-        map("<leader>lf", function()
-          vim.cmd("lua Snacks.rename.rename_file()")
-        end, "Rename current file")
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.server_capabilities.documentHighlightProvider then

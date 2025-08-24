@@ -171,9 +171,8 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias chmod='chmod -v'
 
-alias ls='eza --icons --group-directories-first --color=auto'
-alias la='eza -alh --icons --group-directories-first --color=auto'
-alias tree="eza -T --icons --group-directories-first --color=auto"
+alias ls='ls      --color=auto --group-directories-first -F'
+alias la='ls -alh --color=auto --group-directories-first -F'
 
 # Functions
 function mkcd() {
@@ -181,14 +180,6 @@ function mkcd() {
 }
 
 # Convenience
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit'
-alias gco='git checkout'
-alias gd='git diff'
-alias gl='git pull'
-alias gp='git push'
-alias gs='git status'
 alias tma='tmux attach-session || tmux new-session -s SCRATCH'
 
 # Prompt
@@ -206,8 +197,8 @@ zle-keymap-select () {
 zle -N zle-keymap-select
 
 setopt prompt_subst
-PROMPT='%B%F{9}[%F{11}%n%F{10}@%F{12}%m%F{9}] %F{13}%2~
-%(?.%F{15}.%F{15}) λ%f%b '
+PROMPT='%B%F{1}[%F{3}%n%F{2}@%F{4}%m%F{1}] %F{5}%2~
+%(?.%F{10}.%F{10}) λ%f%b '
 
 # Message
 phrases.sh

@@ -58,7 +58,6 @@ return {
         end,
 			},
 		},
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{
 				"-",
@@ -71,27 +70,21 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		opts = function()
-			local custom_gruvbox = require("lualine.themes.gruvbox")
-			-- custom_gruvbox.normal.a.bg = "#FABD2F"
-			local opts = {
+		opts = {
 				options = {
 					theme = "auto",
 					component_separators = "|",
 					section_separators = "",
 				},
 				extensions = {
-          "fzf",
-          "oil",
-          "nvim-dap-ui",
-          "fugitive",
-          "mason",
-          "lazy",
-          "man",
-        },
+	         "fzf",
+	         "oil",
+	         "fugitive",
+	         "mason",
+	         "lazy",
+	         "man",
+	       },
 			}
-			return opts
-		end,
 	},
 	{
 		"ellisonleao/gruvbox.nvim",
@@ -126,7 +119,7 @@ return {
 				GruvboxPurpleSign = { bg = "NONE" },
 				GruvboxAquaSign = { bg = "NONE" },
 				GruvboxOrangeSign = { bg = "NONE" },
-      },
+	     },
 			dim_inactive = false,
 			transparent_mode = false,
 		},
@@ -135,4 +128,25 @@ return {
 			vim.cmd.colorscheme("gruvbox")
 		end,
 	},
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      signs_staged = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+      },
+    },
+  }
 }

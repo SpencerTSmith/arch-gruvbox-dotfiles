@@ -22,7 +22,6 @@ vim.o.breakindent = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.splitkeep = "screen"
-
 -- Line numbers and such
 vim.o.number = true
 vim.o.relativenumber = true
@@ -89,3 +88,5 @@ vim.o.hlsearch = true
 
 vim.opt.shortmess:append("aWC")
 vim.opt.formatoptions:remove("ro")
+
+vim.opt.path:append("**")
