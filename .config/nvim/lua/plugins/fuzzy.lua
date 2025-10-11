@@ -2,7 +2,19 @@ return {
 	"ibhagwan/fzf-lua",
 	opts = {
 		fzf_colors = {
-			false,
+			true,
+			["fg"] = { "fg", "CursorLine" },
+			["bg"] = { "bg", "Normal" },
+			["hl"] = { "fg", "Comment" },
+			["fg+"] = { "fg", "Normal" },
+			["bg+"] = { "bg", { "CursorLine", "Normal" } },
+			["hl+"] = { "fg", "Operator" },
+			["info"] = { "fg", "Comment" },
+			["marker"] = { "fg", "CursorLine" },
+			["pointer"] = { "fg", "PreProc" },
+			["spinner"] = { "fg", "PreProc" },
+			["header"] = { "fg", "Comment" },
+      ["gutter"] = "-1",
 		},
 		winopts = {
 			border = "none",
