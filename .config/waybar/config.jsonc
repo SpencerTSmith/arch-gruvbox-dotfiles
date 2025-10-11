@@ -137,7 +137,7 @@
     "show-passive-items": false
 	},
 	"clock": {
-		"format": "  <span color='#ebdbb2'>{:%a %d %b %I:%M %p}</span> ",
+		"format": "  <span color='#d5d5d5'>{:%a %d %b %I:%M %p}</span> ",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {
 			"mode": "year",
@@ -161,7 +161,7 @@
 		}
 	},
 	"wireplumber": {
-		"format": " {icon} <span color='#ebdbb2'>{volume}%</span> ",
+		"format": " {icon} <span color='#d5d5d5'>{volume}%</span> ",
 		"tooltip": true,
 		"max-volume": 100,
     "scroll-step": 1,
@@ -175,7 +175,7 @@
 	},
   "backlight": {
     "device": "intel_backlight",
-    "format": " {icon} <span color='#ebdbb2'>{percent}%</span> ",
+    "format": " {icon} <span color='#d5d5d5'>{percent}%</span> ",
     "format-icons": [
       "󰃚",
       "󰃛",
@@ -265,13 +265,13 @@
 		"on-click": "uwsm stop"
 	},
 	"cpu": {
-		"format": "  <span color='#ebdbb2'>{usage}%</span> ",
+		"format": "  <span color='#d5d5d5'>{usage}%</span> ",
 		"tooltip": true,
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 30
 	},
 	"memory": {
-		"format": "  <span color='#ebdbb2'>{}%</span> ",
+		"format": "  <span color='#d5d5d5'>{}%</span> ",
 		"tooltip": true,
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\"",
     "interval": 30
@@ -280,7 +280,7 @@
 		"thermal-zone": 2,
 		"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input",
 		"critical-threshold": 90,
-		"format": " {icon} <span color='#ebdbb2'>{temperatureC}°C</span> ",
+		"format": " {icon} <span color='#d5d5d5'>{temperatureC}°C</span> ",
 		"format-icons": [
 			"",
 			"",
@@ -294,12 +294,12 @@
 	},
   "disk": {
     "interval": 3600,
-    "format": "  <span color='#ebdbb2'>{percentage_used}%</span> ",
+    "format": "  <span color='#d5d5d5'>{percentage_used}%</span> ",
     "path": "/",
 		"on-click": "hyprctl dispatch exec \"[float;size 1000 800] foot -e btop\""
   },
   "custom/gpu": {
-    "format": "  <span color='#ebdbb2'>{}%</span> ",
+    "format": "  <span color='#d5d5d5'>{}%</span> ",
     "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
     "interval": 30,
     "tooltip": false,
@@ -311,8 +311,8 @@
       "warning": 30,
       "critical": 15
     },
-		"format": " {icon} <span color='#ebdbb2'>{capacity}%</span> ",
-    "format-charging": "  <span color='#ebdbb2'>{capacity}%</span> ",
+		"format": " {icon} <span color='#d5d5d5'>{capacity}%</span> ",
+    "format-charging": "  <span color='#d5d5d5'>{capacity}%</span> ",
 		"format-icons": [
 			"",
 			"",
