@@ -155,6 +155,9 @@ export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export RUFF_CACHE_DIR=$XDG_CACHE_HOME/ruff
 export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export TEXMFHOME=$XDG_DATA_HOME/texmf
+export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
+export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 
 # Aliases
 alias vi='nvim'
