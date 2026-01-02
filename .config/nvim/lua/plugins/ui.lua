@@ -44,29 +44,55 @@ return {
 				["<C-l>"] = false,
         ["<C-v>"] = { "actions.select", opts = { vertical = true } },
         ["gx"] = function()
-          -- Override the default app for zip files
-          local entry = require("oil").get_cursor_entry()
+          local oil = require("oil")
+          local entry = oil.get_cursor_entry()
           if not entry then return end
 
-          local path = require("oil").get_current_dir() .. "/" .. entry.name
+          local dir  = oil.get_current_dir()
+          local path = dir .. "/" .. entry.name
+          local escaped_path = vim.fn.shellescape(path)
+          local escaped_dir  = vim.fn.shellescape(dir)
 
-          if path:match("%.zip$") or path:match("%.7z$") or path:match("%.rar$") then
-            vim.cmd("!7z x " .. vim.fn.shellescape(path) .. " -o" .. vim.fn.shellescape(require("oil").get_current_dir()))
-          else
-            require("oil.actions").open_external.callback()
+          -- tar formats (extract fully)
+          local tar_patterns = {
+            "%.tar$", "%.tar%.gz$", "%.tgz$",
+            "%.tar%.bz2$", "%.tbz2$",
+            "%.tar%.xz$", "%.txz$",
+          }
+
+          for _, pat in ipairs(tar_patterns) do
+            if path:match(pat) then
+              vim.cmd("!tar -xf " .. escaped_path .. " -C " .. escaped_dir)
+              return
+            end
           end
+
+          -- other archive formats
+          local sevenz_patterns = {
+            "%.zip$", "%.7z$", "%.rar$",
+          }
+
+          for _, pat in ipairs(sevenz_patterns) do
+            if path:match(pat) then
+              vim.cmd("!7z x " .. escaped_path .. " -o" .. escaped_dir)
+              return
+            end
+          end
+
+          -- fallback
+          require("oil.actions").open_external.callback()
         end,
-			},
-		},
-		keys = {
-			{
-				"-",
-				function()
-					require("oil").open()
-				end,
-				desc = "Oil: Open parent directory",
-			},
-		},
+      },
+    },
+    keys = {
+      {
+        "-",
+        function()
+          require("oil").open()
+        end,
+        desc = "Oil: Open parent directory",
+      },
+    },
 	},
 	{
 		"nvim-lualine/lualine.nvim",
