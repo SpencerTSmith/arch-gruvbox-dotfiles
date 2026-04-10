@@ -26,6 +26,7 @@ video/mp4=celluloid.desktop
 video/x-matroska=celluloid.desktop
 video/webm=celluloid.desktop
 x-scheme-handler/magnet=transmission-gtk.desktop;
+x-scheme-handler/discord-424004941485572097=discord-424004941485572097.desktop
 
 [Added Associations]
 

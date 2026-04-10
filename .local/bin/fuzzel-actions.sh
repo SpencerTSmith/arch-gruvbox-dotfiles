@@ -8,7 +8,6 @@ read -r -d '' MENU << EOF
 󱎘  Kill
 EOF
 
-# Launch fuzzel
 CHOICE=$(printf '%s\n' "$MENU" \
          | fuzzel --dmenu \
              --anchor top \
@@ -21,7 +20,6 @@ CHOICE=$(printf '%s\n' "$MENU" \
            )
 
 
-# Act on the choice
 case "$CHOICE" in
     *Update)    hyprctl dispatch exec "[float] foot -e paru" ;;
     *Wallpaper) fuzzel-wallpaper.sh ;;

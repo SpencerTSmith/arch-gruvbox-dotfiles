@@ -2,7 +2,6 @@
 
 updates=$(checkupdates | wc -l)
 
-# JSON, for waybar
 if [ "$updates" -gt 0 ]; then
     echo "{\"text\": \"$updates\", \"tooltip\": \"$updates updates available\", \"class\": \"updates-available\"}"
 else

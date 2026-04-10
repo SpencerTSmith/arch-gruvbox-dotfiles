@@ -2,7 +2,6 @@
 
 PROCESSES=$(ps -u $USER -o pid,comm | awk '{printf "%s - %s\n", $1, $2}')
 
-  # Launch fuzzel with process list
 SELECTED_PROCESS=$(printf '%s\n' "$PROCESSES" \
   | fuzzel --dmenu \
   --anchor center \
@@ -11,7 +10,6 @@ SELECTED_PROCESS=$(printf '%s\n' "$PROCESSES" \
   --prompt "[KILL]: " \
 )
 
-# Extract PID and kill the process
 if [[ -n "$SELECTED_PROCESS" ]]; then
   PID=$(echo "$SELECTED_PROCESS" | awk '{print $1}')
   if [[ "$PID" =~ ^[0-9]+$ ]]; then

@@ -9,7 +9,6 @@ read -r -d '' MENU << EOF
 󰍃  Exit
 EOF
 
-# Launch fuzzel
 CHOICE=$(printf '%s\n' "$MENU" \
          | fuzzel --dmenu \
              --anchor top \
@@ -20,7 +19,6 @@ CHOICE=$(printf '%s\n' "$MENU" \
            )
 
 
-# Act on the choice
 case "$CHOICE" in
     *Shutdown) systemctl poweroff ;;
     *Reboot)   systemctl reboot ;;
