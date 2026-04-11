@@ -12,7 +12,7 @@ CHOICE=$(printf '%s\n' "$MENU" \
          | fuzzel --dmenu \
              --anchor top \
              --lines $(wc -l <<< $MENU) \
-             --width $(wc -L <<< $MENU) \
+             --width 13 \
              --y-margin 5 \
              --x-margin 5 \
              --select-index 0 \

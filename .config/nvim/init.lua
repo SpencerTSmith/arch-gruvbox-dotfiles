@@ -452,6 +452,10 @@ require("nvim-treesitter").install({
   "lua",
   "bash",
   "glsl",
+  "json",
+  "python",
+  "ini",
+  "hyprlang",
 })
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function()
