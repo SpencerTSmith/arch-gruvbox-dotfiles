@@ -1,4 +1,4 @@
--- ##########################################
+
 -- Options
 -- ##########################################
 
@@ -13,6 +13,7 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.shiftround = true
 vim.o.tabstop = 2
+vim.o.smarttab = true
 
 vim.o.title = true
 
@@ -82,15 +83,19 @@ vim.o.infercase = true
 vim.o.virtualedit = "block,onemore"
 
 vim.opt.winborder = "none"
--- vim.o.pumblend = 10
--- vim.o.winblend = 10
--- vim.o.pumheight = 10
+vim.o.winblend = 10
+
+-- vim.o.complete = ".,o" -- use buffer and omnifunc
+-- vim.opt.completeopt = "menu,menuone,noselect,popup"
+-- vim.o.autocomplete = true
+vim.o.pumblend = 10
+vim.o.pumheight = 10
 
 vim.o.equalalways = true
 
 vim.o.hlsearch = true
 
-vim.opt.shortmess:append("aWC")
+vim.opt.shortmess:append("aWCc")
 vim.opt.formatoptions:remove("ro")
 
 vim.opt.path:append("**")
@@ -299,8 +304,7 @@ vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
-	{src = "https://github.com/saghen/blink.cmp", version = vim.version.range('*'), },
-
+	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") }
 })
 
 require("oil").setup({
@@ -441,15 +445,27 @@ require("gitsigns").setup({
   },
 })
 
-require("nvim-treesitter").install({"c", "cpp", "odin", "lua", "bash"})
+require("nvim-treesitter").install({
+  "c",
+  "cpp",
+  "odin",
+  "lua",
+  "bash",
+  "glsl",
+})
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function()
         require("nvim-treesitter").update()
     end
 })
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local filetype = args.match
+    local lang = vim.treesitter.language.get_lang(filetype)
+    if lang ~= nil and vim.treesitter.language.add(lang) then
+      vim.treesitter.start()
+    end
+  end
 })
 
 require('nvim-autopairs').setup({
@@ -608,6 +624,9 @@ vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua oldfiles<cr>",                   
 vim.keymap.set("n", "<leader>fM", "<cmd>FzfLua man_pages<cr>",                                { desc = "Find: man pages" })
 
 require("blink.cmp").setup({
+	fuzzy = {
+		prebuilt_binaries = { force_version = "v1.10.0", download = true },
+	},
   appearance = {
     nerd_font_variant = "mono",
   },
@@ -674,6 +693,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
         client.server_capabilities.documentHighlightProvider = false
       end
       client.server_capabilities.semanticTokensProvider = nil
+
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {noremap = true, silent = true})
     end
   end,
+})
+
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' }, -- Recognize 'vim' global
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+		},
+	},
 })
