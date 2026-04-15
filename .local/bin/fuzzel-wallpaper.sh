@@ -17,5 +17,5 @@ CHOICE=$(printf '%s\n' "$WALLPAPERS" \
 
 if [[ -n "$CHOICE" ]]; then
   hyprctl hyprpaper wallpaper ", $WALLPAPER_DIR/$CHOICE"
-  echo -e " wallpaper {\n  monitor =\n  path = $WALLPAPER_DIR/$CHOICE\n}" > $HYPRPAPER_DIR/hyprpaper.conf
+  echo -e " wallpaper {\n  monitor =\n  path = $WALLPAPER_DIR/$CHOICE\n}\nsplash=false\n" > $HYPRPAPER_DIR/hyprpaper.conf
 fi
