@@ -685,6 +685,7 @@ require("mason-lspconfig").setup({
     "hyprls",
     "pyright",
     "bashls",
+    "slangd",
     "ols",
   },
 })
