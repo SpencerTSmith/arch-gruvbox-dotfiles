@@ -289,6 +289,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Plugins
 -- ##########################################
 
+vim.cmd("packadd nvim.undotree")
+vim.cmd("packadd nvim.difftool")
 vim.pack.add({
   "https://github.com/stevearc/oil.nvim",
 	"https://github.com/nvim-lualine/lualine.nvim",
@@ -304,7 +306,7 @@ vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
-	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") }
+	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") },
 })
 
 require("oil").setup({
