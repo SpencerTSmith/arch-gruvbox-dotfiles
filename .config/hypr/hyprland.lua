@@ -189,7 +189,7 @@ local mainMod = "SUPER"
 -- Start apps, on dedicated workspaces
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("[workspace 1 silent] uwsm app -- " .. terminal .. " -e tmux a"))
 hl.bind(mainMod .. " + Q", hl.dsp.focus({ workspace = 1 }))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("[workspace 2 silent] uwsm app -- code"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("[workspace 2 silent] uwsm app -- raddbg"))
 hl.bind(mainMod .. " + B", hl.dsp.focus({ workspace = 2 }))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("[workspace 3 silent] uwsm app -- " .. browser))
 hl.bind(mainMod .. " + W", hl.dsp.focus({ workspace = 3 }))
